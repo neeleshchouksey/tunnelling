@@ -17,46 +17,62 @@ London N19 4AG</p>
 	  <section class="subscription-included">
 	  	<div class="container">
 		   <div class="subscription-form contact-page">
-			
-			<div class="form-content">
-				<ul>
-					<li>
-						<div class="text-outer">
-						<input class="text-filed" placeholder="" type="text">
-						<span>Name</span>
-						</div>
+				<form action="contact/store" method="post">
+					<div class="form-content">
+						<ul>
+							<li>
+								{{ csrf_field() }}
+								<div class="text-outer">
+								<input class="text-filed" placeholder="" type="text" name="name" required>
+								<span>Name</span>
+								</div>
+									</li>
+							<li>
+								<div class="text-outer">
+								<input class="text-filed" placeholder="" type="email" name="email" required>
+								<span>Email</span>
+								</div>
 							</li>
-					<li>
-						<div class="text-outer">
-						<input class="text-filed" placeholder="" type="text">
-						<span>Email</span>
-						</div>
-					</li>
-					<li>
-						<div class="text-outer">
-						<input class="text-filed" placeholder="" type="text">
-						<span>Phone</span>
-						</div>
-					</li>
-					<li>
-						<div class="text-outer">
-						<input class="text-filed" placeholder="" type="text">
-						<span>Company (optional)</span>
-						</div>
-					</li>
-					<li class="width-100">
-						<div class="text-outer">
-						<textarea class="text-filed"></textarea>
-						<span>Message</span>
-						</div>
-					</li>
-					<li class="width-100 text-center">
-						<button type="submit" class="btn-icon shadow-none"><span class="btn-download">send message</span><span class="download-icon"><img src="images/send-message.png" alt="subscribe"></span></button>
-					</li>
-				</ul>
-			</div>
-			</div>
-			
+							<li>
+								<div class="text-outer">
+								<input class="text-filed" placeholder="" type="text" name="phone" required>
+								<span>Phone</span>
+								</div>
+							</li>
+							<li>
+								<div class="text-outer">
+								<input class="text-filed" placeholder="" type="text" name="company">
+								<span>Company (optional)</span>
+								</div>
+							</li>
+							<li class="width-100">
+								<div class="text-outer">
+								<textarea class="text-filed" name="message" ></textarea>
+								<span>Message</span>
+								</div>
+							</li>
+							<li class="width-100 text-center">
+								<button type="submit" class="btn-icon shadow-none"><span class="btn-download">send message</span><span class="download-icon"><img src="images/send-message.png" alt="subscribe"></span></button>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>			
 		 </div>
 	  </section>
+
+	  <!-- for popup only-->
+	  <div class="popup" id="send-contact" style="display:none">
+	  		<div class="overlay">
+		  		<div class="popup-content">
+					<div class="close-btn"><a href=""><img src="{{url('/images/close-icon.png')}}"></a></div>
+					<div class="text-center top-text">
+						<img src="images/message-send.png" alt="message send">
+						<h3>Your contact information has been sent</h3>
+						<p>Thank you for your message! We will reply shortly.</p>
+					</div>
+				</div>
+		  	</div>
+	  </div>
+	  <!-- popup-end -->
 	  @endsection

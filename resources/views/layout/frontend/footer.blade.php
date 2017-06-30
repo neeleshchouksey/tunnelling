@@ -1,7 +1,7 @@
 <footer class="footer">
 			<div class="container">
 				<div class="footer-block footer-logo">
-					<div class="logo-footer"><a href="#"><img src="images/footer-logo.png" alt="logo"></a></div>
+					<div class="logo-footer"><a href="#"><img src="{{url('/images/footer-logo.png')}}" alt="logo"></a></div>
 					<div class="footer-link">
 						<ul>
 							<li><a href="#">Terms & Conditions</a></li>
@@ -12,24 +12,24 @@
 				<div class="footer-block footer-link">
 					<h4>Navigation</h4>
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Advertise</a></li>
-						<li><a href="#">Subscribe</a></li>
-						<li><a href="#">contacts</a></li>
+						<li class="current-page"><a href="#">Home</a></li>
+						<li><a href="{{url('/about')}}">About</a></li>
+						<li><a href="{{url('/advertise')}}">Advertise</a></li>
+						<li><a href="{{url('/subscribe')}}">subscribe</a></li>
+						<li><a href="{{url('contact')}}">Contacts</a></li>
 					</ul>
 				</div>
 				<div class="footer-block footer-contact">
 					<h4>Contacts</h4>
 					<div class="footer-addrees">
-					<img src="images/map-pin.png" alt="Address"><p>34 Elthorne Rd, Islington,
+					<img src="{{url('/images/map-pin.png')}}" alt="Address"><p>34 Elthorne Rd, Islington,
 London N19 4AG</p>
 					</div>
 					<div class="footer-addrees">
-					<img src="images/message-icon.png" alt="message"><a href="mailto:journalsint.@icloud">journalsint.@icloud</a>
+					<img src="{{url('/images/message-icon.png')}}" alt="message"><a href="mailto:journalsint.@icloud">journalsint.@icloud</a>
 					</div>
 					<div class="footer-addrees">
-					<img src="images/phone-address.png" alt="message"><a href="tel:+44 207 272 8444">442072728444</a>
+					<img src="{{url('/images/phone-address.png')}}" alt="message"><a href="tel:+44 207 272 8444">442072728444</a>
 					</div>
 				</div>
 				<div class="footer-block footer-subscribe">
@@ -37,7 +37,7 @@ London N19 4AG</p>
 					<div class="text-outer">
 								<input class="text-filed" placeholder="" type="text">
 									<span>Email</span>
-					<button type="submit"><img src="images/subscribe-arrow.png" alt="subscribe"></button>
+					<button type="submit"><img src="{{url('/images/subscribe-arrow.png')}}" alt="subscribe"></button>
 					</div>
 					<div class="download-latest">
 						<h4>download latest issue</h4>
@@ -53,7 +53,7 @@ London N19 4AG</p>
 	  <div class="popup" id="subscribe-popup" style="display:none;">
 	  		<div class="overlay">
 		  		<div class="popup-content">
-					<div class="close-btn"><a href=""><img src="images/close-icon.png"></a></div>
+					<div class="close-btn"><a href=""><img src="{{url('/images/close-icon.png')}}"></a></div>
 					<div class="text-center top-text">
 						<h3>Subscribe to download pdf</h3>
 						<p>We will send you link to download our latest issue in PDF</p>
@@ -82,15 +82,15 @@ London N19 4AG</p>
 	  <div class="popup" id="send-message" style="display:none;">
 	  		<div class="overlay">
 		  		<div class="popup-content">
-					<div class="close-btn"><a href=""><img src="images/close-icon.png"></a></div>
+					<div class="close-btn"><a href=""><img src="{{url('/images/close-icon.png')}}"></a></div>
 					<div class="text-center top-text">
 						<img src="images/message-send.png" alt="message send">
 						<h3>Your message has been sent</h3>
 						<p>Thank you for your message! We will reply shortly.</p>
 					</div>
-			
-			
 				</div>
-		  
 		  	</div>
 	  </div>
+	  <!-- ~GK SCRIPT CALLING -->
+	  <script src="{!! asset('js/jquery.min.js') !!}"></script>
+	  <script src="{!! asset('js/common.js') !!}"></script>
