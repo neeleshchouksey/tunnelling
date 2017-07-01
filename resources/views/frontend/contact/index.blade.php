@@ -7,17 +7,17 @@
 			<hr>
 			<p>We are here to help. Call us anytime.</p>
 			<div class="contact-addresses">
-				<p><a href="mailto:journalsint.@icloud"><img src="images/message-address.png"> journalsint.@icloud</a></p>
-				<p class="middle-margin text-left"><span><img src="images/pin-address.png"></span>j34 Elthorne Rd, Islington,<br>
+				<p><a href="mailto:journalsint.@icloud"><img src="{{url('/images/message-address.png')}}"> journalsint.@icloud</a></p>
+				<p class="middle-margin text-left"><span><img src="{{url('/images/pin-address.png')}}"></span>j34 Elthorne Rd, Islington,<br>
 				London N19 4AG</p>
-				<p><a href="tel:442072728444"><img src="images/phone-address.png"> +44 207 272 8444</a></p>
+				<p><a href="tel:442072728444"><img src="{{url('/images/phone-address.png')}}"> +44 207 272 8444</a></p>
 			</div>
 		</div>
 	  </section>
 	  <section class="subscription-included">
 	  	<div class="container">
 		   <div class="subscription-form contact-page">
-				<form action="contact/store" method="post">
+				<form action="{{url('contact/store')}}" method="post">
 					<div class="form-content">
 						<ul>
 							<li>
@@ -52,7 +52,7 @@
 								</div>
 							</li>
 							<li class="width-100 text-center">
-								<button type="submit" class="btn-icon shadow-none"><span class="btn-download">send message</span><span class="download-icon"><img src="images/send-message.png" alt="subscribe"></span></button>
+								<button type="submit" class="btn-icon shadow-none"><span class="btn-download">send message</span><span class="download-icon"><img src="{{url('/images/send-message.png')}}" alt="subscribe"></span></button>
 							</li>
 						</ul>
 					</div>

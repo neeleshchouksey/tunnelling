@@ -39,30 +39,29 @@ class SubscribeController extends Controller
         $message    =   "Thank you for subscribing to our newsletter.";
         $from       =   "subscriptions@tunnellingint.com"; 
         $headers    =   "From: subscriptions@tunnellingint.com" . "\r\n";
+        $headers .= "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 
+        if(mail($to , $subject, $message, $headers)){
 
-
-        // if(mail($to , $subject, $message, $headers)){
-
-        //     $insertData->save(); 
+            $insertData->save(); 
             
-        // }  
-        $todayData=subscribe::where('created_at', '>=', date('d'))->get();   
+        }  
+        $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->get(); 
+       
         if($todayData){
-            $owner_to         =   $request->email;
+            $owner_to         =   "subscriptions@tunnellingint.com"; 
             $owner_subject    =   "New Subscription from Website - ".$insertData->uni_subs_no;
             $owner_message    =   view('partials.emails.suscribeemail')->with('todayData',$todayData);
-            $owner_from       =   "subscriptions@tunnellingint.com"; 
             $owner_headers    =   "From:$request->email" . "\r\n";
+            $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";
+            $owner_headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
             mail($owner_to , $owner_subject, $owner_message, $owner_headers);
-            //echo "<pre>";print_r($owner_message);die;
         }
-
          
         $subscribe  =    array( 'subscribe' => 'true','email' =>$request->email,'display'=>'block');
-       
-        
+               
         return redirect()->back()->with($subscribe);
     }
     /**

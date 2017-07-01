@@ -109,7 +109,7 @@ within the worlds most prolific Tunnelling Industry Enterprises.</p>
 	  		<div class="container">
 		  		<h3>Reserve ad now and get<br>
 A FREE 6 MONTH LOGO LINK ON OUR WEBSITE</h3>
-				<a href="#" class="btn-icon"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="images/award-iocn.png" alt="download-btn"></span></a>
+				<a href="{{url('/advertise/firststep')}}" class="btn-icon"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="images/award-iocn.png" alt="download-btn"></span></a>
 		    </div>
 	  </section>
 	  <section class="our-circulation text-center">
@@ -127,15 +127,15 @@ A FREE 6 MONTH LOGO LINK ON OUR WEBSITE</h3>
 				<hr>
 				<div class="partner-list">
 					<ul>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
+						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
+						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
+						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
+						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
+						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
+						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
 					</ul>
 				</div>
-				<a href="#" class="btn-icon shadow-none"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="images/award-iocn.png" alt="download-btn"></span></a>
+				<a href="{{url('/advertise/firststep')}}" class="btn-icon shadow-none"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="images/award-iocn.png" alt="download-btn"></span></a>
 		  </div>
 	  </section>
 @endsection

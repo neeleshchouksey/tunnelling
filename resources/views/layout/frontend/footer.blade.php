@@ -12,7 +12,7 @@
 				<div class="footer-block footer-link">
 					<h4>Navigation</h4>
 					<ul>
-						<li class="current-page"><a href="#">Home</a></li>
+						<li class="current-page"><a href="{{url('/')}}">Home</a></li>
 						<li><a href="{{url('/about')}}">About</a></li>
 						<li><a href="{{url('/advertise')}}">Advertise</a></li>
 						<li><a href="{{url('/subscribe')}}">subscribe</a></li>
@@ -68,11 +68,12 @@ London N19 4AG</p>
 								</div>
 								</div>
 							<div class="sub-btn">
-								<button type="submit" class="btn-icon shadow-none"><span class="btn-download">subscribe </span><span class="download-icon"><img src="images/subscribe.png" alt="subscribe"></span></button>
+								<button type="submit" class="btn-icon shadow-none"><span class="btn-download">subscribe </span><span class="download-icon"><img src="{{url('images/subscribe.png')}}" alt="subscribe"></span></button>
 							</div>
 							
 						</div>
-							<p class="gurantee"><img src="images/lock-gray.png" alt="lock"> No SPAM Guarantee</p>
+							<p class="gurantee"><img src="{{url('images/lock-gray.png')
+							}}" alt="lock"> No SPAM Guarantee</p>
 					</form>
 			
 				</div>
@@ -84,13 +85,28 @@ London N19 4AG</p>
 		  		<div class="popup-content">
 					<div class="close-btn"><a href=""><img src="{{url('/images/close-icon.png')}}"></a></div>
 					<div class="text-center top-text">
-						<img src="images/message-send.png" alt="message send">
+						<img src="{{url('images/message-send.png')}}" alt="message send">
 						<h3>Your message has been sent</h3>
 						<p>Thank you for your message! We will reply shortly.</p>
 					</div>
 				</div>
 		  	</div>
 	  </div>
+
+		@if(session()->has('subscribe')) 
+		<div class="popup" id="send-suscribe" style="display:{{session()->get('display') or 'none'}};">
+	  		<div class="overlay">
+		  		<div class="popup-content">
+					<div class="close-btn"><a href=""><img src="{{url('/images/close-icon.png')}}"></a></div>
+					<div class="text-center top-text">
+						<img src="{{url('/images/message-send.png')}}" alt="message send">
+						<h3>Acknowledgment has been sent to {{ session()->get('email') }}</h3>
+						<p>Thank you for your message!</p>
+					</div>
+				</div>
+		  	</div>
+		</div>
+		@endif
 	  <!-- ~GK SCRIPT CALLING -->
 	  <script src="{!! asset('js/jquery.min.js') !!}"></script>
-	  <script src="{!! asset('js/common.js') !!}"></script>
+	  <script src="{!! asset('js/frontend-common.js') !!}"></script>

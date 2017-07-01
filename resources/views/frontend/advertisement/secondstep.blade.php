@@ -14,10 +14,10 @@
 				<h3>for reservation contact us or fill the form below:</h3>
 				<div class="right-contact">
 					<div class="topContact">
-						<span><img src="images/message-icons.png"></span><a href="mailto:journalsint.@icloud">journalsint.@icloud</a>
+						<span><img src="{{url('/images/message-icons.png')}}"></span><a href="mailto:journalsint.@icloud">journalsint.@icloud</a>
 					</div>
 					<div class="topContact">
-						<span><img src="images/phone-address-icon.png"></span><a href="tel:442072728444">+44 207 272 8444</a>
+						<span><img src="{{url('/images/phone-address-icon.png')}}"></span><a href="tel:442072728444">+44 207 272 8444</a>
 					</div>
 				</div>
 			</div>
@@ -27,21 +27,21 @@
 						<li id="step-1" class="current completed">
 							<a href="javascript:void(0)">
 								<span class="text">1</span>
-								<span class="icon"><img src="images/checked.png" alt=""></span>
+								<span class="icon"><img src="{{url('/images/checked.png')}}" alt=""></span>
 								ad format
 							</a>
 						</li>
 						<li id="step-2" class="current">
 							<a href="javascript:void(0)">
 								<span class="text">2</span>
-								<span class="icon"><img src="images/checked.png" alt=""></span>
+								<span class="icon"><img src="{{url('/images/checked.png')}}" alt=""></span>
 								personal information
 							</a>
 						</li>
 						<li id="step-3">
 							<a href="javascript:void(0)">
 								<span class="text">2</span>
-								<span class="icon"><img src="images/checked.png" alt=""></span>
+								<span class="icon"><img src="{{url('/images/checked.png')}}" alt=""></span>
 								summary & confirmation
 							</a>
 						</li>
@@ -95,7 +95,7 @@
 					</div>
 				</form>				
 				<div class="step-btn text-center">
-					<button href="#" class="btn-icon shadow-none" disabled><span class="btn-download">Next Step </span><span class="download-icon"><img src="images/next-step.png" alt="download-btn"></span></button>
+					<button href="#" class="btn-icon shadow-none" disabled><span class="btn-download">Next Step </span><span class="download-icon"><img src="{{url('/images/next-step.png')}}" alt="download-btn"></span></button>
 				</div>
 			</div>
 		</div>

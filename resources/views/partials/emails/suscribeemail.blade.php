@@ -26,23 +26,26 @@
         </style>
     </head>
     <body>
-
-    <table id="t01">
-      <tr>
-        <th>Suscriber</th>
-        <th>Suscribe NO.</th>
-        <th>Date</th> 
-        <th>Time</th>
-      </tr>
-      <tr>
+    <center>
+      <h1>Todays Subscription</h1>
+      <table id="t01">
+        <tr>
+          <th>Suscriber Email</th>
+          <th>Suscribe NO.</th>
+          <th>Date</th> 
+          <th>Time</th>
+        </tr>
         @foreach($todayData as $data)
-          <td>{{$data->email}}</td>
-          <td>{{$data->email}}</td>
-          <td>{{$data->email}}</td>
-          <td>{{$data->email}}</td>
+        <tr>
+            <td>{{$data->email}}</td>
+            <td>{{$data->uni_subs_no}}</td>
+            <td>{{date('m-d-Y',strtotime($data->created_at))}}</td>
+            <td>{{date('h-i-s',strtotime($data->created_at))}}</td>
+        </tr>
         @endforeach
-      </tr>
-    </table>
+      </table>
+      
+    </center>
 
     </body>
 </html>

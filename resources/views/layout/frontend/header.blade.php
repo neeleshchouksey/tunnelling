@@ -6,7 +6,7 @@
 		<div class="header-right">
 			<div class="navigation">
 				<ul>
-					<li class="current-page"><a href="#">Home</a></li>
+					<li class="current-page"><a href="{{url('/')}}">Home</a></li>
 					<li><a href="{{url('/about')}}">About</a></li>
 					<li><a href="{{url('/advertise')}}">Advertise</a></li>
 					<li><a href="{{url('/subscribe')}}">subscribe</a></li>
