@@ -9,7 +9,7 @@
 			<div class="contact-addresses">
 				<p><a href="mailto:journalsint.@icloud"><img src="images/message-address.png"> journalsint.@icloud</a></p>
 				<p class="middle-margin text-left"><span><img src="images/pin-address.png"></span>j34 Elthorne Rd, Islington,<br>
-London N19 4AG</p>
+				London N19 4AG</p>
 				<p><a href="tel:442072728444"><img src="images/phone-address.png"> +44 207 272 8444</a></p>
 			</div>
 		</div>
@@ -67,7 +67,7 @@ London N19 4AG</p>
 		  		<div class="popup-content">
 					<div class="close-btn"><a href=""><img src="{{url('/images/close-icon.png')}}"></a></div>
 					<div class="text-center top-text">
-						<img src="images/message-send.png" alt="message send">
+						<img src="{{url('/images/message-send.png')}}" alt="message send">
 						<h3>Your contact information has been sent</h3>
 						<p>Thank you for your message! We will reply shortly.</p>
 					</div>

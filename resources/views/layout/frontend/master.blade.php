@@ -28,5 +28,6 @@
 	  
 	  @yield('content')	  	
 	  @include('layout.frontend.footer')
+    
   </body>
 </html>
