@@ -15,6 +15,8 @@ Route::get('/about', function () { return view('frontend.about.index');});
 // ~gk suscribe
 Route::get('subscribe', 'SubscribeController@index');
 Route::post('subscribe/store', 'SubscribeController@store');
+Route::post('subscribe/personaldetail','SubscribeController@personalDetail');
+Route::get('subscribe/confirmsubscription/{data}','SubscribeController@confirmSubscription');
 // ~gk contact
 Route::get ('contact','ContactController@index');
 Route::post('contact/store', 'ContactController@store');
@@ -25,6 +27,7 @@ Route::get('advertise/secondstep', 'AdvertiseController@secondStep');
 Route::get('advertise/thirdstep', 'AdvertiseController@thirdStep');
 Route::get('advertise/finalstep', 'AdvertiseController@finalStep');
 Route::get('advertise/selectproductrow', 'AdvertiseController@selectProductrow');
+Route::post('customerinfo/store', 'CustomerinfoController@store');
 
 
 

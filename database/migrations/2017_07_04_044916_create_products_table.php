@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubscribesTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateSubscribesTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscribes', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->unique();
-            $table->string('uni_subs_no')->unique();
-            $table->string('email_verify_code');
             $table->string('name');
-            $table->string('country');
-            $table->string('company');
-            $table->string('job_title');
-            $table->boolean('status');
+            $table->string('dimension');
+            $table->string('price');
+            $table->string('discount');
+            $table->integer('company_id');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreateSubscribesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscribes');
+        Schema::dropIfExists('products');
     }
 }

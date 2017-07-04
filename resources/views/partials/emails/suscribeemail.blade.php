@@ -27,7 +27,9 @@
     </head>
     <body>
     <center>
-      <h1>Todays Subscription</h1>
+      <h1>Todays Subscription</h1>    
+      
+
       <table id="t01">
         <tr>
           <th>Suscriber Email</th>

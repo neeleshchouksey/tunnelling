@@ -80,7 +80,7 @@ London N19 4AG</p>
 		  
 		  	</div>
 	  </div>
-	  <div class="popup" id="send-message" style="display:none;">
+	  	<div class="popup" id="send-message" style="display:none;">
 	  		<div class="overlay">
 		  		<div class="popup-content">
 					<div class="close-btn"><a href=""><img src="{{url('/images/close-icon.png')}}"></a></div>
@@ -91,7 +91,7 @@ London N19 4AG</p>
 					</div>
 				</div>
 		  	</div>
-	  </div>
+	  	</div>
 
 		@if(session()->has('subscribe')) 
 		<div class="popup" id="send-suscribe" style="display:{{session()->get('display') or 'none'}};">
