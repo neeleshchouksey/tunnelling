@@ -23,7 +23,7 @@ class AdvertiseController extends Controller
      */
     public function firstStep()
     {
-        return view('frontend.advertisement.firststep');
+        return view('frontend.advertisement.steps');
     }
     /**
      *  Display a view
@@ -117,5 +117,18 @@ class AdvertiseController extends Controller
     public function destroy(advertise $advertise)
     {
         //
+    }
+
+    public function selectProductrow(Request $request){
+        //echo "<pre>";print_r($request->product_src);die;
+        $productData = array(
+                             'src'      =>$request->product_src ,
+                             'name'     =>$request->product_heading,
+                             'price'    =>$request->product_price,
+                             'dimension'=>$request->product_dimension
+                             );
+
+        return view('partials.frontendparts.productrow')->with('productData',$productData);
+       
     }
 }

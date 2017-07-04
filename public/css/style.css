@@ -1320,3 +1320,6 @@ textarea.text-filed {
 .width-900 {
   width: 900px;
 }
+.hidden{
+	display: none;
+}
