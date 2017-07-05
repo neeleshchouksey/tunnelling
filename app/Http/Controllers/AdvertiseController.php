@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\advertise;
 use Illuminate\Http\Request;
+use App\products;
 
 class AdvertiseController extends Controller
 {
@@ -23,7 +24,8 @@ class AdvertiseController extends Controller
      */
     public function firstStep()
     {
-        return view('frontend.advertisement.steps');
+        $firststepData = products::all();
+        return view('frontend.advertisement.steps')->with('firststepData',$firststepData);
     }
     /**
      *  Display a view
@@ -120,15 +122,18 @@ class AdvertiseController extends Controller
     }
 
     public function selectProductrow(Request $request){
-        //echo "<pre>";print_r($request->product_src);die;
-        $productData = array(
-                             'src'      =>$request->product_src ,
-                             'name'     =>$request->product_heading,
-                             'price'    =>$request->product_price,
-                             'dimension'=>$request->product_dimension
-                             );
 
-        return view('partials.frontendparts.productrow')->with('productData',$productData);
+        $selectProduct = products::find($request->id);
+        return view('partials.frontendparts.productrow')->with('selectProduct',$selectProduct);
+       
+    }
+    public function fetchProductprice(Request $request){
+
+        $selectProduct = products::find($request->id);
+        $unit = $request->unit;
+        $price= $selectProduct->price;
+        $total = ($unit*$price);
+        return $total;
        
     }
 }

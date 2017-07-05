@@ -44,7 +44,7 @@ class SubscribeController extends Controller
         $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
         if(mail($to , $subject, $message, $headers)){
-            return view('frontend.susbscribe.suscriptionsecond');
+            return view('frontend.subscribe.suscriptionsecond');
             
         }
         else{
@@ -52,26 +52,7 @@ class SubscribeController extends Controller
             return back();
 
         }  
-        //only for testing purpose remove this
         
-            // $insertData->save();
-            // return view('partials.emails.suscriptionthird')->with('emailData',$insertData->id."__".$insertData->email_verify_code)  ;
-       
-        // $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->get(); 
-       
-        // if($todayData){
-        //     $owner_to         =   "subscriptions@tunnellingint.com"; 
-        //     $owner_subject    =   "New Subscription from Website - ".$insertData->uni_subs_no;
-        //     $owner_message    =   view('partials.emails.suscribeemail')->with('todayData',$todayData);
-        //     $owner_headers    =   "From:$request->email" . "\r\n";
-        //     $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";
-        //     $owner_headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
-        //     mail($owner_to , $owner_subject, $owner_message, $owner_headers);
-        // }
-         
-        // $subscribe  =    array( 'subscribe' => 'true','email' =>$request->email,'display'=>'block');
-               
-        // return redirect()->back()->with($subscribe);
     }
     /**
      * create a unique no.
@@ -107,25 +88,23 @@ class SubscribeController extends Controller
        $updateData->company = $request->company;
        $updateData->job_title = $request->job_title;
        $updateData->status = $status;
-       $updateData->email_verify_code= '';
        if($updateData->save()){
 
-            $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->orderBy('cretated_at', 'desc')->get();            
+            $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->get();            
             if($todayData){
-                $owner_to         =   "subscriptions@tunnellingint.com"; 
-                $owner_subject    =   "New Subscription from Website - ".$insertData->uni_subs_no;
+                //$owner_to         =   "subscriptions@tunnellingint.com"; 
+                $owner_to         =    "gaurav@whitebrains.in";
+                $owner_subject    =   "New Subscription from Website - ".$updateData->uni_subs_no;
                 $owner_message    =   view('partials.emails.suscribeemail')->with('todayData',$todayData);
                 $owner_headers    =   "From:$request->email" . "\r\n";
                 $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";
                 $owner_headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
                 mail($owner_to , $owner_subject, $owner_message, $owner_headers);
+                return view('frontend.subscribe.suscriptionlast');
             }
          
        }
 
-
-
-       return view('frontend.subscribe.suscriptionlast');
     }
     
 }

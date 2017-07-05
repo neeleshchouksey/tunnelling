@@ -27,6 +27,8 @@ Route::get('advertise/secondstep', 'AdvertiseController@secondStep');
 Route::get('advertise/thirdstep', 'AdvertiseController@thirdStep');
 Route::get('advertise/finalstep', 'AdvertiseController@finalStep');
 Route::get('advertise/selectproductrow', 'AdvertiseController@selectProductrow');
+Route::get('advertise/fetchproductprice','AdvertiseController@fetchProductprice');
+
 Route::post('customerinfo/store', 'CustomerinfoController@store');
 
 

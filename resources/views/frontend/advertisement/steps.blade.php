@@ -50,94 +50,27 @@
 			<p class="choose text-center">Choose your advertising formats:</p>
 			<form id="product_display_form" action="{{url('/advertise/selectproductrow')}}">
 			<div class="product-option">
-				<div class="product-list">
-					<label>
-						<input type="checkbox" name="front-cover">
-						<div class="box text-center">
-							<span class="checked"><img src="{{url('/images/checked-blue.png')}}"></span>
-							<div class="icon"><img class="product-image" src="{{url('/images/front-cover.png')}}"></div>
-							<h5 class = "product-heading">Front cover</h5>
-							<p class = "product-dimension">123mm x 456mm</p>
-							<span class = "product-price">$5750</span>
-						</div>					
-					</label>
-					<div class="year-publication">
-						<p>ISSUE</p>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2018 reserved
-							</div>
-						</label>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2019
-							</div>
-						</label>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2020
-							</div>
-						</label>
-					
-					</div>
-				</div>
 				
-				<div class="product-list">
+				@foreach($firststepData as $data)	
+				<div class="product-list" product_id="{{$data->id}}">
 					<label>
-						<input type="checkbox" name="back-cover">
+						<input type="checkbox" name="half-page" >
 						<div class="box text-center">
 							<span class="checked"><img src="{{url('/images/checked-blue.png')}}"></span>
-							<div class="icon"><img class="product-image" src="{{url('/images/back-cover.png')}}"></div>
-							<h5 class = "product-heading">Back cover</h5>
-							<p class = "product-dimension">123mm x 456mm</p>
-							<span class = "product-price">$5250</span>
+							<div class="icon"><img class="product-image" src='{{url("/images/$data->image_name")}}'></div>
+							<h5 class = "product-heading">{{$data->name}}</h5>
+							<p class = "product-dimension">{{$data->dimension}}</p>
+							<span class = "product-price">${{$data->price}}</span>
 						</div>
 					</label>
 					<div class="year-publication">
-						<p>ISSUE</p>
+						<p>{{$data->tag}}</p>
 						<label>
-							<input type="radio" name="issue">
+							<input type="radio" name="issue" pr_name = "{{$data->name}}" year="{{$data->firstyear}}">
 							<div class="box-radio">
-								<span></span>2018 reserved
-							</div>
-						</label>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2019
-							</div>
-						</label>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2020
-							</div>
-						</label>
-					
-					</div>
-				</div>				
-				<div class="product-list">
-					<label>
-						<input type="checkbox" name="double-page">
-						<div class="box text-center">
-							<span class="checked"><img src="{{url('/images/checked-blue.png')}}"></span>
-							<div class="icon"><img class="product-image" src="{{url('/images/double-cover.png')}}"></div>
-							<h5 class = "product-heading">double page</h5>
-							<p class = "product-dimension">123mm x 456mm</p>
-							<span class = "product-price">$5250</span>
-						</div>
-					</label>
-					<div class="year-publication">
-						<p>ISSUE</p>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2018
-								<div class="choice">
-									<input type="text" value="1" class="qty">
+								<span></span>{{$data->firstyear}}
+								<div class="choice {{($data->quantity== '1')? '' : 'hidden' }}">
+									<input type="text" value="1" class="qty" year="{{$data->firstyear}}">
 									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
 									
@@ -145,77 +78,24 @@
 							</div>
 						</label>
 						<label>
-							<input type="radio" name="issue">
+							<input type="radio" name="issue" pr_name = "{{$data->name}}" year="{{$data->secondyear}}">
 							<div class="box-radio">
-								<span></span>2019
-								<div class="choice">
-									<input type="text" value="1" class="qty">
+								<span></span>{{$data->secondyear}}
+								<div class="choice {{($data->quantity== '1')? '' : 'hidden' }}">
+									<input type="text" value="1" class="qty" year="{{$data->secondyear}}">
 									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
 								</div>
 							</div>
 						</label>
 						<label>
-							<input type="radio" name="issue">
+							<input type="radio" name="issue" pr_name = "{{$data->name}}" year="{{$data->thirdyear}}" >
 							<div class="box-radio">
-								<span></span>2020
-								<div class="choice">
-									<input type="text" value="1" class="qty">
+								<span></span>{{$data->thirdyear}}
+								<div class="choice {{($data->quantity== '1')? '' : 'hidden' }}">
+									<input type="text" value="1" class="qty" year="{{$data->thirdyear}}">
 									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
-									
-								</div>
-							</div>
-						</label>
-					
-					</div>
-				</div>
-				
-				<div class="product-list">
-					<label>
-						<input type="checkbox" name="single-page">
-						<div class="box text-center">
-							<span class="checked"><img src="{{url('images/checked-blue.png')}}"></span>
-							<div class="icon"><img class="product-image" src="{{url('/images/single-page.png')}}"></div>
-							<h5 class = "product-heading">single page</h5>
-							<p class = "product-dimension">123mm x 456mm</p>
-							<span class = "product-price">$3950</span>
-						</div>
-					</label>
-					<div class="year-publication">
-						<p>ISSUE</p>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2018
-								<div class="choice">
-									<input type="text" value="1" class="qty">
-									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
-									
-								</div>
-							</div>
-						</label>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2019
-								<div class="choice">
-									<input type="text" value="1" class="qty">
-									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
-								</div>
-							</div>
-						</label>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2020
-								<div class="choice">
-									<input type="text" value="1" class="qty">
-									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
-									
 								</div>
 							</div>
 						</label>
@@ -223,59 +103,7 @@
 					</div>
 
 				</div>
-				
-				<div class="product-list">
-					<label>
-						<input type="checkbox" name="half-page">
-						<div class="box text-center">
-							<span class="checked"><img src="{{url('/images/checked-blue.png')}}"></span>
-							<div class="icon"><img class="product-image" src="{{url('/images/half-page.png')}}"></div>
-							<h5 class = "product-heading">half page</h5>
-							<p class = "product-dimension">123mm x 456mm</p>
-							<span class = "product-price">$2750</span>
-						</div>
-					</label>
-					<div class="year-publication">
-						<p>ISSUE</p>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2018
-								<div class="choice">
-									<input type="text" value="1" class="qty">
-									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
-									
-								</div>
-							</div>
-						</label>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2019
-								<div class="choice">
-									<input type="text" value="1" class="qty">
-									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
-								</div>
-							</div>
-						</label>
-						<label>
-							<input type="radio" name="issue">
-							<div class="box-radio">
-								<span></span>2020
-								<div class="choice">
-									<input type="text" value="1" class="qty">
-									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
-									
-								</div>
-							</div>
-						</label>
-					
-					</div>
-
-				</div>					
+				@endforeach				
 			</div>
 			</form>
 			<div class="offer-code text-center">
@@ -403,7 +231,7 @@
 						</div>
 						<span id="product_row_start"></span>
 						<input type="hidden" id="store_customer_id">
-						<!--  product row create here -->
+						<!--  product row create here by ajax-->
 					</div>
 					<div class="total-section">
 						<div class="pull-right">

@@ -65,12 +65,13 @@ class ContactController extends Controller
 
             if($contactData->save()){
 
-                $contactData = contact::find($contactData->id);
+                $todayData = contact::find($contactData->id);
                
-                if($todayData){
-                    $owner_to         =   "subscriptions@tunnellingint.com"; 
-                    $owner_subject    =   "New Subscription from Website - ".$insertData->uni_subs_no;
-                    $owner_message    =   view('partials.emails.suscribeemail')->with('todayData',$todayData);
+                if($contactData){
+                    $owner_to         =   "gaurav@whitebrains.in"; 
+                    //$owner_to         =   "customercare@tunnellingint.com"; 
+                    $owner_subject    =   "New Subscription from Website - ".$todayData->uni_contc_no;
+                    $owner_message    =   view('partials.emails.contactowneremail')->with('todayData',$todayData);
                     $owner_headers    =   "From:$request->email" . "\r\n";
                     $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";
                     $owner_headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
