@@ -3,6 +3,7 @@ $(document).ready(function(){
   		//document.getElementsByTagName(form).reset();
 	}
 	window.onload = init;
+	calculateTotal();
 });
 	
 //$('input[type="checkbox"]').click(function() {
@@ -22,18 +23,69 @@ $(document).on('click','.text-filed',function(){
 	$("#second-step-button").removeAttr('disabled');
 });
 
+//toggle class on checkbox
+$(document).on('change','.year-publication > label > input[type="checkbox"]',function(){
+	$(this).toggleClass('product_select');	
+});
+
 // increase or decreaseproduct quantity
 $(document).on('click','.btnclic',function(){
+	
 	if($(this).attr('quantity')== 'plus'){
 		var qty = $(this).prev('.qty').val();
 		qty++;
 		$(this).prev().val(qty);
-		//$(this).parentsUntil( "" )
+		if($(this).prev('.qty').attr('get_url')){
+
+
+			price_url= $(this).prev('.qty').attr('get_url');
+			id = $(this).prev('.qty').attr('product_id');
+			console.log(price_url);
+			console.log($(this).parent().parent().parent());
+			    			
+			var price_elem = $(this).parent().parent().parent().next().children().first();
+			var sub_elem   = $(this).parent().parent().parent().next().next().children().first();
+			    			
+			$.ajax({
+				method: "GET",
+			    url: price_url,
+			    data:{id:id,unit:$(this).prev('.qty').val()},				
+			    success: function (data) { 		    	
+			    			price_elem.text(data);
+			    			sub_elem.text(data);
+			    			calculateTotal();
+						}		    
+			});	
+
+		}
+
 	}
 	if($(this).attr('quantity')== 'minus'){
 		var qty=$(this).prevAll('.qty').val();
-		(qty > 1 )?qty--:qty;
+		(qty > 0 )?qty--:qty;
 		$(this).prevAll('.qty').val(qty);
+
+
+		if($(this).prevAll('.qty').attr('get_url')){
+			price_url	= $(this).prevAll('.qty').attr('get_url');
+			id 			= $(this).prevAll('.qty').attr('product_id');			
+			var price_elem = $(this).parent().parent().parent().next().children().first();
+			var sub_elem   = $(this).parent().parent().parent().next().next().children().first();
+			    			
+			$.ajax({
+				method: "GET",
+			    url: price_url,
+			    data:{id:id,unit:$(this).prevAll('.qty').val()},				
+			    success: function (data) { 		    	
+			    			price_elem.text(data);
+			    			sub_elem.text(data);
+			    			calculateTotal();
+						}		    
+			});	
+
+		}
+
+
 	}
 });
 
@@ -41,6 +93,27 @@ $(document).on('click','.btnclic',function(){
 $(document).on('click','#first-step-button',function(){
 	$("#first-step").hide();
 	$("#second-step").show();
+	var base_url 			= $("#product_display_form").attr('action');
+	var token     			=	$("input[name='_token']").val();
+	var id = []; var year=[]; var qty=[]; j=0;
+	//ajax to add product
+	$('.year-publication > label > input[type="checkbox"]').each(function(index,value){
+		if($(this).hasClass('product_select')){
+			id[j]		=	$(this).attr('pr_id');
+			year[j]		=	$(this).attr('year');
+			qty[j] 		= 	($(this).next().children('.choice').children('.qty').val()==undefined)? null: $(this).next().children('.choice').children('.qty').val();
+			j++;
+		}
+	});
+	console.log(qty);
+	$.ajax({
+		method: "post",
+	    url: base_url,
+	    data:{id,_token:token,qty:qty,year:year},				
+	    success: function (data) { 
+	    			$('#third-step #product_row_start').after(data); 
+				}		    
+	});		
 });
 
 $(document).on('click','#second-step-button',function(){	
@@ -65,37 +138,49 @@ $(document).on('click','#second-step-button',function(){
 });
 
 $(document).on('change','.product-list' ,function(){
-	if($( this ).is( ".show" ))
-	{
-		var product_src 		= $(this).find('.product-image').attr('src');
-		var product_heading 	= $(this).find('.product-heading').text();
-		var product_dimension 	= $(this).find('.product-dimension').text();	
-		var product_price 		= $(this).find('.product-price').text();		
-		var base_url 			= $("#product_display_form").attr('action');
-		// ajax for product add 
-		$.ajax({
-			method: "GET",
-		    url: base_url,
-		    data:{
-		    		product_src:product_src,
-		    		product_heading:product_heading,
-		    		product_dimension:product_dimension,
-		    		product_price:product_price
-		    	},				
-		    success: function (data) { 
-		    		$('#third-step #product_row_start').after(data); 
-				}		    
-		});		
-	}
+	// if($( this ).is( ".show" ))
+	// {
+	// 	var id					= $(this).attr('product_id');			
+	// 	var base_url 			= $("#product_display_form").attr('action');
+	// 	var year				= 
+
+	// 	// ajax for product add 
+	// 	$.ajax({
+	// 		method: "GET",
+	// 	    url: base_url,
+	// 	    data:{id:id},				
+	// 	    success: function (data) { 
+	// 	    			$('#third-step #product_row_start').after(data); 
+	// 				}		    
+	// 	});		
+	// }
 });
 $(document).on('change','.qty',function(){
 	
-	console.log($(this).parentsUntil(".quantity-td").siblings('.price-td').html());
-	console.log($(this).parentsUntil(".quantity-td").closest('.price').html());
-	console.log($(this).parentsUntil(".quantity-td").siblings().children().find('.price').text());
+	//console.log($(this).parent().parent().parent().next().children('.price').text());
+	price_url= $(this).attr('get_url');
+	id = $(this).attr('product_id');
+	console.log(price_url);
+	console.log($(this).parent().parent().parent());
+		    			
+		    			var price_elem = $(this).parent().parent().parent().next().children().first();
+		    			var sub_elem   = $(this).parent().parent().parent().next().next().children().first();
+		    			
+	$.ajax({
+			method: "GET",
+		    url: price_url,
+		    data:{id:id,unit:$(this).val()},				
+		    success: function (data) { 		    	
+		    			price_elem.text(data);
+		    			sub_elem.text(data);
+		    			calculateTotal();
+					}		    
+		});	
 });
-
-
+// remove products on click delete.
+$(document).on('click',".delete-icon > a",function(){
+    $(this).parent().parent().remove();
+});
 
 
 
@@ -108,9 +193,18 @@ function calculatePercantage(mixprice,discount){
 }
 
 function calculatePrice(quantity,unitprice){
-	quantity 		= parseInt(quantity.replace('$',''));
+	quantity 		= parseInt(quantity);
 	unitprice		= parseInt(unitprice);
 	var total 		= (quantity*unitprice).toFixed(2);
 	return total;
 }
 
+function calculateTotal(){
+	var total=0;
+	$(".sub-total").each(function(i,v){
+		
+		total= parseInt(total)+parseInt($(this).text());
+		
+		$("#third-step-total").text('$'+total);
+	});
+}

@@ -122,7 +122,6 @@ class AdvertiseController extends Controller
     }
 
     public function selectProductrow(Request $request){
-
         $selectProduct = products::find($request->id);
         return view('partials.frontendparts.productrow')->with('selectProduct',$selectProduct);
        

@@ -49,6 +49,7 @@
 			</div>
 			<p class="choose text-center">Choose your advertising formats:</p>
 			<form id="product_display_form" action="{{url('/advertise/selectproductrow')}}">
+			{{ csrf_field() }}
 			<div class="product-option">
 				
 				@foreach($firststepData as $data)	
@@ -66,37 +67,43 @@
 					<div class="year-publication">
 						<p>{{$data->tag}}</p>
 						<label>
-							<input type="radio" name="issue" pr_name = "{{$data->name}}" year="{{$data->firstyear}}">
+							<input type="checkbox" name="issue_{{$data->name}}" year="{{$data->firstyear}}" pr_id="{{$data->id}}">
 							<div class="box-radio">
 								<span></span>{{$data->firstyear}}
-								<div class="choice {{($data->quantity== '1')? '' : 'hidden' }}">
+								@if($data->quantity == '1')
+								<div class="choice">
 									<input type="text" value="1" class="qty" year="{{$data->firstyear}}">
-									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
+									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
+									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 									
 								</div>
+								@endif
 							</div>
 						</label>
 						<label>
-							<input type="radio" name="issue" pr_name = "{{$data->name}}" year="{{$data->secondyear}}">
+							<input type="checkbox" name="issue_{{$data->name}}" pr_id="{{$data->id}}" year="{{$data->secondyear}}">
 							<div class="box-radio">
 								<span></span>{{$data->secondyear}}
-								<div class="choice {{($data->quantity== '1')? '' : 'hidden' }}">
-									<input type="text" value="1" class="qty" year="{{$data->secondyear}}">
-									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
+								@if($data->quantity == '1')
+								<div class="choice">
+									<input type="text" value="0" class="qty" year="{{$data->secondyear}}">
+									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
+									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 								</div>
+								@endif
 							</div>
 						</label>
 						<label>
-							<input type="radio" name="issue" pr_name = "{{$data->name}}" year="{{$data->thirdyear}}" >
+							<input type="checkbox" name="issue_{{$data->name}}" pr_id="{{$data->id}}" year="{{$data->thirdyear}}" >
 							<div class="box-radio">
 								<span></span>{{$data->thirdyear}}
-								<div class="choice {{($data->quantity== '1')? '' : 'hidden' }}">
-									<input type="text" value="1" class="qty" year="{{$data->thirdyear}}">
-									<a href="javascript:void(0)" class="btnclic" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" id="minusBTn">-</a>
+								@if($data->quantity == '1')
+								<div class="choice">
+									<input type="text" value="0" class="qty" year="{{$data->thirdyear}}">
+									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
+									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 								</div>
+								@endif
 							</div>
 						</label>
 					

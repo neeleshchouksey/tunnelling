@@ -1162,6 +1162,9 @@ textarea.text-filed {
 .year-publication input[type="radio"]:checked + .box-radio span {
   background-position: 0 -58px;
 }
+.year-publication input[type="checkbox"]:checked + .box-radio span {
+  background-position: 0 -58px;
+}
 .product-list label {
   cursor: pointer;
   float: left;
