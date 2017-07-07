@@ -23,12 +23,12 @@ Route::post('contact/store', 'ContactController@store');
 // ~gk advertise
 Route::get('advertise', 'AdvertiseController@index');
 Route::get('advertise/firststep', 'AdvertiseController@firstStep');
-Route::get('advertise/secondstep', 'AdvertiseController@secondStep');
+Route::post('advertise/secondstep', 'AdvertiseController@secondStep');
 Route::get('advertise/thirdstep', 'AdvertiseController@thirdStep');
 Route::get('advertise/finalstep', 'AdvertiseController@finalStep');
 Route::post('advertise/selectproductrow', 'AdvertiseController@selectProductrow');
 Route::get('advertise/fetchproductprice','AdvertiseController@fetchProductprice');
-
+Route::get('advertise/secondstepview','AdvertiseController@secondStepView');
 Route::post('customerinfo/store', 'CustomerinfoController@store');
 
 

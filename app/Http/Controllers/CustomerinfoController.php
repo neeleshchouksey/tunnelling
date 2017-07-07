@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\customerinfo;
 
 use Illuminate\Http\Request;
+use Session;
 
 class CustomerinfoController extends Controller
 {
@@ -38,7 +39,8 @@ class CustomerinfoController extends Controller
     {
        
         $customerinfo = customerinfo::create(request(['customer_name','customer_email','phone','country','company_name','job_title']));
-        return $customerinfo->id;
+        Session::put('customer_id',$customerinfo->id);
+        return "thirdstep";
     
     }
 

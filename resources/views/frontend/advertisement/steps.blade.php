@@ -21,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="advertise-box" id="first-step">
+		<!-- <div class="advertise-box" id="first-step">
 			<div class="order-step">
 				<ul>
 					<li id="step-1" class="current">
@@ -67,7 +67,7 @@
 					<div class="year-publication">
 						<p>{{$data->tag}}</p>
 						<label>
-							<input type="checkbox" name="issue_{{$data->name}}" year="{{$data->firstyear}}" pr_id="{{$data->id}}">
+							<input type="radio" name="issue_{{$data->name}}" year="{{$data->firstyear}}" pr_id="{{$data->id}}">
 							<div class="box-radio">
 								<span></span>{{$data->firstyear}}
 								@if($data->quantity == '1')
@@ -81,7 +81,7 @@
 							</div>
 						</label>
 						<label>
-							<input type="checkbox" name="issue_{{$data->name}}" pr_id="{{$data->id}}" year="{{$data->secondyear}}">
+							<input type="radio" name="issue_{{$data->name}}" pr_id="{{$data->id}}" year="{{$data->secondyear}}">
 							<div class="box-radio">
 								<span></span>{{$data->secondyear}}
 								@if($data->quantity == '1')
@@ -94,7 +94,7 @@
 							</div>
 						</label>
 						<label>
-							<input type="checkbox" name="issue_{{$data->name}}" pr_id="{{$data->id}}" year="{{$data->thirdyear}}" >
+							<input type="radio" name="issue_{{$data->name}}" pr_id="{{$data->id}}" year="{{$data->thirdyear}}" >
 							<div class="box-radio">
 								<span></span>{{$data->thirdyear}}
 								@if($data->quantity == '1')
@@ -120,7 +120,7 @@
 				<button  class="btn-icon shadow-none" disabled id="first-step-button"><span class="btn-download">Next Step </span><span class="download-icon"><img src="{{url('/images/next-step.png')}}" alt="download-btn"></span>
 				</button>
 			</div>
-		</div>
+		</div> -->
 		<div class="advertise-box hidden" id="second-step">
 			<div class="order-step">
 				<ul>

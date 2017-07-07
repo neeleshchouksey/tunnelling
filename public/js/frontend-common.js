@@ -24,7 +24,7 @@ $(document).on('click','.text-filed',function(){
 });
 
 //toggle class on checkbox
-$(document).on('change','.year-publication > label > input[type="checkbox"]',function(){
+$(document).on('change','.year-publication > label > input[type="radio"]',function(){
 	$(this).toggleClass('product_select');	
 });
 
@@ -40,18 +40,15 @@ $(document).on('click','.btnclic',function(){
 
 			price_url= $(this).prev('.qty').attr('get_url');
 			id = $(this).prev('.qty').attr('product_id');
-			console.log(price_url);
-			console.log($(this).parent().parent().parent());
-			    			
-			var price_elem = $(this).parent().parent().parent().next().children().first();
-			var sub_elem   = $(this).parent().parent().parent().next().next().children().first();
+						    			
+			var sub_elem   = $(".new_subtotal_"+id);
 			    			
 			$.ajax({
 				method: "GET",
 			    url: price_url,
 			    data:{id:id,unit:$(this).prev('.qty').val()},				
 			    success: function (data) { 		    	
-			    			price_elem.text(data);
+			    			//price_elem.text(data);
 			    			sub_elem.text(data);
 			    			calculateTotal();
 						}		    
@@ -69,15 +66,15 @@ $(document).on('click','.btnclic',function(){
 		if($(this).prevAll('.qty').attr('get_url')){
 			price_url	= $(this).prevAll('.qty').attr('get_url');
 			id 			= $(this).prevAll('.qty').attr('product_id');			
-			var price_elem = $(this).parent().parent().parent().next().children().first();
-			var sub_elem   = $(this).parent().parent().parent().next().next().children().first();
+			//var price_elem = $(this).parent().parent().parent().next().children().first();
+			var sub_elem   = $(".new_subtotal_"+id);
 			    			
 			$.ajax({
 				method: "GET",
 			    url: price_url,
 			    data:{id:id,unit:$(this).prevAll('.qty').val()},				
 			    success: function (data) { 		    	
-			    			price_elem.text(data);
+			    			//price_elem.text(data);
 			    			sub_elem.text(data);
 			    			calculateTotal();
 						}		    
@@ -90,31 +87,61 @@ $(document).on('click','.btnclic',function(){
 });
 
 
+//old backup
+// $(document).on('click','#first-step-button',function(){
+// 	$("#first-step").hide();
+// 	$("#second-step").show();
+// 	var base_url 			= 	$("#product_display_form").attr('action');
+// 	var token     			=	$("input[name='_token']").val();
+// 	var id = []; var year=[]; var qty=[]; j=0;
+// 	//ajax to add product
+// 	$('.year-publication > label > input[type="radio"]').each(function(index,value){
+// 		if($(this).hasClass('product_select')){
+// 			id[j]		=	$(this).attr('pr_id');
+// 			year[j]		=	$(this).attr('year');
+// 			qty[j] 		= 	($(this).next().children('.choice').children('.qty').val()==undefined)? null: $(this).next().children('.choice').children('.qty').val();
+// 			j++;
+// 		}
+// 	});
+// 	console.log(qty);
+// 	$.ajax({
+// 		method: "post",
+// 	    url: base_url,
+// 	    data:{id,_token:token,qty:qty,year:year},				
+// 	    success: function (data) { 
+// 	    			$('#third-step #product_row_start').after(data); 
+// 				}		    
+// 	});		
+// });
 $(document).on('click','#first-step-button',function(){
-	$("#first-step").hide();
-	$("#second-step").show();
-	var base_url 			= $("#product_display_form").attr('action');
+	//var nexturl				=	$(this).attr('secondurl');
+	var base_url 			= 	$("#product_display_form").attr('action');
 	var token     			=	$("input[name='_token']").val();
-	var id = []; var year=[]; var qty=[]; j=0;
+	var id = []; var year=[]; var qty=[];var j=0;
+	var product =[];
 	//ajax to add product
-	$('.year-publication > label > input[type="checkbox"]').each(function(index,value){
+	$('.year-publication > label > input[type="radio"]').each(function(index,value){
 		if($(this).hasClass('product_select')){
-			id[j]		=	$(this).attr('pr_id');
-			year[j]		=	$(this).attr('year');
-			qty[j] 		= 	($(this).next().children('.choice').children('.qty').val()==undefined)? null: $(this).next().children('.choice').children('.qty').val();
+			product[j] 				=	[];
+			product[j]['id']		=	$(this).attr('pr_id');
+			product[j]['year']		=	$(this).attr('year');
+			product[j]['qty'] 		= 	($(this).next().children('.choice').children('.qty').val()==undefined)? null: $(this).next().children('.choice').children('.qty').val();
 			j++;
 		}
 	});
-	console.log(qty);
+	console.log(product);
 	$.ajax({
 		method: "post",
 	    url: base_url,
-	    data:{id,_token:token,qty:qty,year:year},				
-	    success: function (data) { 
-	    			$('#third-step #product_row_start').after(data); 
-				}		    
+	    data:{_token:token,product:product},
+	    success: function (data) { 		    	
+	    		if(data=='secondstepview'){
+					window.location = 'secondstepview';	    			
+	    		}
+			}							    
 	});		
 });
+
 
 $(document).on('click','#second-step-button',function(){	
 	$("#first-step").hide();	
@@ -127,10 +154,8 @@ $(document).on('click','#second-step-button',function(){
 		    url: url,
 		    data:user_detail,				
 		    success: function (data) { 		    	
-	    		if(data!=''){
-		    		$("#second-step").hide();
-					$("#third-step").show();
-					$("#store_customer_id").val(data);		    			
+	    		if(data=='thirdstep'){
+					window.location = 'thirdstep';	    			
 	    		}
 			}		    
 		});	
@@ -163,15 +188,15 @@ $(document).on('change','.qty',function(){
 	console.log(price_url);
 	console.log($(this).parent().parent().parent());
 		    			
-		    			var price_elem = $(this).parent().parent().parent().next().children().first();
-		    			var sub_elem   = $(this).parent().parent().parent().next().next().children().first();
+		    			
+		    			var sub_elem   = $(".new_subtotal_"+id);
 		    			
 	$.ajax({
 			method: "GET",
 		    url: price_url,
 		    data:{id:id,unit:$(this).val()},				
 		    success: function (data) { 		    	
-		    			price_elem.text(data);
+
 		    			sub_elem.text(data);
 		    			calculateTotal();
 					}		    
@@ -179,7 +204,9 @@ $(document).on('change','.qty',function(){
 });
 // remove products on click delete.
 $(document).on('click',".delete-icon > a",function(){
-    $(this).parent().parent().remove();
+
+   id =  $(this).attr('product_id');
+
 });
 
 
@@ -202,7 +229,7 @@ function calculatePrice(quantity,unitprice){
 function calculateTotal(){
 	var total=0;
 	$(".sub-total").each(function(i,v){
-		
+
 		total= parseInt(total)+parseInt($(this).text());
 		
 		$("#third-step-total").text('$'+total);

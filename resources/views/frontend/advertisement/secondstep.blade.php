@@ -21,7 +21,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="advertise-box">
+			<div class="advertise-box" id="second-step">
 				<div class="order-step">
 					<ul>
 						<li id="step-1" class="current completed">
@@ -48,55 +48,56 @@
 					</ul>
 				</div>
 				<p class="choose text-center">Enter your personal information:</p>
-				<form>
+				
+				<form id="customerDetailfrom" action="{{url('/customerinfo/store')}}">
 					<div class="form-container container">
-					<div class="form-row">
-						
-						<div class="form-column">
-							<div class="text-outer">
-							<input class="text-filed" placeholder="" type="text">
-							<span>Name</span>
-							</div>
-						</div>
-						<div class="form-column">
-							<div class="text-outer">
-							<input class="text-filed" placeholder="" type="email">
-							<span>Email</span>
-							</div>
-						</div>
-						<div class="form-column">
-							<div class="text-outer">
-							<input class="text-filed" placeholder="" type="text">
-							<span>Phone</span>
-							</div>
-						</div>
-						<div class="form-column">
-							<div class="text-outer">
-							<input class="text-filed" placeholder="" type="text">
-							<span>Country (optional)</span>
-							</div>
-						</div>
-						<div class="company-information">
-							<p class="text-center">Enter your company information:</p>
+						<div class="form-row">					
 							<div class="form-column">
-							<div class="text-outer">
-							<input class="text-filed" placeholder="" type="text">
-							<span>Company</span>
+								<div class="text-outer">
+								{{ csrf_field() }}
+								<input class="text-filed" placeholder="" type="text" name="customer_name">
+								<span>Name</span>
+								</div>
 							</div>
-						</div>
 							<div class="form-column">
-							<div class="text-outer">
-							<input class="text-filed" placeholder="" type="text">
-							<span>Job title (optional)</span>
+								<div class="text-outer">
+								<input class="text-filed" placeholder="" type="email" name="customer_email">
+								<span>Email</span>
+								</div>
 							</div>
-						</div>
+							<div class="form-column">
+								<div class="text-outer">
+								<input class="text-filed" placeholder="" type="text" name="phone">
+								<span>Phone</span>
+								</div>
+							</div>
+							<div class="form-column">
+								<div class="text-outer">
+								<input class="text-filed" placeholder="" type="text" name="country">
+								<span>Country (optional)</span>
+								</div>
+							</div>
+							<div class="company-information">
+								<p class="text-center">Enter your company information:</p>
+								<div class="form-column">
+								<div class="text-outer">
+								<input class="text-filed" placeholder="" type="text" name="company_name">
+								<span>Company</span>
+								</div>
+							</div>
+								<div class="form-column">
+								<div class="text-outer">
+								<input class="text-filed" placeholder="" type="text" name="job_title">
+								<span>Job title (optional)</span>
+								</div>
+							</div>
+							</div>
 						</div>
 					</div>
+					<div class="step-btn text-center">
+						<button href="#" class="btn-icon shadow-none" disabled id="second-step-button"><span class="btn-download">Next Step </span><span class="download-icon"><img src="{{url('/images/next-step.png')}}" alt="download-btn"></span></button>
 					</div>
 				</form>				
-				<div class="step-btn text-center">
-					<button href="#" class="btn-icon shadow-none" disabled><span class="btn-download">Next Step </span><span class="download-icon"><img src="{{url('/images/next-step.png')}}" alt="download-btn"></span></button>
-				</div>
 			</div>
 		</div>
 	  </section>

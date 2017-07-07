@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\advertise;
 use Illuminate\Http\Request;
 use App\products;
-
+use Session;
 class AdvertiseController extends Controller
 {
     /**
@@ -25,14 +25,23 @@ class AdvertiseController extends Controller
     public function firstStep()
     {
         $firststepData = products::all();
-        return view('frontend.advertisement.steps')->with('firststepData',$firststepData);
+        //return view('frontend.advertisement.steps')->with('firststepData',$firststepData);
+        return view('frontend.advertisement.firststep')->with('firststepData',$firststepData);
     }
     /**
      *  Display a view
      *
      * @return \Illuminate\Http\Response
      */
-    public function secondStep()
+    public function secondStep(Request $request)
+    {
+        $custumer_product     =   $request->product;
+        dd($request->product);
+        Session::put('product',$custumer_product);
+
+        return "secondstepview";
+    }
+    public function secondStepView()
     {
         return view('frontend.advertisement.secondstep');
     }
@@ -41,9 +50,12 @@ class AdvertiseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function thirdStep()
+    public function thirdStep(Request $request)
     {
-        return view('frontend.advertisement.thirdstep');
+        $data = Session::get('product');
+        dd($data);        
+        $selectProduct = products::find($data['id']);        
+        return view('frontend.advertisement.thirdstep',compact('selectProduct','id','data'));
     }
     /**
      *  Display a view
@@ -123,16 +135,15 @@ class AdvertiseController extends Controller
 
     public function selectProductrow(Request $request){
         $selectProduct = products::find($request->id);
-        return view('partials.frontendparts.productrow')->with('selectProduct',$selectProduct);
-       
+        //dd($selectProduct);
+        return view('partials.frontendparts.productrow')->with('selectProduct',$selectProduct);      
     }
     public function fetchProductprice(Request $request){
 
-        $selectProduct = products::find($request->id);
-        $unit = $request->unit;
-        $price= $selectProduct->price;
-        $total = ($unit*$price);
-        return $total;
-       
+        $selectProduct  = products::find($request->id);
+        $unit           = $request->unit;
+        $price          = $selectProduct->price;
+        $total          = ($unit*$price);
+        return $total;       
     }
 }
