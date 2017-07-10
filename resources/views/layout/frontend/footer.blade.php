@@ -108,5 +108,8 @@ London N19 4AG</p>
 		</div>
 		@endif
 	  <!-- ~GK SCRIPT CALLING -->
+	  <SCRIPT TYPE="text/javascript">
+	  var price_url="{{url('/advertise/fetchproductprice')}}";
+	  </SCRIPT>
 	  <script src="{!! asset('js/jquery.min.js') !!}"></script>
 	  <script src="{!! asset('js/frontend-common.js') !!}"></script>

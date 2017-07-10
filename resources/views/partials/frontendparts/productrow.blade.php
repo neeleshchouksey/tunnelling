@@ -12,7 +12,12 @@
 	<div class="table-cell quantity-td">
 		<div class="quantity-box">
 			<div class="choice">
-			<input type="text" value="{{($data[$key]['quantity']>1)?	$data[$key]['quantity']:'1' }}" class="qty" product_id="{{$product->id}}" get_url="{{url('/advertise/fetchproductprice')}}">
+			
+			@if($product->quantity>0)
+				<input type="text" value="{{($data[$key]['quantity']>1)?	$data[$key]['quantity']:'1' }}" class="qty" product_id="{{$product->id}}" get_url="{{url('/advertise/fetchproductprice')}}">
+			@else
+				<input type="hidden" value="1" class="qty" product_id="{{$product->id}}" get_url="{{url('/advertise/fetchproductprice')}}"> 1
+			@endif
 			<a href="javascript:void(0)" class="btnclic" id="plusBTn" quantity= "plus">+</a>
 			<a href="javascript:void(0)" class="btnclic" id="minusBTn" quantity= "minus">-</a>
 			</div>

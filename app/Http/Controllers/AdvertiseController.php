@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\advertise;
+use App\Advertise;
 use Illuminate\Http\Request;
-use App\products;
+use App\Customerinfo;
+use App\Products;
 use Session;
 use Cart;
 class AdvertiseController extends Controller
@@ -85,25 +86,40 @@ class AdvertiseController extends Controller
      */
     public function thirdStep(Request $request)
     {
-       // $data = Session::get('product');
         $cartCollection = Cart::getContent();
         $data=$cartCollection->toArray();
+       
         $data=array_values($data);
-       // echo "<pre>";
-       // print_r($data);
-        //dd($data);        
+        
         $ids= array_column($data,'id');
         $selectProduct = products::find($ids);      
         $total = Cart::getTotal();  
         $cartSubTotal = Cart::getSubTotal();
         $discount     = $cartSubTotal   -   $total;
-       // echo "<pre>";
-        //print_r($data);
-        //die;
-       // $customerinfo= Session::get('customerinfo');
-        //print_r($customerinfo);
-        //die;
+       
         return view('frontend.advertisement.thirdstep',compact('selectProduct','id','data','total','discount'));
+    }
+    public function thirdStepSubmit(Request $request)
+    {
+        $getCustomerInfo       =       Session::get('customerinfo');
+        $customerinfo          =       Customerinfo::create($getCustomerInfo);
+       // print_r($customerinfo);
+
+
+        $cartCollection = Cart::getContent();
+        $data=$cartCollection->toArray();
+        foreach ($data as $key => $value) {
+            # code...
+            $product    = new   Advertise;
+            $product->product_id    =   $value['id'];
+            $product->customer_id   =   $customerinfo->id;
+            $product->year          =   $value['attributes']['year'];
+            $product->qty           =   $value['quantity'];
+            $product->save();
+        }
+        Cart::clear();
+        Session::forget('customerinfo');
+        return redirect('advertise/finalstep');  
     }
     /**
      *  Display a view
@@ -112,6 +128,7 @@ class AdvertiseController extends Controller
      */
     public function finalStep()
     {
+        
         return view('frontend.advertisement.finalstep');
     }
 
@@ -198,16 +215,27 @@ class AdvertiseController extends Controller
                 $unit           = $request->unit;
                 $price          = $selectProduct->price;
                 $total          = ($unit*$price);
-                return $total;       
+                $gtotal        =     Cart::getTotal();
+
+                $cartSubTotal = Cart::getSubTotal();
+                $discount     = $cartSubTotal   -   $gtotal;
+                $response     =     array('total' => $total,'gtotal'=>$gtotal,'discount'=>$discount );
+                return              json_encode($response);
+                //return $total;       
                 break;
             case 'delete':
                 # code...
-                Cart::remove($request->id);
+              //  Cart::remove($request->id);
                 $cartCollection = Cart::getContent();
                 if($cartCollection->count()<=1){
                     Cart::clearCartConditions();
                 }
-                return $total = Cart::getTotal();
+                $total        =     Cart::getTotal();
+
+                $cartSubTotal = Cart::getSubTotal();
+                $discount     = $cartSubTotal   -   $total;
+                $response     =     array('total' => $total,'discount'=>$discount );
+                return              json_encode($response);
 
                 break;
             

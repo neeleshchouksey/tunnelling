@@ -46,8 +46,12 @@
 					</li>
 				</ul>
 			</div>
+			@if(Cart::isEmpty())
+			<p class="choose text-center">Your  Cart is empty. Please Select Advestise<a href="{{url('advertise/firststep')}}">Here</a></p>
+			@else
 			<p class="choose text-center">Enter your personal information:</p>
-			<form methos="post">
+			{!! Form::open( ['method' => 'post','url'=>'advertise/thirdstepsubmit']) !!}
+
 				<div class="product-card-detail">
 					<div class="table">
 						<div class="table-row">
@@ -76,9 +80,10 @@
 			
 				
 				<div class="step-btn text-center">
-					<button href="#" class="btn-icon shadow-none"><span class="btn-download">Reserve ad </span><span class="download-icon"><img src="{{url('/images/checked-white.png')}}" alt="download-btn"></span></button>
+					<button name="submit" type="submit" class="btn-icon shadow-none"><span class="btn-download">Reserve ad </span><span class="download-icon"><img src="{{url('/images/checked-white.png')}}" alt="download-btn"></span></button>
 				</div>
 			</form>
+			@endif
 		</div>
 	</section>
 	@endsection

@@ -8,15 +8,21 @@ $(document).ready(function(){
 	
 //$('input[type="checkbox"]').click(function() {
 $(document).on('change','.product-list > label > input[type="checkbox"]',function(){	
+	var parent 	= 	$(this).parent().parent();
     if(this.checked) {
-		$(this).parent().parent().addClass('show');
+		
+		parent.addClass('show');
 		$('#first-step-button').removeAttr('disabled');
 		$('#step-1').addClass('current');
+		parent.find('input[type="radio"]').first().prop('checked',true);
     }
 	else{
-		$(this).parent().parent().removeClass('show');
+		parent.removeClass('show');
 		$('#first-step-button').attr('disabled','true');
+
+		parent.find('input[type="radio"]').prop('checked',true);
 	}		
+	//alert('test');
 });
 
 $(document).on('click','.text-filed',function(){
@@ -25,7 +31,8 @@ $(document).on('click','.text-filed',function(){
 
 //toggle class on checkbox
 $(document).on('change','.year-publication > label > input[type="radio"]',function(){
-	$(this).toggleClass('product_select');	
+	$(this).closest('.year-publication').find('input[type="radio"]').removeClass('product_select');
+	$(this).addClass('product_select');	
 });
 
 // increase or decreaseproduct quantity
@@ -38,7 +45,7 @@ $(document).on('click','.btnclic',function(){
 		if($(this).prev('.qty').attr('get_url')){
 
 
-			price_url= $(this).prev('.qty').attr('get_url');
+			//price_url= $(this).prev('.qty').attr('get_url');
 			id = $(this).prev('.qty').attr('product_id');
 						    			
 			var sub_elem   = $(".new_subtotal_"+id);
@@ -49,8 +56,12 @@ $(document).on('click','.btnclic',function(){
 			    data:{id:id,action:'update',unit:$(this).prev('.qty').val()},				
 			    success: function (data) { 		    	
 			    			//price_elem.text(data);
-			    			sub_elem.text(data);
-			    			calculateTotal();
+			    			
+				    		var result 	= JSON.parse(data); 
+			    			sub_elem.text(result.total);
+
+				    		$("#third-step-total").text('$'+result.gtotal);
+				    		$("#third-step-discount").text('$'+result.discount);
 						}		    
 			});	
 
@@ -64,7 +75,7 @@ $(document).on('click','.btnclic',function(){
 
 
 		if($(this).prevAll('.qty').attr('get_url')){
-			price_url	= $(this).prevAll('.qty').attr('get_url');
+			//price_url	= $(this).prevAll('.qty').attr('get_url');
 			id 			= $(this).prevAll('.qty').attr('product_id');			
 			//var price_elem = $(this).parent().parent().parent().next().children().first();
 			var sub_elem   = $(".new_subtotal_"+id);
@@ -187,7 +198,7 @@ $(document).on('change','.product-list' ,function(){
 $(document).on('change','.qty',function(){
 	
 	//console.log($(this).parent().parent().parent().next().children('.price').text());
-	price_url= $(this).attr('get_url');
+	//price_url= $(this).attr('get_url');
 	id = $(this).attr('product_id');
 	console.log(price_url);
 	console.log($(this).parent().parent().parent());
@@ -201,24 +212,31 @@ $(document).on('change','.qty',function(){
 		    data:{id:id,action:'update',unit:$(this).val()},				
 		    success: function (data) { 		    	
 
-		    			sub_elem.text(data);
-		    			calculateTotal();
+			    		var result 	= JSON.parse(data); 
+		    			sub_elem.text(result.total);
+
+			    		$("#third-step-total").text('$'+result.gtotal);
+			    		$("#third-step-discount").text('$'+result.discount);
+		    			//calculateTotal();
 					}		    
 		});	
 });
 // remove products on click delete.
 $(document).on('click',".delete-icon > a",function(){
-	var price_url= $(this).attr('get_url');
+	//var price_url= $(this).attr('get_url');
    var id =  $(this).attr('product_id');
   var parent= $(this);
    $.ajax({
 				method: "GET",
 			    url: price_url,
 			    data:{id:id,action:"delete"},				
-			    success: function (data) { 		    	
+			    success: function (data) { 		
+			    		var result 	= JSON.parse(data); 
+			    		console.log(result.total);   	
 			    		//$(this).closest('.table-row').remove();
 			    		parent.closest('.table-row').remove();
-			    		$("#third-step-total").text('$'+data);
+			    		$("#third-step-total").text('$'+result.total);
+			    		$("#third-step-discount").text('$'+result.discount);
 						}		    
 			});	
 

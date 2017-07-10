@@ -27,21 +27,21 @@
 					<li id="step-1" class="current">
 						<a href="javascript:void(0)">
 							<span class="text">1</span>
-							<span class="icon"><img src="{{url('/images/checked.png')}}" alt=""></span>
+							<span class="icon"><img src="{{asset('/images/checked.png')}}" alt=""></span>
 							ad format
 						</a>
 					</li>
 					<li id="step-2">
 						<a href="javascript:void(0)">
 							<span class="text">2</span>
-							<span class="icon"><img src="{{url('/images/checked.png')}}" alt=""></span>
+							<span class="icon"><img src="{{asset('/images/checked.png')}}" alt=""></span>
 							personal information
 						</a>
 					</li>
 					<li id="step-3">
 						<a href="javascript:void(0)">
 							<span class="text">2</span>
-							<span class="icon"><img src="{{url('/images/checked.png')}}" alt=""></span>
+							<span class="icon"><img src="{{asset('/images/checked.png')}}" alt=""></span>
 							summary & confirmation
 						</a>
 					</li>
@@ -49,7 +49,7 @@
 			</div>
 			<p class="choose text-center">Choose your advertising formats:</p>
 			<div class="product-option">
-			<form id="product_display_form" action="{{url('/advertise/secondstep')}}" method="post">
+			<form id="product_display_form" action="{{asset('/advertise/secondstep')}}" method="post">
 			{{ csrf_field() }}
 				
 				@foreach($firststepData as $data)	
@@ -57,8 +57,8 @@
 					<label>
 						<input type="checkbox" name="half-page" >
 						<div class="box text-center">
-							<span class="checked"><img src="{{url('/images/checked-blue.png')}}"></span>
-							<div class="icon"><img class="product-image" src='{{url("/images/$data->image_name")}}'></div>
+							<span class="checked"><img src="{{asset('/images/checked-blue.png')}}"></span>
+							<div class="icon"><img class="product-image" src='{{asset("/images/$data->image_name")}}'></div>
 							<h5 class = "product-heading">{{$data->name}}</h5>
 							<p class = "product-dimension">{{$data->dimension}}</p>
 							<span class = "product-price">${{$data->price}}</span>
@@ -72,7 +72,7 @@
 								<span></span>{{$data->firstyear}}
 								@if($data->quantity == '1')
 								<div class="choice">
-									<input type="text" value="1" class="qty" year="{{$data->firstyear}}">
+									<input type="text" value="1" class="qty"  year="{{$data->firstyear}}">
 									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 									
@@ -86,7 +86,7 @@
 								<span></span>{{$data->secondyear}}
 								@if($data->quantity == '1')
 								<div class="choice">
-									<input type="text" value="0" class="qty" year="{{$data->secondyear}}">
+									<input type="text" value="1" class="qty" year="{{$data->secondyear}}">
 									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 								</div>
@@ -99,7 +99,7 @@
 								<span></span>{{$data->thirdyear}}
 								@if($data->quantity == '1')
 								<div class="choice">
-									<input type="text" value="0" class="qty" year="{{$data->thirdyear}}">
+									<input type="text" value="1" class="qty" year="{{$data->thirdyear}}">
 									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 								</div>
