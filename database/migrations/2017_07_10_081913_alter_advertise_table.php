@@ -16,6 +16,9 @@ class AlterAdvertiseTable extends Migration
         //
         Schema::table('advertises', function (Blueprint $table) {
             $table->integer('qty');
+            $table->integer('customer_id');
+            $table->string('year',255);
+            $table->dropColumn(['name', 'email', 'phone','country','company_name','job_title']);
         });
     }
 
