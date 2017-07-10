@@ -16,6 +16,7 @@
 	  </section>
 	  <section class="subscription-included">
 	  	<div class="container">
+	  		@include('layout.frontend.error')
 		   <div class="subscription-form contact-page">
 				<form action="{{url('contact/store')}}" method="post">
 					<div class="form-content">
@@ -23,19 +24,19 @@
 							<li>
 								{{ csrf_field() }}
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text" name="name" required>
+								<input class="text-filed" placeholder="" type="text" name="name" >
 								<span>Name</span>
 								</div>
 									</li>
 							<li>
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="email" name="email" required>
+								<input class="text-filed" placeholder="" type="email" name="email" >
 								<span>Email</span>
 								</div>
 							</li>
 							<li>
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text" name="phone" required>
+								<input class="text-filed" placeholder="" type="text" name="phone" >
 								<span>Phone</span>
 								</div>
 							</li>

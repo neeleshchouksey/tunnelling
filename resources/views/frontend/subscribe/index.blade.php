@@ -10,11 +10,12 @@
 	  <section class="subscription-included">
 	  	<div class="container">
 		   <div class="subscription-form">
+		   @include('layout.frontend.error')
 			<form method="post" action="{{url('/subscribe/store')}}">
 						<div class="form-row">
 							<div class="sub-text">
 								<div class="text-outer">
-								<input type="email" class="text-filed" placeholder="" name="email" required>
+								<input type="email" class="text-filed" placeholder="" name="email">
 								{{ csrf_field() }}
 									<span>Email</span>
 								</div>

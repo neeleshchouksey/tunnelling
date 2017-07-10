@@ -33,6 +33,7 @@ class SubscribeController extends Controller
         $insertData->uni_subs_no    =   $this->generateUniqueNo();        
         $insertData->email          =   $request->email;
         $insertData->email_verify_code = md5($insertData->uni_subs_no);
+        $this->validate(request(),['email'=>'required|email|unique:subscribes,email']);
         $insertData->save();
         //customer mail     
         $to         =   $request->email;
