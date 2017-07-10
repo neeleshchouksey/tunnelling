@@ -48,7 +48,7 @@
 					</ul>
 				</div>
 				<p class="choose text-center">Enter your personal information:</p>
-				
+				@include('layout.frontend.error')
 				<form id="customerDetailfrom" action="{{url('/customerinfo/store')}}">
 					<div class="form-container container">
 						<div class="form-row">					

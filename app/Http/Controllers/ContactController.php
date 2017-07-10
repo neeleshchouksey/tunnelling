@@ -7,6 +7,7 @@ use App\contact;
 use App\companyinfo;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -38,6 +39,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+    
         $contactData                 =   new contact;
         $contactData->uni_contc_no    =   $this->generateUniqueNo();        
         $contactData->name           =   $request->name;
@@ -45,7 +47,19 @@ class ContactController extends Controller
         $contactData->company        =   $request->company;
         $contactData->email          =   $request->email;
         $contactData->phone          =   $request->phone;
-        
+        $validator  =    Validator::make($request->all(), [
+                            'name'      =>'required',
+                            'email'     =>'required|email',
+                            'phone'     =>'required',
+                            'message'   =>'required',
+                            ]);
+        if ($validator->fails()) {
+            
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput($request->all());
+        }
+                    
         // fetch company info
         $companyInfo = companyinfo::first();
         

@@ -132,7 +132,7 @@ $(document).on('click','#first-step-button',function(){
 	var product =[];
 	//ajax to add product
 	$('.year-publication > label > input[type="radio"]').each(function(index,value){
-		if($(this).hasClass('product_select')){
+		if($(this).is(":checked")){
 			product[j] 				=	{};
 			product[j].id		=	$(this).attr('pr_id');
 			product[j].year		=	$(this).attr('year');

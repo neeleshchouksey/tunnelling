@@ -10,6 +10,8 @@ use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Mail;
 
+use Illuminate\Support\Facades\Validator;
+
 class SubscribeController extends Controller
 {
     /**
@@ -33,7 +35,17 @@ class SubscribeController extends Controller
         $insertData->uni_subs_no    =   $this->generateUniqueNo();        
         $insertData->email          =   $request->email;
         $insertData->email_verify_code = md5($insertData->uni_subs_no);
-        $this->validate(request(),['email'=>'required|email|unique:subscribes,email']);
+        $validator  =    Validator::make($request->all(), [
+                            'email'=>'required|email|unique:subscribes,email'
+                            ]);
+        if ($validator->fails()) {
+           
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput($request->all());
+        }
+
+        //$this->validate(request(),['email'=>'required|email|unique:subscribes,email']);
         $insertData->save();
         //customer mail     
         $to         =   $request->email;
@@ -89,9 +101,18 @@ class SubscribeController extends Controller
        $updateData->company = $request->company;
        $updateData->job_title = $request->job_title;
        $updateData->status = $status;
+       $validator  =    Validator::make($request->all(), [
+                            'name'      =>'required',
+                            'company'     =>'required',
+                            ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput($request->all());
+        }
        if($updateData->save()){
 
-            $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->get();            
+                $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->get();            
             if($todayData){
                 //$owner_to         =   "subscriptions@tunnellingint.com"; 
                 $owner_to         =    "gaurav@whitebrains.in";

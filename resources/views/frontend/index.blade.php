@@ -75,7 +75,11 @@
 						<div class="form-row">
 							<div class="sub-text">
 								<div class="text-outer">
+								@if(Input::old('test_controller')=="subscribe")
+								@include('layout.frontend.error')
+								@endif
 								<input type="email" class="text-filed" placeholder="" name="email">
+								<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="subscribe">
 									<span>Email</span>
 								</div>
 								</div>
@@ -120,34 +124,40 @@
 			<form action="{{url('contact/store')}}" method="post">
 			{{ csrf_field() }}
 			<div class="form-content">
+			
+			@if(Input::old('test_controller')=="contact")
+			@include('layout.frontend.error')
+			@endif
+			
 				<ul>
 					<li>
 						<div class="text-outer">
-						<input type="text" class="text-filed" placeholder="" name="name">
+						<input type="text" class="text-filed" placeholder="" name="name" value="{{Input::old('name')}}">
+						<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="contact">
 						<span>Name</span>
 						</div>
 							</li>
 					<li>
 						<div class="text-outer">
-						<input type="text" class="text-filed" placeholder="" name="email">
+						<input type="text" class="text-filed" placeholder="" name="email" value="{{Input::old('email')}}">
 						<span>Email</span>
 						</div>
 					</li>
 					<li>
 						<div class="text-outer">
-						<input type="text" class="text-filed" placeholder="" name="phone">
+						<input type="text" class="text-filed" placeholder="" name="phone" value="{{Input::old('phone')}}">
 						<span>Phone</span>
 						</div>
 					</li>
 					<li>
 						<div class="text-outer">
-						<input type="text" class="text-filed" placeholder="" name="company">
+						<input type="text" class="text-filed" placeholder="" name="company" value="{{Input::old('company')}}">
 						<span>Company (optional)</span>
 						</div>
 					</li>
 					<li class="width-100">
 						<div class="text-outer">
-						<textarea class="text-filed" name="message"></textarea>
+						<textarea class="text-filed" name="message" value="{{Input::old('message')}}"></textarea>
 						<span>Message</span>
 						</div>
 					</li>

@@ -16,39 +16,39 @@
 	  </section>
 	  <section class="subscription-included">
 	  	<div class="container">
-	  		@include('layout.frontend.error')
 		   <div class="subscription-form contact-page">
+	  		@include('layout.frontend.error')
 				<form action="{{url('contact/store')}}" method="post">
 					<div class="form-content">
 						<ul>
 							<li>
 								{{ csrf_field() }}
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text" name="name" >
+								<input class="text-filed" placeholder="" type="text" name="name" value="{{Input::old('name')}}">
 								<span>Name</span>
 								</div>
 									</li>
 							<li>
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="email" name="email" >
+								<input class="text-filed" placeholder="" type="email" name="email" value="{{Input::old('email')}}">
 								<span>Email</span>
 								</div>
 							</li>
 							<li>
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text" name="phone" >
+								<input class="text-filed" placeholder="" type="text" name="phone" value="{{Input::old('phone')}}">
 								<span>Phone</span>
 								</div>
 							</li>
 							<li>
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text" name="company">
+								<input class="text-filed" placeholder="" type="text" name="company" value="{{Input::old('company')}}">
 								<span>Company (optional)</span>
 								</div>
 							</li>
 							<li class="width-100">
 								<div class="text-outer">
-								<textarea class="text-filed" name="message" ></textarea>
+								<textarea class="text-filed" name="message" value="{{Input::old('message')}}"></textarea>
 								<span>Message</span>
 								</div>
 							</li>

@@ -16,12 +16,15 @@
 		   <div class="subscription-form new-message width-900">
 			   <p>We want to know you better! Just enter your personal information:</p>
 				<div class="form-content">
+				@include('layout.frontend.error')
+
 				<ul>
 					<li>
 						{{ csrf_field() }}
 						<input type="hidden" name="id" value="{{$id}}">
 						<div class="text-outer">
-						<input class="text-filed" placeholder="" type="text" name="name">
+						<input class="text-filed" placeholder="" type="text" name="name" value="{{Input::old('name')}}"
+>
 						<span>Name</span>
 						</div>
 							</li>
@@ -33,7 +36,8 @@
 					</li>
 					<li>
 						<div class="text-outer">
-						<input class="text-filed" placeholder="" type="text" name="company">
+						<input class="text-filed" placeholder="" type="text" name="company" value="{{Input::old('company')}}"
+>
 						<span>Company</span>
 						</div>
 					</li>
