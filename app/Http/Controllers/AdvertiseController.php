@@ -6,6 +6,7 @@ use App\advertise;
 use Illuminate\Http\Request;
 use App\products;
 use Session;
+use Cart;
 class AdvertiseController extends Controller
 {
     /**
@@ -36,13 +37,45 @@ class AdvertiseController extends Controller
     public function secondStep(Request $request)
     {
         $custumer_product     =   $request->product;
-        dd($request->product);
+       // echo "<pre>";
+        //print_r($custumer_product);
+        //dd($request->product);
         Session::put('product',$custumer_product);
+        //$ids= array_column($custumer_product,'id');
+        //$products    =   Products::find($ids);
+        if(count($custumer_product)>1){
+            $condition = new \Darryldecode\Cart\CartCondition(array(
+                'name' => 'Discount 10%',
+                'type' => 'promo',
+                'target' => 'subtotal',
+                'value' => '-10%',
+                'attributes' => array( // attributes field is optional
+                    
+                )
+            ));
+
+            Cart::condition($condition);
+
+        }
+
+        foreach ($custumer_product as $key => $value) {
+            $qty    =1;
+            $product   =   Products::find($value['id']);
+            if( $value['qty']!='' || $value['qty']!=0)
+                $qty= $value['qty'];
+            Cart::add($product->id, $product->name, $product->price, $qty, array('year'=>$value['year']));
+            # code...
+        }
+        
 
         return "secondstepview";
     }
     public function secondStepView()
     {
+        $cartCollection = Cart::getContent();
+        ///echo "<pre>";
+        //print_r($cartCollection->toArray());
+        //die;
         return view('frontend.advertisement.secondstep');
     }
     /**
@@ -52,10 +85,25 @@ class AdvertiseController extends Controller
      */
     public function thirdStep(Request $request)
     {
-        $data = Session::get('product');
-        dd($data);        
-        $selectProduct = products::find($data['id']);        
-        return view('frontend.advertisement.thirdstep',compact('selectProduct','id','data'));
+       // $data = Session::get('product');
+        $cartCollection = Cart::getContent();
+        $data=$cartCollection->toArray();
+        $data=array_values($data);
+       // echo "<pre>";
+       // print_r($data);
+        //dd($data);        
+        $ids= array_column($data,'id');
+        $selectProduct = products::find($ids);      
+        $total = Cart::getTotal();  
+        $cartSubTotal = Cart::getSubTotal();
+        $discount     = $cartSubTotal   -   $total;
+       // echo "<pre>";
+        //print_r($data);
+        //die;
+       // $customerinfo= Session::get('customerinfo');
+        //print_r($customerinfo);
+        //die;
+        return view('frontend.advertisement.thirdstep',compact('selectProduct','id','data','total','discount'));
     }
     /**
      *  Display a view
@@ -139,11 +187,34 @@ class AdvertiseController extends Controller
         return view('partials.frontendparts.productrow')->with('selectProduct',$selectProduct);      
     }
     public function fetchProductprice(Request $request){
+        $action     =   $request->action;
+        switch ($action) {
+            case 'update':
 
-        $selectProduct  = products::find($request->id);
-        $unit           = $request->unit;
-        $price          = $selectProduct->price;
-        $total          = ($unit*$price);
-        return $total;       
+                Cart::update($request->id, array(
+                                'quantity' => array('relative' => false,'value' => $request->unit), // so if the current product has a quantity of 4, another 2 will be added so this will result to 6
+                            ));
+                $selectProduct  = products::find($request->id);
+                $unit           = $request->unit;
+                $price          = $selectProduct->price;
+                $total          = ($unit*$price);
+                return $total;       
+                break;
+            case 'delete':
+                # code...
+                Cart::remove($request->id);
+                $cartCollection = Cart::getContent();
+                if($cartCollection->count()<=1){
+                    Cart::clearCartConditions();
+                }
+                return $total = Cart::getTotal();
+
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
     }
 }

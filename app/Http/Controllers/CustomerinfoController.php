@@ -38,8 +38,8 @@ class CustomerinfoController extends Controller
     public function store(Request $request)
     {
        
-        $customerinfo = customerinfo::create(request(['customer_name','customer_email','phone','country','company_name','job_title']));
-        Session::put('customer_id',$customerinfo->id);
+        $customerinfo = request(['customer_name','customer_email','phone','country','company_name','job_title']);
+        Session::put('customerinfo',$customerinfo);
         return "thirdstep";
     
     }

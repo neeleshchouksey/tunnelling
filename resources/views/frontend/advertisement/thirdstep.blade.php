@@ -47,7 +47,7 @@
 				</ul>
 			</div>
 			<p class="choose text-center">Enter your personal information:</p>
-			<form>
+			<form methos="post">
 				<div class="product-card-detail">
 					<div class="table">
 						<div class="table-row">
@@ -68,16 +68,17 @@
 					</div>
 					<div class="total-section">
 						<div class="pull-right">
-							<p>10% discount: <span id="third-step-discount">-$3675</span></p>
-							<p class="total">total: <span id="third-step-total">$33 075</span></p>
+							<p>10% discount: <span id="third-step-discount">-${{$discount}}</span></p>
+							<p class="total">total: <span id="third-step-total">{{$total}}</span></p>
 						</div>
 					</div>
 				</div>
-			</form>
 			
-			<div class="step-btn text-center">
-				<button href="#" class="btn-icon shadow-none"><span class="btn-download">Reserve ad </span><span class="download-icon"><img src="{{url('/images/checked-white.png')}}" alt="download-btn"></span></button>
-			</div>
+				
+				<div class="step-btn text-center">
+					<button href="#" class="btn-icon shadow-none"><span class="btn-download">Reserve ad </span><span class="download-icon"><img src="{{url('/images/checked-white.png')}}" alt="download-btn"></span></button>
+				</div>
+			</form>
 		</div>
 	</section>
 	@endsection

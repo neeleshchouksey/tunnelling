@@ -3,7 +3,7 @@ $(document).ready(function(){
   		//document.getElementsByTagName(form).reset();
 	}
 	window.onload = init;
-	calculateTotal();
+	//calculateTotal();
 });
 	
 //$('input[type="checkbox"]').click(function() {
@@ -46,7 +46,7 @@ $(document).on('click','.btnclic',function(){
 			$.ajax({
 				method: "GET",
 			    url: price_url,
-			    data:{id:id,unit:$(this).prev('.qty').val()},				
+			    data:{id:id,action:'update',unit:$(this).prev('.qty').val()},				
 			    success: function (data) { 		    	
 			    			//price_elem.text(data);
 			    			sub_elem.text(data);
@@ -72,7 +72,7 @@ $(document).on('click','.btnclic',function(){
 			$.ajax({
 				method: "GET",
 			    url: price_url,
-			    data:{id:id,unit:$(this).prevAll('.qty').val()},				
+			    data:{id:id,action:"update",unit:$(this).prevAll('.qty').val()},				
 			    success: function (data) { 		    	
 			    			//price_elem.text(data);
 			    			sub_elem.text(data);
@@ -122,13 +122,17 @@ $(document).on('click','#first-step-button',function(){
 	//ajax to add product
 	$('.year-publication > label > input[type="radio"]').each(function(index,value){
 		if($(this).hasClass('product_select')){
-			product[j] 				=	[];
-			product[j]['id']		=	$(this).attr('pr_id');
-			product[j]['year']		=	$(this).attr('year');
-			product[j]['qty'] 		= 	($(this).next().children('.choice').children('.qty').val()==undefined)? null: $(this).next().children('.choice').children('.qty').val();
+			product[j] 				=	{};
+			product[j].id		=	$(this).attr('pr_id');
+			product[j].year		=	$(this).attr('year');
+			product[j].qty 		= 	($(this).next().children('.choice').children('.qty').val()==undefined)? null: $(this).next().children('.choice').children('.qty').val();
 			j++;
 		}
 	});
+	//console.log(product);
+	//product = JSON.stringify(product);
+	//console.log(product);
+	//product = JSON.parse(product);
 	console.log(product);
 	$.ajax({
 		method: "post",
@@ -194,7 +198,7 @@ $(document).on('change','.qty',function(){
 	$.ajax({
 			method: "GET",
 		    url: price_url,
-		    data:{id:id,unit:$(this).val()},				
+		    data:{id:id,action:'update',unit:$(this).val()},				
 		    success: function (data) { 		    	
 
 		    			sub_elem.text(data);
@@ -204,8 +208,20 @@ $(document).on('change','.qty',function(){
 });
 // remove products on click delete.
 $(document).on('click',".delete-icon > a",function(){
+	var price_url= $(this).attr('get_url');
+   var id =  $(this).attr('product_id');
+  var parent= $(this);
+   $.ajax({
+				method: "GET",
+			    url: price_url,
+			    data:{id:id,action:"delete"},				
+			    success: function (data) { 		    	
+			    		//$(this).closest('.table-row').remove();
+			    		parent.closest('.table-row').remove();
+			    		$("#third-step-total").text('$'+data);
+						}		    
+			});	
 
-   id =  $(this).attr('product_id');
 
 });
 
