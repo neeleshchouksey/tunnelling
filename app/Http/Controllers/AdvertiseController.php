@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use App\Advertise;
 use Illuminate\Http\Request;
 use App\Customerinfo;
@@ -27,7 +27,6 @@ class AdvertiseController extends Controller
     public function firstStep()
     {
         $firststepData = products::all();
-        //return view('frontend.advertisement.steps')->with('firststepData',$firststepData);
         return view('frontend.advertisement.firststep')->with('firststepData',$firststepData);
     }
     /**
@@ -37,13 +36,8 @@ class AdvertiseController extends Controller
      */
     public function secondStep(Request $request)
     {
-        $custumer_product     =   $request->product;
-       // echo "<pre>";
-        //print_r($custumer_product);
-        //dd($request->product);
+        $custumer_product     =   $request->product;    
         Session::put('product',$custumer_product);
-        //$ids= array_column($custumer_product,'id');
-        //$products    =   Products::find($ids);
         if(count($custumer_product)>1){
             $condition = new \Darryldecode\Cart\CartCondition(array(
                 'name' => 'Discount 10%',
@@ -60,12 +54,13 @@ class AdvertiseController extends Controller
         }
 
         foreach ($custumer_product as $key => $value) {
-            $qty    =1;
-            $product   =   Products::find($value['id']);
+            $qty        =   1;
+            $product    =   Products::find($value['id']);
             if( $value['qty']!='' || $value['qty']!=0)
                 $qty= $value['qty'];
+
             Cart::add($product->id, $product->name, $product->price, $qty, array('year'=>$value['year']));
-            # code...
+            
         }
         
 
@@ -74,9 +69,6 @@ class AdvertiseController extends Controller
     public function secondStepView()
     {
         $cartCollection = Cart::getContent();
-        ///echo "<pre>";
-        //print_r($cartCollection->toArray());
-        //die;
         return view('frontend.advertisement.secondstep');
     }
     /**
@@ -86,30 +78,25 @@ class AdvertiseController extends Controller
      */
     public function thirdStep(Request $request)
     {
-        $cartCollection = Cart::getContent();
-        $data=$cartCollection->toArray();
-       
-        $data=array_values($data);
-        
-        $ids= array_column($data,'id');
-        $selectProduct = products::find($ids);      
-        $total = Cart::getTotal();  
-        $cartSubTotal = Cart::getSubTotal();
-        $discount     = $cartSubTotal   -   $total;
+        $cartCollection =   Cart::getContent();
+        $data           =   $cartCollection->toArray();
+        $data           =   array_values($data);
+        $ids            =   array_column($data,'id');
+        $selectProduct  =   products::find($ids);      
+        $total          =   Cart::getTotal();  
+        $cartSubTotal   =   Cart::getSubTotal();
+        $discount       =   $cartSubTotal   -   $total;
        
         return view('frontend.advertisement.thirdstep',compact('selectProduct','id','data','total','discount'));
     }
     public function thirdStepSubmit(Request $request)
     {
         $getCustomerInfo       =       Session::get('customerinfo');
+        $getCustomerInfo['uni_order_no']      = $this->generateUniqueOrder();
         $customerinfo          =       Customerinfo::create($getCustomerInfo);
-       // print_r($customerinfo);
-
-
-        $cartCollection = Cart::getContent();
-        $data=$cartCollection->toArray();
+        $cartCollection        =       Cart::getContent();
+        $data                  =       $cartCollection->toArray();
         foreach ($data as $key => $value) {
-            # code...
             $product    = new   Advertise;
             $product->product_id    =   $value['id'];
             $product->customer_id   =   $customerinfo->id;
@@ -117,6 +104,30 @@ class AdvertiseController extends Controller
             $product->qty           =   $value['quantity'];
             $product->save();
         }
+
+        //mail to customer
+        $to         =   $customerinfo->customer_email;
+        $subject    =   "Reservation Acknowledgement-".$getCustomerInfo['uni_order_no'];
+        $from       =   "reservations@tunnellingint.com"; 
+        $headers    =   "From:reservations@tunnellingint.com" . "\r\n";
+        $headers   .=   "MIME-Version: 1.0" . "\r\n";
+        $headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $message    =   "Thank you for your advertising reservation request.  We will contact you to process this shortly.";
+
+        mail($to , $subject, $message, $headers);
+
+
+        //mail to owner
+        $owner_to         =   "gaurav@whitebrains.in"; 
+        //$owner_to         =   "reservations@tunnellingint.com"; 
+        $owner_subject    =   "New Order from Website - ".$getCustomerInfo['uni_order_no'];
+        $owner_message    =   "test order";
+        $owner_headers    =   "From:$request->email" . "\r\n";
+        $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";
+        $owner_headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
+        mail($owner_to , $owner_subject, $owner_message, $owner_headers);
+
+
         Cart::clear();
         Session::forget('customerinfo');
         return redirect('advertise/finalstep');  
@@ -243,6 +254,29 @@ class AdvertiseController extends Controller
                 # code...
                 break;
         }
+
+    }
+    public function customerInfo(Request $request){
+         $validator  =    Validator::make($request->all(), [
+                            'customer_name'      =>'required',
+                            'customer_email'     =>'required|email',
+                            'phone'              =>'required',
+                            'company_name'       =>'required',
+                            ]);
+        if ($validator->fails()) {
+            
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput($request->all());
+        }
+       
+        $customerinfo = request(['customer_name','customer_email','phone','country','company_name','job_title']);
+        Session::put('customerinfo',$customerinfo);
+        return redirect('advertise/thirdstep/');
+    }
+    public function generateUniqueOrder(){
+
+        return "TI-OR-".mt_rand(1,999999);
 
     }
 }

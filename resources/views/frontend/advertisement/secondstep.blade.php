@@ -49,31 +49,31 @@
 				</div>
 				<p class="choose text-center">Enter your personal information:</p>
 				@include('layout.frontend.error')
-				<form id="customerDetailfrom" action="{{url('/customerinfo/store')}}">
+				<form id="customerDetailfrom" action="{{url('advertise/customerinfo')}}" method="post">
 					<div class="form-container container">
 						<div class="form-row">					
 							<div class="form-column">
 								<div class="text-outer">
 								{{ csrf_field() }}
-								<input class="text-filed" placeholder="" type="text" name="customer_name">
+								<input class="text-filed" placeholder="" type="text" name="customer_name" value="{{Input::old('customer_name')}}">
 								<span>Name</span>
 								</div>
 							</div>
 							<div class="form-column">
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="email" name="customer_email">
+								<input class="text-filed" placeholder="" type="email" name="customer_email" value="{{Input::old('customer_email')}}">
 								<span>Email</span>
 								</div>
 							</div>
 							<div class="form-column">
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text" name="phone">
+								<input class="text-filed" placeholder="" type="text" name="phone"  value="{{Input::old('phone')}}">
 								<span>Phone</span>
 								</div>
 							</div>
 							<div class="form-column">
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text" name="country">
+								<input class="text-filed" placeholder="" type="text" name="country" value="{{Input::old('country')}}">
 								<span>Country (optional)</span>
 								</div>
 							</div>
@@ -81,13 +81,13 @@
 								<p class="text-center">Enter your company information:</p>
 								<div class="form-column">
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text" name="company_name">
+								<input class="text-filed" placeholder="" type="text" name="company_name"  value="{{Input::old('company_name')}}">
 								<span>Company</span>
 								</div>
 							</div>
 								<div class="form-column">
 								<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text" name="job_title">
+								<input class="text-filed" placeholder="" type="text" name="job_title" value="{{Input::old('job_title')}}">
 								<span>Job title (optional)</span>
 								</div>
 							</div>
