@@ -102,8 +102,9 @@ class AdvertiseController extends Controller
     public function thirdStepSubmit(Request $request)
     {
         $getCustomerInfo       =       Session::get('customerinfo');
+        $getCustomerInfo['order_uni_no'] =$this->generateUniqueNo();
         $customerinfo          =       Customerinfo::create($getCustomerInfo);
-       // print_r($customerinfo);
+        
 
 
         $cartCollection = Cart::getContent();
@@ -117,9 +118,33 @@ class AdvertiseController extends Controller
             $product->qty           =   $value['quantity'];
             $product->save();
         }
+        $to         =   $customerinfo->customer_email;
+        $subject    =   "Reservation Acknowledgement  - ".$customerinfo->order_uni_no;
+        $message    =   view('partials.emails.advertiseconfirm');
+        $from       =   "reservations@tunnellingint.com"; 
+        $headers    =   "From: reservations@tunnellingint.com" . "\r\n";
+        $headers    .= "MIME-Version: 1.0" . "\r\n";
+        $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        $owner_to         =   "subscriptions@tunnellingint.com"; 
+        $owner_subject    =   "New Order from Website - ".$customerinfo->order_uni_no;
+        $owner_message    =   view('partials.emails.advertiseowner',compact('customerinfo','data'));
+        $owner_headers    =   "From:$customerinfo->customer_email" . "\r\n";
+        $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";
+        $owner_headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
+        mail($owner_to , $owner_subject, $owner_message, $owner_headers);
+       
+
+        mail($to , $subject, $message, $headers);
+
         Cart::clear();
         Session::forget('customerinfo');
         return redirect('advertise/finalstep');  
+    }
+    public function generateUniqueNo(){
+
+        return "TI-ORD-".mt_rand(1,999999);
+
     }
     /**
      *  Display a view

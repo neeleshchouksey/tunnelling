@@ -84,7 +84,7 @@ class ContactController extends Controller
                 if($contactData){
                     $owner_to         =   "gaurav@whitebrains.in"; 
                     //$owner_to         =   "customercare@tunnellingint.com"; 
-                    $owner_subject    =   "New Subscription from Website - ".$todayData->uni_contc_no;
+                    $owner_subject    =   "Message via Website - ".$todayData->uni_contc_no;
                     $owner_message    =   view('partials.emails.contactowneremail')->with('todayData',$todayData);
                     $owner_headers    =   "From:$request->email" . "\r\n";
                     $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";

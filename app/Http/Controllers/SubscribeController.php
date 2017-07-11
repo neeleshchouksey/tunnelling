@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\subscribe;
-
+use App\companyinfo;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
@@ -49,12 +49,13 @@ class SubscribeController extends Controller
         $insertData->save();
         //customer mail     
         $to         =   $request->email;
-        $subject    =   "Subscription Acknowledgement  ".$insertData->uni_subs_no;
+        $subject    =   "Email Confirmation  ";
         $message    =   view('partials.emails.suscriptionthird')->with('emailData',$insertData->id."__".$insertData->email_verify_code);
         $from       =   "subscriptions@tunnellingint.com"; 
         $headers    =   "From: subscriptions@tunnellingint.com" . "\r\n";
         $headers    .= "MIME-Version: 1.0" . "\r\n";
         $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
 
         if(mail($to , $subject, $message, $headers)){
             return view('frontend.subscribe.suscriptionsecond');
@@ -97,7 +98,7 @@ class SubscribeController extends Controller
         $status='1';
        $updateData = subscribe::find($request->id); 
        $updateData->name =$request->name;
-       $updateData->country = $request->email;
+       $updateData->country = $request->country;
        $updateData->company = $request->company;
        $updateData->job_title = $request->job_title;
        $updateData->status = $status;
@@ -112,7 +113,20 @@ class SubscribeController extends Controller
         }
        if($updateData->save()){
 
-                $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->get();            
+        $companyInfo = companyinfo::first();
+        
+
+        //customer mail     
+        $to         =   $updateData->email;
+        $subject    =   "Subscription Acknowledgement  ".$updateData->uni_subs_no;
+        $message    =   view('partials.emails.subscribeconfirm')->with('companyInfo',$companyInfo);
+        $from       =   "subscriptions@tunnellingint.com"; 
+        $headers    =   "From: subscriptions@tunnellingint.com" . "\r\n";
+        $headers    .= "MIME-Version: 1.0" . "\r\n";
+        $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        mail($to , $subject, $message, $headers);
+
+            $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->get();            
             if($todayData){
                 //$owner_to         =   "subscriptions@tunnellingint.com"; 
                 $owner_to         =    "gaurav@whitebrains.in";

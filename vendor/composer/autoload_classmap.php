@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AlterAdvertiseTable' => $baseDir . '/database/migrations/2017_07_10_081913_alter_advertise_table.php',
+    'AlterCustomerinfosTable' => $baseDir . '/database/migrations/2017_07_10_213605_alter_customerinfos_table.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdvertiseController' => $baseDir . '/app/Http/Controllers/AdvertiseController.php',
@@ -25,6 +26,7 @@ return array(
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Products' => $baseDir . '/app/products.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
@@ -35,7 +37,6 @@ return array(
     'App\\companyinfo' => $baseDir . '/app/companyinfo.php',
     'App\\contact' => $baseDir . '/app/contact.php',
     'App\\customerinfo' => $baseDir . '/app/customerinfo.php',
-    'App\\products' => $baseDir . '/app/products.php',
     'App\\subscribe' => $baseDir . '/app/subscribe.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
