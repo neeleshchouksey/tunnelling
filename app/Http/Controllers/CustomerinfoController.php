@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\customerinfo;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Session;
 
@@ -37,6 +37,18 @@ class CustomerinfoController extends Controller
      */
     public function store(Request $request)
     {
+        $validator  =    Validator::make($request->all(), [
+                            'customer_name'      =>'required',
+                            'customer_email'     =>'required|email',
+                            'phone'              =>'required',
+                            'company_name'       =>'required',
+                            ]);
+        if ($validator->fails()) {
+            
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput($request->all());
+        }
        
         $customerinfo = request(['customer_name','customer_email','phone','country','company_name','job_title']);
         Session::put('customerinfo',$customerinfo);

@@ -70,14 +70,14 @@
 					<p>To receive tunnelling industry news and announcements.</p>
 				</div>
 				<div class="right-form">
+					@if(Input::old('test_controller')=="subscribe")
+					@include('layout.frontend.error')
+					@endif
 					<form action="{{url('/subscribe/store')}}" method="post">
 					{{ csrf_field() }}
 						<div class="form-row">
 							<div class="sub-text">
 								<div class="text-outer">
-								@if(Input::old('test_controller')=="subscribe")
-								@include('layout.frontend.error')
-								@endif
 								<input type="email" class="text-filed" placeholder="" name="email">
 								<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="subscribe">
 									<span>Email</span>
