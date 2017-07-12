@@ -343,6 +343,7 @@ class ComposerStaticInite6f1efcae9e66a279024661b6e72b013
 
     public static $classMap = array (
         'AlterAdvertiseTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_10_081913_alter_advertise_table.php',
+        'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdvertiseController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdvertiseController.php',
@@ -383,6 +384,7 @@ class ComposerStaticInite6f1efcae9e66a279024661b6e72b013
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_11_133325_create_admins_table.php',
         'CreateAdvertisesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_30_112655_create_advertises_table.php',
         'CreateCompanyinfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_01_141114_create_companyinfos_table.php',
         'CreateContactsTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_30_104612_create_contacts_table.php',

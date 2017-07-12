@@ -32,5 +32,9 @@ Route::get('advertise/fetchproductprice','AdvertiseController@fetchProductprice'
 Route::get('advertise/secondstepview','AdvertiseController@secondStepView');
 Route::post('advertise/customerinfo', 'AdvertiseController@customerInfo');
 
+// admin
+
+Route::get('/admin', function () { return view('admin.login');});
+Route::post('/admin/dashboard', 'AdminLoginController@adminDashboard');
 
 

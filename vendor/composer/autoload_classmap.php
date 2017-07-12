@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AlterAdvertiseTable' => $baseDir . '/database/migrations/2017_07_10_081913_alter_advertise_table.php',
+    'App\\Admin' => $baseDir . '/app/Admin.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdvertiseController' => $baseDir . '/app/Http/Controllers/AdvertiseController.php',
@@ -47,6 +48,7 @@ return array(
     'Collective\\Html\\HtmlBuilder' => $vendorDir . '/laravelcollective/html/src/HtmlBuilder.php',
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
+    'CreateAdminsTable' => $baseDir . '/database/migrations/2017_07_11_133325_create_admins_table.php',
     'CreateAdvertisesTable' => $baseDir . '/database/migrations/2017_06_30_112655_create_advertises_table.php',
     'CreateCompanyinfosTable' => $baseDir . '/database/migrations/2017_07_01_141114_create_companyinfos_table.php',
     'CreateContactsTable' => $baseDir . '/database/migrations/2017_06_30_104612_create_contacts_table.php',
