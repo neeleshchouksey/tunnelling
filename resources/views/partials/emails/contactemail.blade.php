@@ -12,8 +12,8 @@
         </h2>
         <p>
             one of our team will contact you shortly.
-            If you have an urgent query please call us on {{$companyInfo->contact_no}}".
-            We will contact you to process this shortly."
+            If you have an urgent query please call us on {{$companyInfo->contact_no}}.
+            We will contact you to process this shortly.
         </p>
     </center>
 

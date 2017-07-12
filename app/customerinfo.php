@@ -12,6 +12,6 @@ class customerinfo extends Model
      * @var array
      */
     protected $fillable = [
-        'customer_name', 'customer_email', 'phone','country','company_name', 'job_title'
+        'customer_name', 'customer_email', 'phone','country','company_name', 'job_title','order_uni_no'
     ];
 }

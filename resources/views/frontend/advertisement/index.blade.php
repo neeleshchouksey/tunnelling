@@ -6,7 +6,7 @@
 					<div class="left-text">
 					<p>Effective way to rich your audience</p>
 					<h1>Advertise with us</h1>
-						<a href="#" class="btn-icon"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="{{url('images/award-iocn.png')}}" alt="download-btn"></span></a>
+						<a href="{{url('advertise/firststep')}}" class="btn-icon"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="{{url('images/award-iocn.png')}}" alt="download-btn"></span></a>
 					<a href="#" class="bordered-btn">download media kit</a>
 					</div>
 					<div class="banner-image">

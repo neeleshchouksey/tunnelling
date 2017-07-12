@@ -92,10 +92,15 @@ class AdvertiseController extends Controller
     public function thirdStepSubmit(Request $request)
     {
         $getCustomerInfo       =       Session::get('customerinfo');
-        $getCustomerInfo['uni_order_no']      = $this->generateUniqueOrder();
+
+        $getCustomerInfo['order_uni_no'] =$this->generateUniqueNo();
         $customerinfo          =       Customerinfo::create($getCustomerInfo);
-        $cartCollection        =       Cart::getContent();
-        $data                  =       $cartCollection->toArray();
+        
+
+
+        $cartCollection = Cart::getContent();
+        $data=$cartCollection->toArray();
+
         foreach ($data as $key => $value) {
             $product    = new   Advertise;
             $product->product_id    =   $value['id'];
@@ -105,32 +110,34 @@ class AdvertiseController extends Controller
             $product->save();
         }
 
-        //mail to customer
         $to         =   $customerinfo->customer_email;
-        $subject    =   "Reservation Acknowledgement-".$getCustomerInfo['uni_order_no'];
+        $subject    =   "Reservation Acknowledgement  - ".$customerinfo->order_uni_no;
+        $message    =   view('partials.emails.advertiseconfirm');
         $from       =   "reservations@tunnellingint.com"; 
-        $headers    =   "From:reservations@tunnellingint.com" . "\r\n";
-        $headers   .=   "MIME-Version: 1.0" . "\r\n";
-        $headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $message    =   "Thank you for your advertising reservation request.  We will contact you to process this shortly.";
+        $headers    =   "From: reservations@tunnellingint.com" . "\r\n";
+        $headers    .= "MIME-Version: 1.0" . "\r\n";
+        $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        mail($to , $subject, $message, $headers);
-
-
-        //mail to owner
-        $owner_to         =   "gaurav@whitebrains.in"; 
-        //$owner_to         =   "reservations@tunnellingint.com"; 
-        $owner_subject    =   "New Order from Website - ".$getCustomerInfo['uni_order_no'];
-        $owner_message    =   "test order";
-        $owner_headers    =   "From:$request->email" . "\r\n";
+        $owner_to         =   "subscriptions@tunnellingint.com"; 
+        $owner_subject    =   "New Order from Website - ".$customerinfo->order_uni_no;
+        $owner_message    =   view('partials.emails.advertiseowner',compact('customerinfo','data'));
+        $owner_headers    =   "From:$customerinfo->customer_email" . "\r\n";
         $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";
         $owner_headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
         mail($owner_to , $owner_subject, $owner_message, $owner_headers);
+       
+
+        mail($to , $subject, $message, $headers);
 
 
         Cart::clear();
         Session::forget('customerinfo');
         return redirect('advertise/finalstep');  
+    }
+    public function generateUniqueNo(){
+
+        return "TI-ORD-".mt_rand(1,999999);
+
     }
     /**
      *  Display a view

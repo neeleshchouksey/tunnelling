@@ -343,7 +343,11 @@ class ComposerStaticInite6f1efcae9e66a279024661b6e72b013
 
     public static $classMap = array (
         'AlterAdvertiseTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_10_081913_alter_advertise_table.php',
+<<<<<<< HEAD
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
+=======
+        'AlterCustomerinfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_10_213605_alter_customerinfos_table.php',
+>>>>>>> 39ba4e2a98b2f7df29c185fbb5fa9cb773955c20
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdvertiseController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdvertiseController.php',
@@ -362,6 +366,7 @@ class ComposerStaticInite6f1efcae9e66a279024661b6e72b013
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Products' => __DIR__ . '/../..' . '/app/products.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -372,7 +377,6 @@ class ComposerStaticInite6f1efcae9e66a279024661b6e72b013
         'App\\companyinfo' => __DIR__ . '/../..' . '/app/companyinfo.php',
         'App\\contact' => __DIR__ . '/../..' . '/app/contact.php',
         'App\\customerinfo' => __DIR__ . '/../..' . '/app/customerinfo.php',
-        'App\\products' => __DIR__ . '/../..' . '/app/products.php',
         'App\\subscribe' => __DIR__ . '/../..' . '/app/subscribe.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
