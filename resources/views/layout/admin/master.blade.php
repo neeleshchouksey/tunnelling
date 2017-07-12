@@ -45,5 +45,8 @@
 @include('layout.admin.leftside')
   @yield('content')
 @include('layout.admin.footer')
+@include('layout.admin.endfooter')
+
+
 </body>
 </html>
