@@ -7,13 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AlterAdvertiseTable' => $baseDir . '/database/migrations/2017_07_10_081913_alter_advertise_table.php',
-<<<<<<< HEAD
-    'App\\Admin' => $baseDir . '/app/Admin.php',
-=======
     'AlterCustomerinfosTable' => $baseDir . '/database/migrations/2017_07_10_213605_alter_customerinfos_table.php',
->>>>>>> 39ba4e2a98b2f7df29c185fbb5fa9cb773955c20
+    'App\\Admin' => $baseDir . '/app/Admin.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AdminLoginController' => $baseDir . '/app/Http/Controllers/AdminLoginController.php',
     'App\\Http\\Controllers\\AdvertiseController' => $baseDir . '/app/Http/Controllers/AdvertiseController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -1231,6 +1229,7 @@ return array(
     'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/BelongsTo.php',
     'Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/BelongsToMany.php',
     'Illuminate\\Database\\Eloquent\\Relations\\Concerns\\InteractsWithPivotTable' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/Concerns/InteractsWithPivotTable.php',
+    'Illuminate\\Database\\Eloquent\\Relations\\Concerns\\SupportsDefaultModels' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/Concerns/SupportsDefaultModels.php',
     'Illuminate\\Database\\Eloquent\\Relations\\HasMany' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasMany.php',
     'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasManyThrough.php',
     'Illuminate\\Database\\Eloquent\\Relations\\HasOne' => $vendorDir . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasOne.php',
@@ -2292,7 +2291,6 @@ return array(
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'Parsedown' => $vendorDir . '/erusev/parsedown/Parsedown.php',
-    'ParsedownTest' => $vendorDir . '/erusev/parsedown/test/ParsedownTest.php',
     'PhpParser\\Autoloader' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Autoloader.php',
     'PhpParser\\Builder' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder.php',
     'PhpParser\\BuilderAbstract' => $vendorDir . '/nikic/php-parser/lib/PhpParser/BuilderAbstract.php',
