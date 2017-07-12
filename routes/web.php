@@ -35,6 +35,7 @@ Route::post('advertise/customerinfo', 'AdvertiseController@customerInfo');
 // admin
 
 Route::get('/admin', function () { return view('admin.login');});
-Route::post('/admin/dashboard', 'AdminLoginController@adminDashboard');
+Route::post('/admin/dashboard', 'AdminLoginController@authenticate');
+Route::get('/admin/dashboard', 'AdminLoginController@adminDashboard');
 
 
