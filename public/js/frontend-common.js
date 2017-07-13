@@ -87,8 +87,12 @@ $(document).on('click','.btnclic',function(){
 				    data:{id:id,action:"update",unit:$(this).prevAll('.qty').val()},				
 				    success: function (data) { 		    	
 				    			//price_elem.text(data);
-				    			sub_elem.text(data);
-				    			calculateTotal();
+				    			
+					    		var result 	= JSON.parse(data); 
+				    			sub_elem.text(result.total);
+
+					    		$("#third-step-total").text('$'+result.gtotal);
+					    		$("#third-step-discount").text('$'+result.discount);
 							}		    
 				});	
 

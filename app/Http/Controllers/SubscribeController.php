@@ -51,8 +51,8 @@ class SubscribeController extends Controller
         $to         =   $request->email;
         $subject    =   "Email Confirmation  ";
         $message    =   view('partials.emails.suscriptionthird')->with('emailData',$insertData->id."__".$insertData->email_verify_code);
-        $from       =   "subscriptions@tunnellingint.com"; 
-        $headers    =   "From: subscriptions@tunnellingint.com" . "\r\n";
+        $from       =   "subscribe@tunnellingint.com"; 
+        $headers    =   "From: subscribe@tunnellingint.com" . "\r\n";
         $headers    .= "MIME-Version: 1.0" . "\r\n";
         $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
@@ -120,16 +120,16 @@ class SubscribeController extends Controller
         $to         =   $updateData->email;
         $subject    =   "Subscription Acknowledgement  ".$updateData->uni_subs_no;
         $message    =   view('partials.emails.subscribeconfirm')->with('companyInfo',$companyInfo);
-        $from       =   "subscriptions@tunnellingint.com"; 
-        $headers    =   "From: subscriptions@tunnellingint.com" . "\r\n";
+        $from       =   "subscribe@tunnellingint.com"; 
+        $headers    =   "From: subscribe@tunnellingint.com" . "\r\n";
         $headers    .= "MIME-Version: 1.0" . "\r\n";
         $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
         mail($to , $subject, $message, $headers);
 
             $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->get();            
             if($todayData){
-                //$owner_to         =   "subscriptions@tunnellingint.com"; 
-                $owner_to         =    "gaurav@whitebrains.in";
+                $owner_to         =   "subscribe@tunnellingint.com"; 
+                //$owner_to         =    "gaurav@whitebrains.in";
                 $owner_subject    =   "New Subscription from Website - ".$updateData->uni_subs_no;
                 $owner_message    =   view('partials.emails.suscribeemail')->with('todayData',$todayData);
                 $owner_headers    =   "From:$request->email" . "\r\n";

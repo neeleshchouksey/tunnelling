@@ -82,8 +82,8 @@ class ContactController extends Controller
                 $todayData = contact::find($contactData->id);
                
                 if($contactData){
-                    $owner_to         =   "gaurav@whitebrains.in"; 
-                    //$owner_to         =   "customercare@tunnellingint.com"; 
+                    //$owner_to         =   "gaurav@whitebrains.in"; 
+                    $owner_to         =   "customercare@tunnellingint.com"; 
                     $owner_subject    =   "Message via Website - ".$todayData->uni_contc_no;
                     $owner_message    =   view('partials.emails.contactowneremail')->with('todayData',$todayData);
                     $owner_headers    =   "From:$request->email" . "\r\n";

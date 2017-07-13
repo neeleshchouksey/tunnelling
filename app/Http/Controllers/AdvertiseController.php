@@ -113,12 +113,12 @@ class AdvertiseController extends Controller
         $to         =   $customerinfo->customer_email;
         $subject    =   "Reservation Acknowledgement  - ".$customerinfo->order_uni_no;
         $message    =   view('partials.emails.advertiseconfirm');
-        $from       =   "reservations@tunnellingint.com"; 
-        $headers    =   "From: reservations@tunnellingint.com" . "\r\n";
+        $from       =   "sales@tunnellingint.com"; 
+        $headers    =   "From: sales@tunnellingint.com" . "\r\n";
         $headers    .= "MIME-Version: 1.0" . "\r\n";
         $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        $owner_to         =   "subscriptions@tunnellingint.com"; 
+        $owner_to         =   "sales@tunnellingint.com"; 
         $owner_subject    =   "New Order from Website - ".$customerinfo->order_uni_no;
         $owner_message    =   view('partials.emails.advertiseowner',compact('customerinfo','data'));
         $owner_headers    =   "From:$customerinfo->customer_email" . "\r\n";
@@ -243,7 +243,7 @@ class AdvertiseController extends Controller
                 break;
             case 'delete':
                 # code...
-              //  Cart::remove($request->id);
+               Cart::remove($request->id);
                 $cartCollection = Cart::getContent();
                 if($cartCollection->count()<=1){
                     Cart::clearCartConditions();
