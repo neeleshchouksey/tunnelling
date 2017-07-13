@@ -24,9 +24,9 @@
 		</div>
 	</div>
 	<div class="table-cell price-td">
-		<div class="price">{{$product->price}}</div>
+		<div class="price">£{{$product->price}}</div>
 	</div>
 	<div class="table-cell subtotal-td">
-		<div class="sub-total new_subtotal_{{$product->id}}">{{($data[$key]['quantity'] > 0)?($product->price * $data[$key]['quantity']):$product->price}}</div>
+		<div class="sub-total new_subtotal_{{$product->id}}">£{{($data[$key]['quantity'] > 0)?($product->price * $data[$key]['quantity']):$product->price}}</div>
 	</div>
 </div>

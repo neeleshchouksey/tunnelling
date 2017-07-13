@@ -61,7 +61,7 @@
 							<div class="icon"><img class="product-image" src='{{asset("/images/$data->image_name")}}'></div>
 							<h5 class = "product-heading">{{$data->name}}</h5>
 							<p class = "product-dimension">{{$data->dimension}}</p>
-							<span class = "product-price">${{$data->price}}</span>
+							<span class = "product-price">£{{$data->price}}</span>
 						</div>
 					</label>
 					<div class="year-publication">
@@ -72,7 +72,7 @@
 								<span></span>{{$data->firstyear}}
 								@if($data->quantity == '1')
 								<div class="choice">
-									<input type="text" value="1" class="qty"  year="{{$data->firstyear}}">
+									<input type="text" value="0" class="qty"  year="{{$data->firstyear}}">
 									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 									
@@ -86,7 +86,7 @@
 								<span></span>{{$data->secondyear}}
 								@if($data->quantity == '1')
 								<div class="choice">
-									<input type="text" value="1" class="qty" year="{{$data->secondyear}}">
+									<input type="text" value="0" class="qty" year="{{$data->secondyear}}">
 									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 								</div>
@@ -99,7 +99,7 @@
 								<span></span>{{$data->thirdyear}}
 								@if($data->quantity == '1')
 								<div class="choice">
-									<input type="text" value="1" class="qty" year="{{$data->thirdyear}}">
+									<input type="text" value="0" class="qty" year="{{$data->thirdyear}}">
 									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 								</div>
