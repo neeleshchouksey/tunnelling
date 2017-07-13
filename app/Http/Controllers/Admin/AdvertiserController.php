@@ -16,7 +16,6 @@ class AdvertiserController extends Controller
     public function index()
     {
         //
-
         return view('admin.advertiser.index'); 
     }
 
@@ -43,9 +42,7 @@ class AdvertiserController extends Controller
         //
 
         	$rand=rand();
-            //echo "<pre>";
-            //print_r($request->file('photo'));
-            //die;
+            
             $imageName = $rand.'.'.$request->file('photo')->getClientOriginalExtension();
        
             if($request->file('photo')->move(public_path('uploads/advertiser'), $imageName)){
@@ -93,10 +90,8 @@ class AdvertiserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $rand=rand();
-            //echo "<pre>";
-            //print_r($request->file('photo'));
-            //die;
+            $rand=rand();
+           
             $imageName = $rand.'.'.$request->file('photo')->getClientOriginalExtension();
        
             if($request->file('photo')->move(public_path('uploads/advertiser'), $imageName)){

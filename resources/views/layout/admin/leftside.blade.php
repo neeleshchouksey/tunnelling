@@ -43,13 +43,13 @@
             <li class="active"><a href="{{url('admin/dashboard')}}"><i class="fa fa-circle-o"></i>Home </a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>Advertise</a></li>
             
-            <li><a href="#"><i class="fa fa-circle-o"></i>Partners</a></li>
+            <li><a href="{{url('admin/partner')}}"><i class="fa fa-circle-o"></i>Partners</a></li>
             <li><a href="{{url('admin/advertiser')}}"><i class="fa fa-circle-o"></i>Existing Advertisers</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Key Reader Icons</a></li>
+            <li><a href="{{url('admin/keyreader')}}"><i class="fa fa-circle-o"></i>Key Reader Icons</a></li>
           </ul>          
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li >
+          <a href="{{url('admin/companyinfo')}}">
             <i class="fa fa-share"></i> <span>Company Info</span>
           </a>
         </li>

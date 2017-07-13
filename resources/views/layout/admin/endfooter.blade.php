@@ -231,49 +231,28 @@
 <script src="{{asset('adminasset/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('adminasset/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+@if(request()->is('admin/advertiser')==1)
 <script>
   var url = "{{url('admin/advertisers/ajax')}}";
-  advertiser();
-  function advertiser () {
-    // body...
-    $("#example1").DataTable({
-    destroy:true,
-    "ajax": {
-          "url":url,
-          "dataSrc": "",
-          "type": 'GET',
-      },
-      
-      "order": [[ 0, "desc" ]],
-      columns: [
-          { data: 'advertiser' },
-          { data: 'action'}
-         
-      ]
-      
-  });
-  }
   
-  $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-});
-$(document).on('click', 'a.delete_advertiser', function(e) {
-    e.preventDefault(); // does not go through with the link.
-
-    var $this = $(this);
-
-    $.post({
-        type: $this.data('method'),
-        url: $this.attr('href')
-    }).done(function (data) {
-        alert('success');
-        advertiser();
-        console.log(data);
-    });
-});
 </script>
+<script src="{{asset('js/admin/advertiser/advertiser.js')}}"></script>
+@endif
+@if(request()->is('admin/keyreader')==1)
+<script>
+  var url = "{{url('admin/keyreaders/ajax')}}";
+  
+</script>
+<script src="{{asset('js/admin/keyreader/keyreader.js')}}"></script>
+@endif
+@if(request()->is('admin/partner')==1)
+<script>
+  var url = "{{url('admin/partners/ajax')}}";
+  
+</script>
+<script src="{{asset('js/admin/partener/partener.js')}}"></script>
+@endif
+
 <script src="{{asset('adminasset/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminasset/dist/js/demo.js')}}"></script>

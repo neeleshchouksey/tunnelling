@@ -5,12 +5,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Advertisers
+        Key Readers
         <!-- <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Advertisers</a></li>
+        <li><a href="#">Key Readers</a></li>
         <!-- <li class="active">Data tables</li> -->
       </ol>
     </section>
@@ -24,15 +24,16 @@
           
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Advertisers List</h3>
-              <a href="{{url('admin/advertiser/create')}}" class="btn btn-success pull-right"> Add New </a>
+              <h3 class="box-title">Key Readers List</h3>
+              <a href="{{url('admin/keyreader/create')}}" class="btn btn-success pull-right"> Add New </a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="advister_list_table" class="table table-bordered table-striped">
+              <table id="keyreader_list_table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Advertiser</th>
+                  <th> Image</th>
+                  <th> Title</th>
                   <th>Action</th>
                  
                 </tr>

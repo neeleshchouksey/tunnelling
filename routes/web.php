@@ -46,9 +46,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
    		 Route::resource('dashboard', 'DashboardController');
    		 Route::resource('advertiser', 'AdvertiserController');
-
    		 Route::get('advertisers/ajax', 'AdvertiserController@ajax');
-
+   		 Route::resource('keyreader', 'KeyReadersController');
+   		 Route::get('keyreaders/ajax', 'KeyReadersController@ajax');
+   		 Route::resource('partner', 'ParternersController');
+   		 Route::get('partners/ajax', 'ParternersController@ajax');
+   		 Route::resource('companyinfo', 'CompanyInfoController');
 
     });
 });

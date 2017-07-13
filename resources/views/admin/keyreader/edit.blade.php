@@ -17,25 +17,31 @@
                     <div class="col-md-10 col-md-push-1">
                       <div class="">
                         <div class="box-header">
-                          <h3 class="box-title">Edit Advertiser</h3>
+                          <h3 class="box-title">Edit Key Readers</h3>
                         </div>
                         
                         
                         <!-- <form action="{{url('admin/advertiser')}}" method="post" id="loading_location_form" enctype="multipart/form-data"> -->
                           
-                        {!! Form::open(array('url' => "admin/advertiser/$advertiser->id","enctype"=>"multipart/form-data","method"=>'put')) !!}
+                        {!! Form::open(array('url' => "admin/keyreader/$keyreader->id","enctype"=>"multipart/form-data","method"=>'put')) !!}
                           
-                          <input type="text" style="visibility: hidden" name="location[image]" id="imagecreator" value="<?php if(isset($location->image)) echo $location->image;?>">
-                          <span class="show_error_msg"></span>  
                           
                           <div class="box-body">
                             <table class="table">
                               <tbody>
                                 <tr>
-                                  <td><strong>Select Advertiser</strong></td>
+                                  <td><strong>Title</strong></td>
                                   <td>:</td>
                                   <td>
-                                    <input type="file" class="form-control" name="photo" required>
+                                    <input type="text" class="form-control" name="name" value="{{$keyreader->name}}" required>
+                                    <span class="show_error_msg"></span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td><strong>Seclect Image</strong></td>
+                                  <td>:</td>
+                                  <td>
+                                    <input type="file" class="form-control" name="photo" >
                                     <span class="show_error_msg"></span>
                                   </td>
                                 </tr>
@@ -46,7 +52,7 @@
                           </div>
                         </form>
                         <div class="img col-md-12">
-                          <img src='{{asset("uploads/advertiser/$advertiser->advertiser")}}' class="img-responsive">
+                          <img src='{{asset("uploads/keyreader/$keyreader->image")}}' class="img-responsive img">
                         </div>
                         <div class="clear-fix">
                           
