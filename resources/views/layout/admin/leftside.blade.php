@@ -40,12 +40,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i>Home </a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Advertise</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Advertise</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Partners</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Existing Advertisers</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Key Reader Icons</a></li>
+            <li class="active"><a href="{{url('admin/dashboard')}}"><i class="fa fa-circle-o"></i>Home </a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Advertise</a></li>
+            
+            <li><a href="#"><i class="fa fa-circle-o"></i>Partners</a></li>
+            <li><a href="{{url('admin/advertiser')}}"><i class="fa fa-circle-o"></i>Existing Advertisers</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Key Reader Icons</a></li>
           </ul>          
         </li>
         <li class="treeview">

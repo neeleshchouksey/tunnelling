@@ -34,8 +34,27 @@ Route::post('advertise/customerinfo', 'AdvertiseController@customerInfo');
 
 // admin
 
-Route::get('/admin', function () { return view('admin.login');});
-Route::post('/admin/dashboard', 'AdminLoginController@authenticate');
-Route::get('/admin/dashboard', 'AdminLoginController@adminDashboard');
+// Route::get('/admin', function () { return view('admin.login');});
+// Route::post('/admin/dashboard', 'AdminLoginController@authenticate');
+// Route::get('/admin/dashboard', 'AdminLoginController@adminDashboard');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'Auth\LoginController@showLoginForm');
+    Route::post('login', 'Auth\LoginController@login')->name('admin.login');
+    Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
+    Route::group(['middleware' => 'admin.auth'], function() {
+
+   		 Route::resource('dashboard', 'DashboardController');
+   		 Route::resource('advertiser', 'AdvertiserController');
+
+   		 Route::get('advertisers/ajax', 'AdvertiserController@ajax');
 
 
+    });
+});
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
