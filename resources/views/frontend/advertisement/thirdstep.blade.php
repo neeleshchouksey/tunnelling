@@ -49,7 +49,7 @@
 			@if(Cart::isEmpty())
 			<p class="choose text-center">Your  Cart is empty. Please Select Advestise<a href="{{url('advertise/firststep')}}">Here</a></p>
 			@else
-			<p class="choose text-center">Enter your personal information:</p>
+			<p class="choose text-center">Summary & Confirmation:</p>
 			{!! Form::open( ['method' => 'post','url'=>'advertise/thirdstepsubmit']) !!}
 
 				<div class="product-card-detail">
@@ -72,8 +72,8 @@
 					</div>
 					<div class="total-section">
 						<div class="pull-right">
-							<p>10% discount: <span id="third-step-discount">-${{$discount}}</span></p>
-							<p class="total">total: <span id="third-step-total">{{$total}}</span></p>
+							<p>10% discount: <span id="third-step-discount">-£{{$discount}}</span></p>
+							<p class="total">total: <span id="third-step-total">£{{$total}}</span></p>
 						</div>
 					</div>
 				</div>

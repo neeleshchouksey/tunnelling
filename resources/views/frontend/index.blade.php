@@ -6,8 +6,8 @@
 				<div class="left-text">
 					<p>A TECHNICAL annual FOR THE </p>
 					<h1>TUNNELLING INDUSTRY</h1>
-						<a href="#" class="btn-icon"><span class="btn-download">download PDF </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span></a>
-					<a href="{{url('subscribe')}}" class="bordered-btn">subscribe for free</a>
+						<a href="#" class="btn-icon"><span class="btn-download">subscribe for free </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span></a>
+					<a href="{{url('subscribe')}}" class="bordered-btn">Advertise</a>
 				</div>
 				<div class="banner-image">
 					<img src="{{url('/images/magazines.png')}}" alt="magazines">
