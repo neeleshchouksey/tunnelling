@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="{{asset('adminasset/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('adminasset/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+  
+  <link rel="stylesheet" href="{{asset('adminasset/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,5 +47,8 @@
 @include('layout.admin.leftside')
   @yield('content')
 @include('layout.admin.footer')
+@include('layout.admin.endfooter')
+
+
 </body>
 </html>
