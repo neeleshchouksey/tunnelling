@@ -102,7 +102,20 @@ class AdvertiseController extends Controller
         $getCustomerInfo       =       Session::get('customerinfo');
 
         $getCustomerInfo['order_uni_no'] =$this->generateUniqueNo();
-        $customerinfo          =       Customerinfo::create($getCustomerInfo);
+        $customerinfo                           =      new Customerinfo;
+        $customerinfo->customer_name            =      $getCustomerInfo['customer_name'];
+        $customerinfo->customer_email           =      $getCustomerInfo['customer_email'];
+        $customerinfo->phone                    =      $getCustomerInfo['phone'];
+        $customerinfo->customer_name            =      $getCustomerInfo['customer_name'];
+         if($getCustomerInfo['country']!='')
+        $customerinfo->country                  =      $getCustomerInfo['country'];
+       
+        $customerinfo->company_name             =      $getCustomerInfo['company_name'];
+        if($getCustomerInfo['job_title']!='')
+        $customerinfo->job_title                =      $getCustomerInfo['job_title'];
+        $customerinfo->order_uni_no             =      $this->generateUniqueNo();
+        $customerinfo->save();
+
         
 
 
