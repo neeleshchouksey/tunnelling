@@ -2,15 +2,18 @@
 @section('content')
 	<section class="banner">
 		<div class="container">
-			<div class="banner-content">
+			@foreach($page->slider->slider as $slider)
+			<div class="banner-content mySlides">
 				<div class="left-text">
-					<p>A TECHNICAL annual FOR THE </p>
-					<h1>TUNNELLING INDUSTRY</h1>
-						<a href="#" class="btn-icon"><span class="btn-download">subscribe for free </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span></a>
+					<p>{{$slider->caption}}</p>
+					<h1>{{$slider->heading}}</h1>
+					<a href="#" class="btn-icon">
+						<span class="btn-download">subscribe for free </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span>
+					</a>
 					<a href="{{url('subscribe')}}" class="bordered-btn">Advertise</a>
 				</div>
-				<div class="banner-image">
-					<img src="{{url('/images/magazines.png')}}" alt="magazines">
+				<div class="banner-image ">
+					<img src='{{asset("uploads/slider/$slider->slide")}}' alt="magazines">
 				</div>
 				<div class="down-arrow">
 					<a href="#">
@@ -19,22 +22,22 @@
 					</a>
 				</div>
 			</div>
+			@endforeach
 		</div>	
 	</section>
 	  <!-- <section class="banner-example">BANNER</section> -->
 	<section class="about-section">
 	  	<div class="container">
-			<div class="left-image"><img src="{{url('/images/opened-magazines.png')}}" alt=""></div>
+			<div class="left-image"><img src='{{asset("uploads/pages/$home->image")}}' alt=""></div>
 			<div class="about-text">
-				<h2>ABOUT<br>tunnelling international</h2>
+				<h2>{!! nl2br($home->title)!!}</h2>
 				<hr>
 				<p>Publication release date: <span>April 2018</span></p>
-				<p>Containing an array of technical articles authored by tunnelling industry innovators, this glossy annual will review Process, Machinery and Tooling
-				technologies and have a focus on efficiencies, needs and trends.</p> 
+				<p>{!! nl2br($home->text) !!}</p> 
 
-				<p>This useful edition along side our newsletters and announcements will enable our readers to have access to the latest tunnelling industry innovations and the companies that are able to put these advances into practice.</p> 
+				<!-- <p>This useful edition along side our newsletters and announcements will enable our readers to have access to the latest tunnelling industry innovations and the companies that are able to put these advances into practice.</p>  -->
 
-				<p>Subscribe for FREE to receive your complimentary PDF version of Tunnelling International and to have access to our newsletters and industry announcements.</p>
+				<!-- <p>Subscribe for FREE to receive your complimentary PDF version of Tunnelling International and to have access to our newsletters and industry announcements.</p> -->
 			</div>
 			<div class="clear"></div>
 			<div class="qucik-contact text-center" >
@@ -93,23 +96,25 @@
 				</div>
 		    </div>
 	</section>
-	 <!--  <section class="our-partner text-center">
+	  <section class="our-partner text-center">
 	  		<div class="container">
 		  		<h2>our partners</h2>
 				<hr>
 				<div class="partner-list">
 					<ul>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
+						@foreach(Helper::partner() as $partner)
+							<li><a href="#"><img src='{{asset("uploads/partner/$partner->image")}}' alt="Crossrail"></a></li>
+							<!-- <li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
+							<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
+							<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
+							<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
+							<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li> -->
+						@endforeach
 					</ul>
 				</div>
 				<p>Want to be on our pages? Tell potential castomers about your products! <a href="#">Advertise on our pages.</a></p>
 		  </div>
-	  </section> -->
+	  </section>
 	<section class="contact-us text-center">
 	  	<div class="container">
 			<h2>Contact us</h2>

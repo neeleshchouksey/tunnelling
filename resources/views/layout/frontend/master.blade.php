@@ -24,6 +24,10 @@
     <![endif]-->
   </head>
   <body>	  
+    @php 
+      $companyInfo=Helper::companyinfo()
+    @endphp
+   
 	  @include('layout.frontend.header')
 	  
 	  @yield('content')	  	

@@ -1,5 +1,9 @@
 @extends('layout.frontend.master')
 		@section('content')
+		    @php 
+      			$companyInfo=Helper::companyinfo()
+    		@endphp
+   
 
 	  <section class="subpage-banner padding-bottom text-center">
 	  	<div class="container">
@@ -7,10 +11,9 @@
 			<hr>
 			<p>We are here to help. Call us anytime.</p>
 			<div class="contact-addresses">
-				<p><a href="mailto:journalsint.@icloud"><img src="{{url('/images/message-address.png')}}"> journalsint.@icloud</a></p>
-				<p class="middle-margin text-left"><span><img src="{{url('/images/pin-address.png')}}"></span>j34 Elthorne Rd, Islington,<br>
-				London N19 4AG</p>
-				<p><a href="tel:442072728444"><img src="{{url('/images/phone-address.png')}}"> +44 207 272 8444</a></p>
+				<p><a href="mailto:journalsint.@icloud"><img src="{{url('/images/message-address.png')}}"> {{$companyInfo->company_email}}</a></p>
+				<p class="middle-margin text-left"><span><img src="{{url('/images/pin-address.png')}}"></span>{{$companyInfo->company_address}}</p>
+				<p><a href="tel:442072728444"><img src="{{url('/images/phone-address.png')}}"> {{$companyInfo->contact_no}}</a></p>
 			</div>
 		</div>
 	  </section>

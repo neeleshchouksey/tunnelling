@@ -40,9 +40,15 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="{{url('admin/dashboard')}}"><i class="fa fa-circle-o"></i>Home </a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Advertise</a></li>
             
+           {{--*/ $pages=Helper::pages() /*--}}
+           @foreach(Helper::pages() as $page)
+                  <li><a href='{{url("admin/pages/$page->slug")}}'><i class="fa fa-circle-o"></i>{{$page->name}}</a></li>
+           @endforeach
+
+            @foreach(Helper::slidertype() as $slidertype)
+                  <li><a href='{{url("admin/slider/$slidertype->slug")}}'><i class="fa fa-circle-o"></i>{{$slidertype->name}}</a></li>
+           @endforeach
             <li><a href="{{url('admin/partner')}}"><i class="fa fa-circle-o"></i>Partners</a></li>
             <li><a href="{{url('admin/advertiser')}}"><i class="fa fa-circle-o"></i>Existing Advertisers</a></li>
             <li><a href="{{url('admin/keyreader')}}"><i class="fa fa-circle-o"></i>Key Reader Icons</a></li>

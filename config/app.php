@@ -232,6 +232,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Active' => Watson\Active\Facades\Active::class,
+        'Helper' => App\Helpers\Helpers::class,
 
     ],
 

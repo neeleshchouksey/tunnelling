@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () { return view('frontend.index');});
+Route::get('/', 'HomeController@index');
 Route::get('/about', function () { return view('frontend.about.index');});
 // ~gk suscribe
 Route::get('subscribe', 'SubscribeController@index');
@@ -52,6 +52,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
    		 Route::resource('partner', 'ParternersController');
    		 Route::get('partners/ajax', 'ParternersController@ajax');
    		 Route::resource('companyinfo', 'CompanyInfoController');
+       Route::resource('pages', 'PagesController');
+       Route::resource('pages/section', 'PagesSectionController');
+       Route::resource('slider', 'SliderController');
+       Route::get('slider/addnew/{id}', 'SliderController@addnew');
 
     });
 });
