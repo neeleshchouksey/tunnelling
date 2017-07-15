@@ -1,6 +1,6 @@
 $(document).ready(function(){	
 
-	if($(".danger_alert")){
+	if($(".danger_alert").length >0){
 		$('html,body').animate({ scrollTop: $(".danger_alert").offset().top},
         'slow');
 	}
@@ -15,20 +15,16 @@ $(document).ready(function(){
 
 $(document).on('change','.product-list > label > input[type="checkbox"]',function(){	
 	var parent 	= 	$(this).parent().parent();
-    if(this.checked) {
-		
+    if(this.checked) {		
 		parent.addClass('show');
-		$('#first-step-button').removeAttr('disabled');
 		$('#step-1').addClass('current');
-		parent.find('input[type="radio"]').first().prop('checked',true);
-		
+		parent.find('input[type="radio"]').first().prop('checked',true);		
     }
 	else{
 		parent.removeClass('show');
-		$('#first-step-button').attr('disabled','true');
-		parent.find('input[type="radio"]').prop('checked',true);
-		
+		parent.find('input[type="radio"]').prop('checked',true);		
 	}
+	isselectproduct();
 	ischeckboxset();		
 	
 });
@@ -61,7 +57,6 @@ $(document).on('click','.btnclic',function(){
 				    			
 					    		var result 	= JSON.parse(data); 
 				    			sub_elem.text('£'+result.total);
-
 					    		$("#third-step-total").text('£'+result.gtotal);
 					    		$("#third-step-discount").text('£'+result.discount);
 							}		    
@@ -74,8 +69,6 @@ $(document).on('click','.btnclic',function(){
 			var qty=$(this).prevAll('.qty').val();
 			(qty > 0 )?qty--:qty;
 			$(this).prevAll('.qty').val(qty);
-
-
 			if($(this).prevAll('.qty').attr('get_url')){
 				id 			= $(this).prevAll('.qty').attr('product_id');			
 				var sub_elem   = $(".new_subtotal_"+id);
@@ -109,7 +102,7 @@ $(document).on('click','#first-step-button',function(){
 	var id = []; var year=[]; var qty=[];var j=0;
 	var product =[];
 	//ajax to add product
-	$('.year-publication > label > input[type="radio"]').each(function(index,value){
+	$('.show > .year-publication > label > input[type="radio"]').each(function(index,value){
 		if($(this).is(":checked")){
 			product[j] 				=	{};
 			product[j].id		=	$(this).attr('pr_id');
@@ -140,14 +133,11 @@ $(document).on('change','.qty',function(){
 			method: "GET",
 		    url: price_url,
 		    data:{id:id,action:'update',unit:$(this).val()},				
-		    success: function (data) { 		    	
-
+		    success: function (data) { 
 			    		var result 	= JSON.parse(data); 
 		    			sub_elem.text(result.total);
-
 			    		$("#third-step-total").text('$'+result.gtotal);
 			    		$("#third-step-discount").text('$'+result.discount);
-		    			
 					}		    
 		});	
 });
@@ -161,8 +151,6 @@ $(document).on('click',".delete-icon > a",function(){
 			    data:{id:id,action:"delete"},				
 			    success: function (data) { 		
 			    		var result 	= JSON.parse(data); 
-			    		console.log(result.total);   	
-			    		//$(this).closest('.table-row').remove();
 			    		parent.closest('.table-row').remove();
 			    		$("#third-step-total").text('$'+result.total);
 			    		$("#third-step-discount").text('$'+result.discount);
@@ -172,6 +160,9 @@ $(document).on('click',".delete-icon > a",function(){
 
 });
 
+$(document).on('click','input[type="radio"]',function(){
+	ischeckboxset();
+});
 // calculate price after deduct discount
 function calculatePercantage(mixprice,discount){
 	price 		= parseInt(mixprice.replace('$',''));
@@ -196,9 +187,7 @@ function calculateTotal(){
 		$("#third-step-total").text('$'+total);
 	});
 }
-$(document).on('click','input[type="radio"]',function(){
-	ischeckboxset();
-});
+
 
 function ischeckboxset(){
 	$('.year-publication > label > input[type="radio"]').each(function(index,value){
@@ -212,4 +201,19 @@ function ischeckboxset(){
 			qty.val('0');
 		}
 	});
+}
+
+function isselectproduct(){
+	var i = 0;
+	$('.product-list > label > input[type="checkbox"]').each(function ( index,value){
+		if($(this).is(':checked')){
+			i++;
+		}
+	});
+	if(i > 0){
+		$("#first-step-button").removeAttr('disabled');
+	}
+	else{
+		$('#first-step-button').attr('disabled','true');
+	}
 }

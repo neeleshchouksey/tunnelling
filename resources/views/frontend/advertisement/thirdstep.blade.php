@@ -80,7 +80,7 @@
 			
 				
 				<div class="step-btn text-center">
-					<button name="submit" type="submit" class="btn-icon shadow-none"><span class="btn-download">Reserve ad </span><span class="download-icon"><img src="{{url('/images/checked-white.png')}}" alt="download-btn"></span></button>
+					<button name="submit" type="submit" class="btn-icon shadow-none"><span class="btn-download">CONFIRM RESERVATION</span><span class="download-icon"><img src="{{url('/images/checked-white.png')}}" alt="download-btn"></span></button>
 				</div>
 			</form>
 			@endif
