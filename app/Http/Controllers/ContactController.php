@@ -44,6 +44,7 @@ class ContactController extends Controller
         $contactData->uni_contc_no    =   $this->generateUniqueNo();        
         $contactData->name           =   $request->name;
         $contactData->message        =   $request->message;
+        if($request->company!='')
         $contactData->company        =   $request->company;
         $contactData->email          =   $request->email;
         $contactData->phone          =   $request->phone;
