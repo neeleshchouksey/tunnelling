@@ -6,7 +6,7 @@
 <body>
 <style type="text/css">
 	.button {
-    background-color:#D11010; /* Green */
+    background:#D11010;
     border: none;
     color: white;
     padding: 15px 32px;
