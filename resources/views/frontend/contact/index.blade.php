@@ -21,6 +21,14 @@
 	  	<div class="container">
 		   <div class="subscription-form contact-page">
 	  		@include('layout.frontend.error')
+
+	  		@if(\Session::has('contact'))
+	  		<div class="text-center top-text">
+				<img src="{{url('/images/message-send.png')}}" alt="message send"> 
+				<h3>Your Message has been sent</h3>
+				<p><strong>Thank you for your message! We will reply shortly</strong></p>
+			</div>
+	  		@else
 				<form action="{{url('contact/store')}}" method="post">
 					<div class="form-content">
 						<ul>
@@ -61,6 +69,7 @@
 						</ul>
 					</div>
 				</form>
+				@endif
 			</div>			
 		 </div>
 	  </section>

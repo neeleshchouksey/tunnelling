@@ -96,15 +96,9 @@ class ContactController extends Controller
             
         }  
 
-
-
-
-
-
-
-
         $contact    =    array( 'contact' => 'true','email' =>$request->email,'contact_display'=>'block');
-        return redirect()->back()->with($contact);
+       
+        return redirect()->back()->with('contact',$contact);
     }
 
     /**
