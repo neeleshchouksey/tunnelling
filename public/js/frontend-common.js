@@ -1,8 +1,7 @@
 $(document).ready(function(){	
 
 	if($(".danger_alert")){
-		$('html,body').animate({
-        scrollTop: $(".danger_alert").offset().top},
+		$('html,body').animate({ scrollTop: $(".danger_alert").offset().top},
         'slow');
 	}
 
