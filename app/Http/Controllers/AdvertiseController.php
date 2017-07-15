@@ -8,6 +8,7 @@ use App\Customerinfo;
 use App\Products;
 use Session;
 use Cart;
+use App\Page;
 class AdvertiseController extends Controller
 {
     /**
@@ -17,7 +18,14 @@ class AdvertiseController extends Controller
      */
     public function index()
     {
-        return view('frontend.advertisement.index');
+        $page                   =   Page::where('slug','advertise')->first();
+      
+        $advertise              =   (object) array();
+        $advertise->title       =   $page->section()->where('meta_key','title')->value('meta_value');
+        $advertise->text        =   $page->section()->where('meta_key','text')->value('meta_value');
+        $advertise->subtitle    =   $page->section()->where('meta_key','subtitle')->value('meta_value');
+        $advertise->subtext     =   $page->section()->where('meta_key','subtext')->value('meta_value');
+        return view('frontend.advertisement.index',compact('advertise','page'));
     }
     /**
      * Display a view

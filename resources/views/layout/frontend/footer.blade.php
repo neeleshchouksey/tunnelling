@@ -22,14 +22,13 @@
 				<div class="footer-block footer-contact">
 					<h4>Contacts</h4>
 					<div class="footer-addrees">
-					<img src="{{url('/images/map-pin.png')}}" alt="Address"><p>34 Elthorne Rd, Islington,
-London N19 4AG</p>
+					<img src="{{url('/images/map-pin.png')}}" alt="Address"><p>{{$companyInfo->company_address}}</p>
 					</div>
 					<div class="footer-addrees">
-					<img src="{{url('/images/message-icon.png')}}" alt="message"><a href="mailto:journalsint.@icloud">journalsint.@icloud</a>
+					<img src="{{url('/images/message-icon.png')}}" alt="message"><a href="mailto:journalsint.@icloud">{{$companyInfo->company_email}}</a>
 					</div>
 					<div class="footer-addrees">
-					<img src="{{url('/images/phone-address.png')}}" alt="message"><a href="tel:+44 207 272 8444">442072728444</a>
+					<img src="{{url('/images/phone-address.png')}}" alt="message"><a href="tel:+44 207 272 8444">{{$companyInfo->contact_no}}</a>
 					</div>
 				</div>
 				<div class="footer-block footer-subscribe">
@@ -113,3 +112,20 @@ London N19 4AG</p>
 	  </SCRIPT>
 	  <script src="{!! asset('js/jquery.min.js') !!}"></script>
 	  <script src="{!! asset('js/frontend-common.js') !!}"></script>
+	  <script>
+var slideIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "block"; 
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>

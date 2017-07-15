@@ -252,6 +252,10 @@
 </script>
 <script src="{{asset('js/admin/partener/partener.js')}}"></script>
 @endif
+@if(request()->is('admin/slider/*')==1)
+
+<script src="{{asset('js/admin/slider/slider.js')}}"></script>
+@endif
 
 <script src="{{asset('adminasset/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->

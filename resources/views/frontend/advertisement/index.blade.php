@@ -2,23 +2,27 @@
 		@section('content')
 	<section class="banner">
 	  		<div class="container">
-		  		<div class="banner-content">
-					<div class="left-text">
-					<p>Effective way to rich your audience</p>
-					<h1>Advertise with us</h1>
-						<a href="{{url('advertise/firststep')}}" class="btn-icon"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="{{url('images/award-iocn.png')}}" alt="download-btn"></span></a>
-					<a href="#" class="bordered-btn">download media kit</a>
-					</div>
-					<div class="banner-image">
-						<img src="{{url('images/advertise-magzine.png')}}" alt="magazines">
-					</div>
-					<div class="down-arrow">
-						<a href="#">
-						<span>learn<br>more</span>
-						<img src="{{url('images/down-arrow.png')}}">
-						</a>
-					</div>
+		  		@foreach($page->slider->slider as $slider)
+			<div class="banner-content mySlides">
+				<div class="left-text">
+					<p>{{$slider->caption}}</p>
+					<h1>{{$slider->heading}}</h1>
+					<a href="#" class="btn-icon">
+						<span class="btn-download">subscribe for free </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span>
+					</a>
+					<a href="{{url('subscribe')}}" class="bordered-btn">Advertise</a>
 				</div>
+				<div class="banner-image ">
+					<img src='{{asset("uploads/slider/$slider->slide")}}' alt="magazines">
+				</div>
+				<div class="down-arrow">
+					<a href="#">
+					<span>learn<br>more</span>
+					<img src="{{url('/images/down-arrow.png')}}">
+					</a>
+				</div>
+			</div>
+			@endforeach
 		  	</div>	
 	  </section>
 	  <!-- <section class="banner-example">BANNER</section> -->
@@ -55,27 +59,29 @@
 				</div>
 			</div>
 			<div class="width-50 pull-left padding-left">
-				<h2>ABOUT THIS PUBLICATION</h2>
+				<h2>{!! nl2br($advertise->title)!!}</h2>
 				<hr>
-				<p>TUNNELLING INTERNATIONAL 2018 will contain an array of technical articles authored by tunnelling industry innovators and will focus on efficiencies, needs and trends.</p>
+				<p>{!! nl2br($advertise->text)!!}</p>
+				<!-- <p>TUNNELLING INTERNATIONAL 2018 will contain an array of technical articles authored by tunnelling industry innovators and will focus on efficiencies, needs and trends.</p>
 				<p>Circulated FREE of charge with a minimum of 7000 printed copies, targeted to key individuals. A FREE PDF version available to subscribe and download.</p>
 			
-			<p>This glossy printed edition along side a PDF version is a direct form of communication between key personnel worldwide and their suppliers of Plant Machinery, Products and Services.</p>
+			<p>This glossy printed edition along side a PDF version is a direct form of communication between key personnel worldwide and their suppliers of Plant Machinery, Products and Services.</p> -->
 			</div>
 			<div class="clear"></div>
 			<div class="key-features text-center">
-				<h2>Key readers</h2>
+				<h2>{!! nl2br($advertise->subtitle)!!}</h2>
 				<hr>
-				<p>Every copy individually targeted to key personnel working<br>
-within the worlds most prolific Tunnelling Industry Enterprises.</p>
+				<p>{!! nl2br($advertise->subtext)!!}</p>
 			<div class="features-row">
-				<div class="col-5">
-					<div class="fetures-content">
-						<div class="icon"><img src="{{url('/images/profile.png')}}" alt="profile"></div>
-						<h5>Managing & Technical<br>Directors</h5>
+				@foreach(Helper::keyreader() as $keyreader)
+					<div class="col-5">
+						<div class="fetures-content">
+							<div class="icon"><img src='{{asset("uploads/keyreader/$keyreader->image")}}' alt="profile"></div>
+							<h5>{{$keyreader->name}}</h5>
+						</div>
 					</div>
-				</div>
-				<div class="col-5">
+				@endforeach
+				<!-- <div class="col-5">
 					<div class="fetures-content">
 						<div class="icon"><img src="{{url('/images/chief-enginner.png')}}"></div>
 						<h5>Chief<br>Engineers</h5>
@@ -98,7 +104,7 @@ within the worlds most prolific Tunnelling Industry Enterprises.</p>
 						<div class="icon"><img src="{{url('/images/purchasing-manager.png')}}"></div>
 						<h5>Purchasing &<br>Opperations Managers</h5>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			</div>
 			
@@ -127,12 +133,15 @@ A FREE 6 MONTH LOGO LINK ON OUR WEBSITE</h3>
 				<hr>
 				<div class="partner-list">
 					<ul>
+						@foreach(Helper::advertiser() as $advertiser)
+						<li><a href="#"><img src='{{asset("uploads/advertiser/$advertiser->advertiser")}}' alt="Crossrail"></a></li>
+
+<!-- 						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
 						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
 						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
 						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
-						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
+						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li> -->
+						@endforeach
 					</ul>
 				</div>
 				<a href="{{url('/advertise/firststep')}}" class="btn-icon shadow-none"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="{{url('/images/award-iocn.png')}}" alt="download-btn"></span></a>
