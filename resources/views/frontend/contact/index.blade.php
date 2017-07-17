@@ -22,13 +22,8 @@
 		   <div class="subscription-form contact-page">
 	  		@include('layout.frontend.error')
 
-	  		@if(\Session::has('contact'))
-	  		<div class="text-center top-text">
-				<img src="{{url('/images/message-send.png')}}" alt="message send"> 
-				<h3>Your Message has been sent</h3>
-				<p><strong>Thank you for your message! We will reply shortly</strong></p>
-			</div>
-	  		@else
+	  		
+	  	
 				<form action="{{url('contact/store')}}" method="post">
 					<div class="form-content">
 						<ul>
@@ -69,23 +64,10 @@
 						</ul>
 					</div>
 				</form>
-				@endif
+				
 			</div>			
 		 </div>
 	  </section>
 
-	  <!-- for popup only-->
-	  <div class="popup" id="send-contact" style="display:none">
-	  		<div class="overlay">
-		  		<div class="popup-content">
-					<div class="close-btn"><a href=""><img src="{{url('/images/close-icon.png')}}"></a></div>
-					<div class="text-center top-text">
-						<img src="{{url('/images/message-send.png')}}" alt="message send">
-						<h3>Your contact information has been sent</h3>
-						<p>Thank you for your message! We will reply shortly.</p>
-					</div>
-				</div>
-		  	</div>
-	  </div>
-	  <!-- popup-end -->
-	  @endsection
+	@include('partials.frontendparts.contactpopup')
+@endsection

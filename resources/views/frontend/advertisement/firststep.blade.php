@@ -1,26 +1,13 @@
 @extends('layout.frontend.master')
 @section('content')
-	<section class="subpage-banner text-center adversite">
-	  	<div class="container">
-			<h1>Advertising reservation</h1>
-			<hr>
-			<p>Next publication: 2018</p>
-		</div>
-	</section>
+@php
+$nextyear =date('Y',strtotime('+1 year'));
+@endphp
+@include('partials.frontendparts.advertiseSubBanner')
 	 
   <section class="subscription-included">
   	<div class="container">
-		<div class="top-section">
-			<h3>for reservation contact us or fill the form below:</h3>
-			<div class="right-contact">
-				<div class="topContact">
-					<span><img src = "{{url('/images/message-icons.png')}}"></span><a href="mailto:journalsint.@icloud">journalsint.@icloud</a>
-				</div>
-				<div class="topContact">
-					<span><img src="{{url('/images/phone-address-icon.png')}}"></span><a href="tel:442072728444">+44 207 272 8444</a>
-				</div>
-			</div>
-		</div>
+		@include('partials.frontendparts.advertiseTop')
 		<div class="advertise-box" id="first-step">
 			<div class="order-step">
 				<ul>
@@ -66,13 +53,14 @@
 					</label>
 					<div class="year-publication">
 						<p>{{$data->tag}}</p>
+						@for($i=$nextyear;$i<=$nextyear+2;$i++)
 						<label>
-							<input type="radio" name="issue_{{$data->name}}" year="{{$data->firstyear}}" pr_id="{{$data->id}}">
+							<input type="checkbox" name="issue_{{$data->name}}[]" class="custom-checkbox" year="{{$i}}" pr_id="{{$data->id}}">
 							<div class="box-radio">
-								<span></span>{{$data->firstyear}}
+								<span></span>{{$i}}
 								@if($data->quantity == '1')
 								<div class="choice">
-									<input type="text" value="0" class="qty"  year="{{$data->firstyear}}">
+									<input type="text" value="0" class="qty"  year="{{$i}}">
 									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 									
@@ -80,32 +68,8 @@
 								@endif
 							</div>
 						</label>
-						<label>
-							<input type="radio" name="issue_{{$data->name}}" pr_id="{{$data->id}}" year="{{$data->secondyear}}">
-							<div class="box-radio">
-								<span></span>{{$data->secondyear}}
-								@if($data->quantity == '1')
-								<div class="choice">
-									<input type="text" value="0" class="qty" year="{{$data->secondyear}}">
-									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
-								</div>
-								@endif
-							</div>
-						</label>
-						<label>
-							<input type="radio" name="issue_{{$data->name}}" pr_id="{{$data->id}}" year="{{$data->thirdyear}}" >
-							<div class="box-radio">
-								<span></span>{{$data->thirdyear}}
-								@if($data->quantity == '1')
-								<div class="choice">
-									<input type="text" value="0" class="qty" year="{{$data->thirdyear}}">
-									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
-								</div>
-								@endif
-							</div>
-						</label>
+						@endfor
+						
 					
 					</div>
 

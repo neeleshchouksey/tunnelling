@@ -18,11 +18,11 @@ $(document).on('change','.product-list > label > input[type="checkbox"]',functio
     if(this.checked) {		
 		parent.addClass('show');
 		$('#step-1').addClass('current');
-		parent.find('input[type="radio"]').first().prop('checked',true);		
+		parent.find('.custom-checkbox').first().prop('checked',true);		
     }
 	else{
 		parent.removeClass('show');
-		parent.find('input[type="radio"]').prop('checked',true);		
+		parent.find('.custom-checkbox').prop('checked',false);		
 	}
 	isselectproduct();
 	ischeckboxset();		
@@ -102,7 +102,9 @@ $(document).on('click','#first-step-button',function(){
 	var id = []; var year=[]; var qty=[];var j=0;
 	var product =[];
 	//ajax to add product
-	$('.show > .year-publication > label > input[type="radio"]').each(function(index,value){
+	alert('test');
+	$('.show > .year-publication > label > .custom-checkbox').each(function(index,value){
+
 		if($(this).is(":checked")){
 			product[j] 				=	{};
 			product[j].id		=	$(this).attr('pr_id');
@@ -160,7 +162,7 @@ $(document).on('click',".delete-icon > a",function(){
 
 });
 
-$(document).on('click','input[type="radio"]',function(){
+$(document).on('click','.custom-checkbox',function(){
 	ischeckboxset();
 });
 // calculate price after deduct discount
@@ -190,7 +192,7 @@ function calculateTotal(){
 
 
 function ischeckboxset(){
-	$('.year-publication > label > input[type="radio"]').each(function(index,value){
+	$('.year-publication > label > .custom-checkbox').each(function(index,value){
 		var qty = $(this).next().children('.choice').children('.qty');
 		if($(this).is(":checked")){
 			if(qty.val() == 0||qty.val() == '0'){

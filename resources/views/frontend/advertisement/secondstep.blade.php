@@ -1,26 +1,13 @@
 @extends('layout.frontend.master')
 	@section('content')
-	<section class="subpage-banner text-center adversite">
-	  	<div class="container">
-			<h1>Advertising reservation</h1>
-			<hr>
-			<p>Next publication: 2018</p>
-		</div>
-	  </section>
+	@php
+$nextyear =date('Y',strtotime('+1 year'));
+@endphp
+@include('partials.frontendparts.advertiseSubBanner')
 	 
 	  <section class="subscription-included">
 	  	<div class="container">
-			<div class="top-section">
-				<h3>for reservation contact us or fill the form below:</h3>
-				<div class="right-contact">
-					<div class="topContact">
-						<span><img src="{{url('/images/message-icons.png')}}"></span><a href="mailto:journalsint.@icloud">journalsint.@icloud</a>
-					</div>
-					<div class="topContact">
-						<span><img src="{{url('/images/phone-address-icon.png')}}"></span><a href="tel:442072728444">+44 207 272 8444</a>
-					</div>
-				</div>
-			</div>
+			@include('partials.frontendparts.advertiseTop')
 			<div class="advertise-box" id="second-step">
 				<div class="order-step">
 					<ul>

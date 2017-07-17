@@ -173,4 +173,5 @@
 			</div>
 		</div>
 	</section>
+	@include('partials.frontendparts.contactpopup')
 @endsection

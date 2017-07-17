@@ -67,10 +67,23 @@ class AdvertiseController extends Controller
             if( $value['qty']!='' || $value['qty']!=0)
                 $qty= $value['qty'];
 
-            Cart::add($product->id, $product->name, $product->price, $qty, array('year'=>$value['year']));
+            Cart::add(
+                        $product->id.'_'.$value['year'], 
+                        $product->name, 
+                        $product->price, 
+                        $qty, 
+                        array(  
+                                'year'=>$value['year'],
+                                'dimension'=>$product->dimension,
+                                'quantity'=>$product->quantity,
+                                'image'=>$product->image_name
+                            )
+                    );
             
         }
-        
+        // echo "<pre>";
+        // print_r($custumer_product);
+        // die;
 
         return "secondstepview";
     }
@@ -86,16 +99,22 @@ class AdvertiseController extends Controller
      */
     public function thirdStep(Request $request)
     {
-        $cartCollection =   Cart::getContent();
-        $data           =   $cartCollection->toArray();
-        $data           =   array_values($data);
-        $ids            =   array_column($data,'id');
-        $selectProduct  =   products::find($ids);      
-        $total          =   Cart::getTotal();  
-        $cartSubTotal   =   Cart::getSubTotal();
-        $discount       =   $cartSubTotal   -   $total;
+        //Cart::clear();
+        $cartCollection     =   Cart::getContent();
+        $products           =   $cartCollection->toArray();
+        
+        // echo "<pre>";
+        // print_r($products);
+        // die;
+        $data               =   array_values($products);
+        $ids                =   array_column($data,'id');
+        $selectProduct      =   products::find($ids);      
+        $total              =   Cart::getTotal();  
+        $cartSubTotal       =   Cart::getSubTotal();
+        $discount           =   $cartSubTotal   -   $total;
+
        
-        return view('frontend.advertisement.thirdstep',compact('selectProduct','id','data','total','discount'));
+        return view('frontend.advertisement.thirdstep',compact('selectProduct','id','data','products','total','discount'));
     }
     public function thirdStepSubmit(Request $request)
     {
@@ -107,7 +126,7 @@ class AdvertiseController extends Controller
         $customerinfo->customer_email           =      $getCustomerInfo['customer_email'];
         $customerinfo->phone                    =      $getCustomerInfo['phone'];
         $customerinfo->customer_name            =      $getCustomerInfo['customer_name'];
-         if($getCustomerInfo['country']!='')
+        if($getCustomerInfo['country']!='')
         $customerinfo->country                  =      $getCustomerInfo['country'];
        
         $customerinfo->company_name             =      $getCustomerInfo['company_name'];
@@ -119,15 +138,17 @@ class AdvertiseController extends Controller
         
 
 
-        $cartCollection = Cart::getContent();
-        $data=$cartCollection->toArray();
+        $data = Cart::getContent();
+
 
         foreach ($data as $key => $value) {
-            $product    = new   Advertise;
-            $product->product_id    =   $value['id'];
+            $product                =   new   Advertise;
+            $id                     =   explode('_',$value['id']);
+            $product->product_id    =   $id[0];
             $product->customer_id   =   $customerinfo->id;
             $product->year          =   $value['attributes']['year'];
             $product->qty           =   $value['quantity'];
+            $product->price         =   $value['price'];
             $product->save();
         }
 
