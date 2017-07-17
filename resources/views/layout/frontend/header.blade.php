@@ -3,6 +3,16 @@
   		<div class="logo">
 			<a href="#"><img src="{{url('images/Logo.png')}}" alt="logo"></a>
 		</div>
+		<div class="mobile-block">
+				<span class="nav-open">
+				<div class="hamburger hamburger-container">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+				 </div>
+				</span>
+		</div>
 		<div class="header-right">
 			<div class="navigation">
 				<ul>

@@ -81,9 +81,7 @@ class AdvertiseController extends Controller
                     );
             
         }
-        // echo "<pre>";
-        // print_r($custumer_product);
-        // die;
+        
 
         return "secondstepview";
     }
@@ -99,20 +97,14 @@ class AdvertiseController extends Controller
      */
     public function thirdStep(Request $request)
     {
-        //Cart::clear();
-        $cartCollection     =   Cart::getContent();
+        $cartCollection =   Cart::getContent();
         $products           =   $cartCollection->toArray();
-        
-        // echo "<pre>";
-        // print_r($products);
-        // die;
         $data               =   array_values($products);
         $ids                =   array_column($data,'id');
         $selectProduct      =   products::find($ids);      
         $total              =   Cart::getTotal();  
         $cartSubTotal       =   Cart::getSubTotal();
         $discount           =   $cartSubTotal   -   $total;
-
        
         return view('frontend.advertisement.thirdstep',compact('selectProduct','id','data','products','total','discount'));
     }
@@ -138,8 +130,8 @@ class AdvertiseController extends Controller
         
 
 
-        $data = Cart::getContent();
-
+        $cartCollection = Cart::getContent();
+        $data=$cartCollection->toArray();
 
         foreach ($data as $key => $value) {
             $product                =   new   Advertise;

@@ -10,6 +10,27 @@ $(document).ready(function(){
 	}
 	window.onload = init;
 	//calculateTotal();
+	
+	$('.nav-open').on('click',function(){
+		$('body').toggleClass('menu-open');
+		$('.header-right').slideToggle('slow');
+	});
+	
+	$('.text-filed').keyup(function(){
+
+  if($(this).val().length > 0){
+
+    $(this).parent().addClass('done');
+    
+  }
+  
+  else{
+    $(this).parent().removeClass('done');
+
+  }
+  
+});
+	
 });
 	
 
@@ -102,7 +123,7 @@ $(document).on('click','#first-step-button',function(){
 	var id = []; var year=[]; var qty=[];var j=0;
 	var product =[];
 	//ajax to add product
-	alert('test');
+
 	$('.show > .year-publication > label > .custom-checkbox').each(function(index,value){
 
 		if($(this).is(":checked")){
