@@ -59,6 +59,21 @@
             <i class="fa fa-share"></i> <span>Company Info</span>
           </a>
         </li>
+         <li >
+          <a href="{{url('admin/contact')}}">
+            <i class="fa fa-share"></i> <span>Contact Messages</span>
+          </a>
+        </li>
+         <li >
+          <a href="{{url('admin/subscribe')}}">
+            <i class="fa fa-share"></i> <span>Subscriptions</span>
+          </a>
+        </li>
+         <li >
+          <a href="{{url('admin/advertise')}}">
+            <i class="fa fa-share"></i> <span>Advertises</span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

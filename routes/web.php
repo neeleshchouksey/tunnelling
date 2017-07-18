@@ -56,6 +56,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
        Route::resource('pages/section', 'PagesSectionController');
        Route::resource('slider', 'SliderController');
        Route::get('slider/addnew/{id}', 'SliderController@addnew');
+       Route::get('contact/ajax', 'ContactMessageController@ajax');
+       Route::resource('contact', 'ContactMessageController');
+       Route::get('subscribe/ajax', 'SubscriptionController@ajax');
+       Route::resource('subscribe', 'SubscriptionController');
+       Route::get('advertise/ajax', 'AdvertiseController@ajax');
+       Route::resource('advertise', 'AdvertiseController');
 
     });
 });

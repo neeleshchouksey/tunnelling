@@ -131,18 +131,34 @@ class AdvertiseController extends Controller
 
 
         $cartCollection = Cart::getContent();
-        $data=$cartCollection->toArray();
+        $subTotal       = Cart::getSubTotal();
+        $cartTotal      = Cart::getTotal();
+        $condition      = Cart::getCondition('Discount 10%');
+        $data           =   $cartCollection->toArray();
 
-        foreach ($data as $key => $value) {
-            $product                =   new   Advertise;
-            $id                     =   explode('_',$value['id']);
-            $product->product_id    =   $id[0];
-            $product->customer_id   =   $customerinfo->id;
-            $product->year          =   $value['attributes']['year'];
-            $product->qty           =   $value['quantity'];
-            $product->price         =   $value['price'];
-            $product->save();
+        $productdetails=$cartCollection->toJson();
+        // echo "<pre>";
+        // print_r(count($data));
+        // die;
+        if(count($data)>1){
+            $discount =10;
         }
+        else{
+            $discount = 0;
+        }
+        //foreach ($data as $key => $value) {
+            $product                =   new   Advertise;
+            // $id                     =   explode('_',$value['id']);
+            $product->productdetail    =   $productdetails;
+            $product->customer_id       =   $customerinfo->id;
+            $product->total             =   $cartTotal;
+            $product->subtotal          =   $subTotal;
+            $product->discount          =   $discount;
+            // $product->year          =   $value['attributes']['year'];
+            // $product->qty           =   $value['quantity'];
+            // $product->price         =   $value['price'];
+            $product->save();
+        //}
 
         $to         =   $customerinfo->customer_email;
         $subject    =   "Reservation Acknowledgement  - ".$customerinfo->order_uni_no;

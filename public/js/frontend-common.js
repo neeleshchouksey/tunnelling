@@ -16,7 +16,7 @@ $(document).ready(function(){
 		$('.header-right').slideToggle('slow');
 	});
 	
-	$('.text-filed').keyup(function(){
+	$('.text-filed').blur(function(){
 
   if($(this).val().length > 0){
 

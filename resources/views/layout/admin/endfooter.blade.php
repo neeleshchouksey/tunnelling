@@ -230,6 +230,7 @@
 
 <script src="{{asset('adminasset/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('adminasset/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 @if(request()->is('admin/advertiser')==1)
 <script>
@@ -255,6 +256,31 @@
 @if(request()->is('admin/slider/*')==1)
 
 <script src="{{asset('js/admin/slider/slider.js')}}"></script>
+
+@endif
+@if(request()->is('admin/contact')==1)
+  <script>
+  var url = "{{url('admin/contact/ajax')}}";
+  
+</script>
+  <script src="{{asset('js/admin/contact/contact.js')}}"></script>
+
+@endif
+@if(request()->is('admin/subscribe')==1)
+  <script>
+  var url = "{{url('admin/subscribe/ajax')}}";
+  
+</script>
+  <script src="{{asset('js/admin/subscribe/subscribe.js')}}"></script>
+
+@endif
+@if(request()->is('admin/advertise')==1)
+  <script>
+  var url = "{{url('admin/advertise/ajax')}}";
+  
+  </script>
+  <script src="{{asset('js/admin/advertise/advertise.js')}}"></script>
+
 @endif
 
 <script src="{{asset('adminasset/dist/js/pages/dashboard.js')}}"></script>
