@@ -33,7 +33,7 @@
                 <thead>
                 <tr>
                   <th> Image</th>
-                  <th> Title</th>
+<!--                   <th> Title</th> -->
                   <th>Action</th>
                  
                 </tr>

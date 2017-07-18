@@ -14,7 +14,7 @@
 			<div class="choice">
 			
 			@if($product['attributes']['quantity']>0)
-				<input type="text" value="{{($product['attributes']['quantity']>1)?	$product['attributes']['quantity']:'1' }}" class="qty" product_id="{{$product['id']}}" get_url="{{url('/advertise/fetchproductprice')}}">
+				<input type="text" value="{{($product['quantity']>1)?	$product['quantity']:'1' }}" class="qty" product_id="{{$product['id']}}" get_url="{{url('/advertise/fetchproductprice')}}">
 			@else
 				<input type="hidden" value="1" class="qty" product_id="{{$product['id']}}" get_url="{{url('/advertise/fetchproductprice')}}"> 1
 			@endif
@@ -24,9 +24,9 @@
 		</div>
 	</div>
 	<div class="table-cell price-td">
-		<div class="price">£{{$product['price']}}</div>
+		<div class="price">&pound;{{$product['price']}}</div>
 	</div>
 	<div class="table-cell subtotal-td">
-		<div class="sub-total new_subtotal_{{$product['id']}}">£{{($product['quantity'] > 0)?($product['price'] * $product['quantity']):$product['price']}}</div>
+		<div class="sub-total new_subtotal_{{$product['id']}}">&pound;{{($product['quantity'] > 0)?($product['price'] * $product['quantity']):$product['price']}}</div>
 	</div>
 </div>

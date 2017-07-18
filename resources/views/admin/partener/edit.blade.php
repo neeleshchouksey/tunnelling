@@ -29,7 +29,7 @@
                           <div class="box-body">
                             <table class="table">
                               <tbody>
-                                <tr>
+                                <!-- <tr>
                                   <td><strong>Title</strong></td>
                                   <td>:</td>
                                   <td>
@@ -44,7 +44,7 @@
                                     <textarea type="text" class="form-control" name="description" required>{{$partner->description}}</textarea>
                                     <span class="show_error_msg"></span>
                                   </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                   <td><strong>Seclect Image</strong></td>
                                   <td>:</td>

@@ -47,8 +47,8 @@ class ParternersController extends Controller
        
             if($request->file('photo')->move(public_path('uploads/partner'), $imageName)){
                 $partner                =   new Partner;
-                $partner->name          =   $request->name;
-                $partner->description   =   $request->description;
+               // $partner->name          =   $request->name;
+                //$partner->description   =   $request->description;
                 $partner->image         =   $imageName;
                 $partner->save();
                 return redirect('admin/partner');
@@ -95,7 +95,7 @@ class ParternersController extends Controller
             $rand=rand();
            
             $partener               =   Partner::find($id);
-            $partener->name         =   $request->name;
+            //$partener->name         =   $request->name;
        
             
             if($request->file('photo')!=''){
@@ -139,7 +139,7 @@ class ParternersController extends Controller
             $delteBtn               =   "<a href='".route("partner.destroy",['id'=>$value->id])."' data-method='delete' class='btn btn-danger delete_partener' value='".$value->id."'><i class='fa  fa-trash'></i></a>";
 
             $records[$i]['image']   =   "<img src='".asset("uploads/partner/$value->image")."' class='img img-md' />";
-            $records[$i]['name']    =   $value->name;  
+            // $records[$i]['name']    =   $value->name;  
             $records[$i]['action']  =   $editBtn." ".$delteBtn;
             $i++;
         }
