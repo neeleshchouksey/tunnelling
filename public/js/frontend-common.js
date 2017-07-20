@@ -1,7 +1,7 @@
 $(document).ready(function(){	
 
 	if($(".danger_alert").length >0){
-		$('html,body').animate({ scrollTop: $(".danger_alert").offset().top},
+		$('html,body').animate({ scrollTop: $(".help-block + .text-outer .text-filed").offset().top-100},
         'slow');
 	}
 
@@ -77,9 +77,9 @@ $(document).on('click','.btnclic',function(){
 				    success: function (data) { 		    	
 				    			
 					    		var result 	= JSON.parse(data); 
-				    			sub_elem.text('£'+result.total);
-					    		$("#third-step-total").text('£'+result.gtotal);
-					    		$("#third-step-discount").text('£'+result.discount);
+				    			sub_elem.html('&pound;'+result.total);
+					    		$("#third-step-total").html('&pound;'+result.gtotal);
+					    		$("#third-step-discount").html('&pound;'+result.discount);
 							}		    
 				});	
 
@@ -100,10 +100,10 @@ $(document).on('click','.btnclic',function(){
 				    data:{id:id,action:"update",unit:$(this).prevAll('.qty').val()},				
 				    success: function (data) { 		    	
 					    		var result 	= JSON.parse(data); 
-				    			sub_elem.text('£'+result.total);
+				    			sub_elem.html('&pound;'+result.total);
 
-					    		$("#third-step-total").text('£'+result.gtotal);
-					    		$("#third-step-discount").text('£'+result.discount);
+					    		$("#third-step-total").html('&pound;'+result.gtotal);
+					    		$("#third-step-discount").html('&pound;'+result.discount);
 							}		    
 				});	
 

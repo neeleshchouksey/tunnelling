@@ -48,7 +48,7 @@ $nextyear =date('Y',strtotime('+1 year'));
 							<div class="icon"><img class="product-image" src='{{asset("/images/$data->image_name")}}'></div>
 							<h5 class = "product-heading">{{$data->name}}</h5>
 							<p class = "product-dimension">{{$data->dimension}}</p>
-							<span class = "product-price">£{{$data->price}}</span>
+							<span class = "product-price">&pound;{{$data->price}}</span>
 						</div>
 					</label>
 					<div class="year-publication">

@@ -59,8 +59,8 @@ $nextyear =date('Y',strtotime('+1 year'));
 					</div>
 					<div class="total-section">
 						<div class="pull-right">
-							<p>10% discount: <span id="third-step-discount">-£{{$discount}}</span></p>
-							<p class="total">total: <span id="third-step-total">£{{$total}}</span></p>
+							<p>10% discount: <span id="third-step-discount">-&pound;{{$discount}}</span></p>
+							<p class="total">total: <span id="third-step-total">&pound;{{$total}}</span></p>
 						</div>
 					</div>
 				</div>

@@ -41,7 +41,7 @@
                 <tbody>
                     @foreach($slidertype->slider as $slider)
                   <tr>
-                    <td>{{$slider->slide}}</td>
+                    <td><img class="img img-responsive img-sm" src="{{asset('uploads/slider/'.$slider->slide)}}"></td>
                      <td>{{$slider->caption}}</td>
                     <td>
                       <a href='{{url("admin/slider/$slider->id/edit")}}' class='btn btn-info'><i class='fa fa-pencil'></i></a> 

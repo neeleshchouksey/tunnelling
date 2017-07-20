@@ -34,7 +34,7 @@
                           <div class="box-body">
                             <table class="table">
                               <tbody>
-                                <tr>
+                                <!-- <tr>
                                   <td><strong>Title</strong></td>
                                   <td>:</td>
                                   <td>
@@ -49,7 +49,7 @@
                                     <textarea type="text" class="form-control" name="description" required></textarea>
                                     <span class="show_error_msg"></span>
                                   </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                   <td><strong>Select Image</strong></td>
                                   <td>:</td>

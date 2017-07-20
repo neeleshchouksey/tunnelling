@@ -29,13 +29,14 @@ $(document).on('click', 'a.delete_keyreader', function(e) {
     e.preventDefault(); // does not go through with the link.
 
     var $this = $(this);
-
-    $.post({
-        type: $this.data('method'),
-        url: $this.attr('href')
-    }).done(function (data) {
-        alert('Record Deleted Successfully');
-        keyreader();
-        console.log(data);
-    });
+    if(confirm('Are you sure want to delete this ??')){
+      $.post({
+          type: $this.data('method'),
+          url: $this.attr('href')
+      }).done(function (data) {
+          alert('Record Deleted Successfully');
+          keyreader();
+          console.log(data);
+      });
+    }
 });

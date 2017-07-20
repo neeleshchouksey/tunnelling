@@ -7,10 +7,10 @@
 				<div class="left-text">
 					<p>{{$slider->caption}}</p>
 					<h1>{{$slider->heading}}</h1>
-					<a href="#" class="btn-icon">
+					<a href="{{url('subscribe')}}" class="btn-icon">
 						<span class="btn-download">subscribe for free </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span>
 					</a>
-					<a href="{{url('subscribe')}}" class="bordered-btn">Advertise</a>
+					<a href="{{url('advertise/firststep')}}" class="bordered-btn">Advertise</a>
 				</div>
 				<div class="banner-image ">
 					<img src='{{asset("uploads/slider/$slider->slide")}}' alt="magazines">

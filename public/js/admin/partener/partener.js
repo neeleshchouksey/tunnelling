@@ -12,7 +12,7 @@ partener();
       "order": [[ 0, "desc" ]],
       columns: [
           { data: 'image' },
-          { data: 'name' },
+          // { data: 'name' },
           { data: 'action'}
          
       ]
@@ -27,15 +27,16 @@ partener();
 });
 $(document).on('click', 'a.delete_partener', function(e) {
     e.preventDefault(); // does not go through with the link.
+    if(confirm('Are you sure want to delete this ??')){
+      var $this = $(this);
 
-    var $this = $(this);
-
-    $.post({
-        type: $this.data('method'),
-        url: $this.attr('href')
-    }).done(function (data) {
-        alert('Record Deleted Successfully');
-        partener();
-        console.log(data);
-    });
+      $.post({
+          type: $this.data('method'),
+          url: $this.attr('href')
+      }).done(function (data) {
+          alert('Record Deleted Successfully');
+          partener();
+          console.log(data);
+      });
+    }
 });

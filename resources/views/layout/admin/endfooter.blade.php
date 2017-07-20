@@ -230,7 +230,6 @@
 
 <script src="{{asset('adminasset/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('adminasset/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 @if(request()->is('admin/advertiser')==1)
 <script>
@@ -256,7 +255,6 @@
 @if(request()->is('admin/slider/*')==1)
 
 <script src="{{asset('js/admin/slider/slider.js')}}"></script>
-
 @endif
 @if(request()->is('admin/contact')==1)
   <script>
