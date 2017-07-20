@@ -10,7 +10,7 @@
 					<a href="{{url('subscribe')}}" class="btn-icon">
 						<span class="btn-download">subscribe for free </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span>
 					</a>
-					<a href="{{url('advertise/firststep')}}" class="bordered-btn">Advertise</a>
+					<a href="{{url('advertise')}}" class="bordered-btn">Advertise</a>
 				</div>
 				<div class="banner-image ">
 					<img src='{{asset("uploads/slider/$slider->slide")}}' alt="magazines">
@@ -80,6 +80,7 @@
 					{{ csrf_field() }}
 						<div class="form-row">
 							<div class="sub-text">
+								
 								<div class="text-outer">
 								<input type="email" class="text-filed" placeholder="" name="email">
 								<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="subscribe">
@@ -96,13 +97,17 @@
 				</div>
 		    </div>
 	</section>
+	@php
+		$partners 	=	Helper::partner();
+	@endphp
+	@if(count($partners)>0)
 	  <section class="our-partner text-center">
 	  		<div class="container">
 		  		<h2>our partners</h2>
 				<hr>
 				<div class="partner-list">
 					<ul>
-						@foreach(Helper::partner() as $partner)
+						@foreach($partners as $partner)
 							<li><a href="#"><img src='{{asset("uploads/partner/$partner->image")}}' alt="Crossrail"></a></li>
 							<!-- <li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
 							<li><a href="#"><img src="images/crossrail.png" alt="Crossrail"></a></li>
@@ -115,16 +120,20 @@
 				<p>Want to be on our pages? Tell potential castomers about your products! <a href="{{url('advertise/firststep')}}">Advertise on our pages.</a></p>
 		  </div>
 	  </section>
+	 @endif
+	 
 	<section class="contact-us text-center">
 	  	<div class="container">
 			<h2>Contact us</h2>
 			<hr>
 			<p>We are here to help. Call us anytime.</p>
+			 @php 
+      			$companyInfo=Helper::companyinfo()
+    		@endphp
 			<div class="contact-addresses">
-				<p><a href="mailto:journalsint.@icloud"><img src="{{url('/images/message-address.png')}}"> journalsint.@icloud</a></p>
-				<p class="middle-margin"><img src="{{url('/images/pin-address.png')}}"> j34 Elthorne Rd, Islington,<br>
-				London N19 4AG</p>
-				<p><a href="tel:442072728444"><img src="{{url('/images/phone-address.png')}}"> +44 207 272 8444</a></p>
+				<p><a href="mailto:journalsint.@icloud"><img src="{{url('/images/message-address.png')}}"> {{$companyInfo->company_email}}</a></p>
+				<p class="middle-margin custom-home-contact-address"><img src="{{url('/images/pin-address.png')}}"> {{$companyInfo->company_address}}</p>
+				<p><a href="tel:442072728444"><img src="{{url('/images/phone-address.png')}}"> {{$companyInfo->contact_no}}</a></p>
 			</div>
 			<form action="{{url('contact/store')}}" method="post">
 			{{ csrf_field() }}
@@ -151,7 +160,7 @@
 					<li>
 						<div class="text-outer">
 						<input type="text" class="text-filed" placeholder="" name="phone" value="{{Input::old('phone')}}">
-						<span>Phone</span>
+						<span>Phone(optional)</span>
 						</div>
 					</li>
 					<li>

@@ -2,7 +2,7 @@
     $companyInfo	=	Helper::companyinfo()
 @endphp
 <div class="top-section">
-	<h3>for reservation contact us or fill the form below:</h3>
+	<h3>for reservations contact us or fill the form below:</h3>
 	<div class="right-contact">
 		<div class="topContact">
 			<span><img src = "{{url('/images/message-icons.png')}}"></span><a href="mailto:journalsint.@icloud">{{$companyInfo->company_email}}</a>

@@ -84,6 +84,8 @@ class SubscriptionController extends Controller
     public function destroy($id)
     {
         //
+        $subscribe  = Subscribe::find($id);
+        $subscribe->delete();
     }
     public function ajax()
     {
@@ -96,7 +98,7 @@ class SubscriptionController extends Controller
           //print_r(expression)
           # code...
             $actionBtn          =   "<a href='".url("admin/subscribe/$value->id")."' class='btn btn-info'><i class='fa fa-eye'></i></a> ";
-            // $actionBtn          =   " <a href='".route("advertiser.destroy",['id'=>$value->id])."' data-method='delete' class='btn btn-danger delete_advertiser' value='".$value->id."'><i class='fa  fa-trash'></i></a>";
+            $actionBtn          .=   " <a href='".route("subscribe.destroy",['id'=>$value->id])."' data-method='delete' class='btn btn-danger delete_subscribe' value='".$value->id."'><i class='fa  fa-trash'></i></a>";
 
             $records[$i]['name']              =     $value->name;
             $records[$i]['email']             =     $value->email;

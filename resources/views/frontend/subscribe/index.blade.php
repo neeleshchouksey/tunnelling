@@ -10,10 +10,14 @@
 	  <section class="subscription-included">
 	  	<div class="container">
 		   <div class="subscription-form">
-		   @include('layout.frontend.error')
-			<form method="post" action="{{url('/subscribe/store')}}">
+		  	<form method="post" action="{{url('/subscribe/store')}}">
 						<div class="form-row">
 							<div class="sub-text">
+								@if ($errors->has('email'))
+			                            <span class="help-block">
+			                                <strong>{{ $errors->first('email') }}</strong>
+			                            </span>
+			                    @endif	
 								<div class="text-outer">
 								<input type="email" class="text-filed" placeholder="" name="email">
 								{{ csrf_field() }}

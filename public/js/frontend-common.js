@@ -1,8 +1,22 @@
 $(document).ready(function(){	
 
-	if($(".danger_alert").length >0){
+	if($(".help-block + .text-outer .text-filed").length >0){
+	
 		$('html,body').animate({ scrollTop: $(".help-block + .text-outer .text-filed").offset().top-100},
         'slow');
+       
+        
+	}
+	else if($('.right-form .danger_alert').length>0){
+		$('html,body').animate({ scrollTop: $(".danger_alert").offset().top-100},
+        'slow');
+	}
+	else if($(".danger_alert").length >0){
+	
+		
+        $('html,body').animate({ scrollTop: $(".danger_alert").closest('section').children().children('.contact-addresses').offset().top-100},
+        'slow');
+        
 	}
 
 	function init() {

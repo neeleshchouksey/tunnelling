@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\contact;
+use App\Contact;
 
-use App\companyinfo;
+use App\Companyinfo;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -47,11 +47,12 @@ class ContactController extends Controller
         if($request->company!='')
         $contactData->company        =   $request->company;
         $contactData->email          =   $request->email;
+        if($request->phone!='')
         $contactData->phone          =   $request->phone;
         $validator  =    Validator::make($request->all(), [
                             'name'      =>'required',
                             'email'     =>'required|email',
-                            'phone'     =>'required',
+                            
                             'message'   =>'required',
                             ]);
         if ($validator->fails()) {

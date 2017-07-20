@@ -87,6 +87,9 @@ class AdvertiseController extends Controller
     public function destroy($id)
     {
         //
+        $customerinfo   = Customerinfo::find($id);
+        $customerinfo->advertise->delete();
+        $customerinfo->delete();
     }
      public function ajax()
     {
@@ -99,7 +102,7 @@ class AdvertiseController extends Controller
           //print_r(expression)
           # code...
             $actionBtn          =   "<a href='".url("admin/advertise/$value->id")."' class='btn btn-info'><i class='fa fa-eye'></i></a> ";
-            // $actionBtn          =   " <a href='".route("advertiser.destroy",['id'=>$value->id])."' data-method='delete' class='btn btn-danger delete_advertiser' value='".$value->id."'><i class='fa  fa-trash'></i></a>";
+            $actionBtn          .=   " <a href='".route("advertise.destroy",['id'=>$value->id])."' data-method='delete' class='btn btn-danger delete_advertise' value='".$value->id."'><i class='fa  fa-trash'></i></a>";
 
             $records[$i]['name']              =     $value->customer_name;
             $records[$i]['email']             =     $value->customer_email;

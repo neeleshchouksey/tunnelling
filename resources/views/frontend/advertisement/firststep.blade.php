@@ -27,7 +27,7 @@ $nextyear =date('Y',strtotime('+1 year'));
 					</li>
 					<li id="step-3">
 						<a href="javascript:void(0)">
-							<span class="text">2</span>
+							<span class="text">3</span>
 							<span class="icon"><img src="{{asset('/images/checked.png')}}" alt=""></span>
 							summary & confirmation
 						</a>
@@ -52,7 +52,7 @@ $nextyear =date('Y',strtotime('+1 year'));
 						</div>
 					</label>
 					<div class="year-publication">
-						<p>{{$data->tag}}</p>
+						<p>{{$data->tag}}<span class="s-right">Quantity</span></p>
 						@for($i=$nextyear;$i<=$nextyear+2;$i++)
 						<label>
 							<input type="checkbox" name="issue_{{$data->name}}[]" class="custom-checkbox" year="{{$i}}" pr_id="{{$data->id}}">

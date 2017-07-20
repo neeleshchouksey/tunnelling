@@ -16,12 +16,16 @@
 		   <div class="subscription-form new-message width-900">
 			   <p>We want to know you better! Just enter your personal information:</p>
 				<div class="form-content">
-				@include('layout.frontend.error')
-
+				
 				<ul>
 					<li>
 						{{ csrf_field() }}
 						<input type="hidden" name="id" value="{{$id}}">
+						@if ($errors->has('name'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
 						<div class="text-outer">
 						<input class="text-filed" placeholder="" type="text" name="name" value="{{Input::old('name')}}"
 >
@@ -29,12 +33,18 @@
 						</div>
 							</li>
 					<li>
+
 						<div class="text-outer">
 						<input class="text-filed" placeholder="" type="text" name="country">
 						<span>Country (optional)</span>
 						</div>
 					</li>
 					<li>
+						@if ($errors->has('company'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('company') }}</strong>
+                            </span>
+                        @endif
 						<div class="text-outer">
 						<input class="text-filed" placeholder="" type="text" name="company" value="{{Input::old('company')}}"
 >
@@ -42,6 +52,11 @@
 						</div>
 					</li>
 					<li>
+						@if ($errors->has('job_title'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('job_title') }}</strong>
+                            </span>
+                        @endif
 						<div class="text-outer">
 						<input class="text-filed" placeholder="" type="text" name="job_title">
 						<span>Job title (optional)</span>

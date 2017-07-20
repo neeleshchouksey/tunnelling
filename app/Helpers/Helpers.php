@@ -7,7 +7,9 @@ use App\Keyreader;
 use App\Advertiser;
 use App\Companyinfo;
 use App\Slidertype;
-
+use App\Advertise;
+use App\Contact;
+use App\Subscribe;
 class Helpers
 {
     public static function pages()
@@ -34,6 +36,19 @@ class Helpers
     public static function slidertype()
     {
         return $slidertype = Slidertype::all();
+    }
+    public static function advertise()
+    {
+        return $advertise = Advertise::all();
+    }
+   
+    public static function contact()
+    {
+        return $contact = Contact::all();
+    }
+    public static function subscriptions()
+    {
+        return $subscribe = Subscribe::all();
     }
   
   

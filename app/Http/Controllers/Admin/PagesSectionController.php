@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\PageSection;
+use App\Pagesection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -74,8 +74,11 @@ class PagesSectionController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $key        =   key($request->section);
-        $section    =   PageSection::find($id);
+        $getsectidondata    =   $request->section;
+        
+        $key        =   key($getsectidondata);
+
+        $section    =   Pagesection::find($id);
 
         if($section->type=='file'){
             $rand=rand();

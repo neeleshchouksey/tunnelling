@@ -26,7 +26,7 @@ $nextyear =date('Y',strtotime('+1 year'));
 					</li>
 					<li id="step-3" class="current">
 						<a href="javascript:void(0)">
-							<span class="text">2</span>
+							<span class="text">3</span>
 							<span class="icon"><img src="{{url('/images/checked.png')}}" alt=""></span>
 							summary & confirmation
 						</a>

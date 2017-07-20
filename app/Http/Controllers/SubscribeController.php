@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\subscribe;
+use App\Subscribe;
 use App\companyinfo;
 use Illuminate\Http\Request;
 

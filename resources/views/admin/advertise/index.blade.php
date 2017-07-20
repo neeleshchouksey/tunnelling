@@ -5,12 +5,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Subscriptions
+        Advertises
         <!-- <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Subscriptions</a></li>
+        <li><a href="#">Advertises</a></li>
         <!-- <li class="active">Data tables</li> -->
       </ol>
     </section>
@@ -24,7 +24,7 @@
           
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Subscriptions List</h3>
+              <h3 class="box-title">Advertises List</h3>
               <!-- <a href="{{url('admin/advertiser/create')}}" class="btn btn-success pull-right"> Add New </a> -->
             </div>
             <!-- /.box-header -->

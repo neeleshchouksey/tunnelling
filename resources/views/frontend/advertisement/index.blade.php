@@ -7,10 +7,10 @@
 				<div class="left-text">
 					<p>{{$slider->caption}}</p>
 					<h1>{{$slider->heading}}</h1>
-					<a href="{{url('subscribe')}}" class="btn-icon">
-						<span class="btn-download">subscribe for free </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span>
+					<a href="{{url('advertise/firststep')}}" class="btn-icon">
+						<span class="btn-download">Reserve Ad </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span>
 					</a>
-					<a href="{{url('advertise/firststep')}}" class="bordered-btn">Advertise</a>
+					<a href="{{asset('pdf/TUNNELLINGINTMEDIAPACK.pdf')}}" target="_blank" class="bordered-btn">View Media Pack</a>
 				</div>
 				<div class="banner-image ">
 					<img src='{{asset("uploads/slider/$slider->slide")}}' alt="magazines">
@@ -26,8 +26,10 @@
 		  	</div>	
 	  </section>
 	  <!-- <section class="banner-example">BANNER</section> -->
+
 	  <section class="about-publication">
 	  	<div class="container">
+
 			<div class="width-50 pull-left padding-right">
 				<div class="four-block">
 					<div class="width-50 pull-left">
@@ -47,12 +49,12 @@
 					<div class="width-50 pull-left">
 					<div class="block-content">
 							<h3>7000 copies <img src="{{url('/images/copies.png')}}"></h3>
-							<p>A MINIMUM OF PRINTED<br>COPIES DISTRIBUTED FREE<br>OF CHARGE</p>
+							<p>MINIMUM OF  7000 PRINTED<br>COPIES DISTRIBUTED FREE<br>OF CHARGE</p>
 						</div>
 					</div>
 					<div class="width-50 pull-left">
 					<div class="block-content">
-							<h3>Free Ppdf <img src="{{url('/images/free-pdf.png')}}"></h3>
+							<h3>Free Pdf <img src="{{url('/images/free-pdf.png')}}"></h3>
 							<p>A FREE PDF version will also<br>be distributed and<br>be available to download</p>
 						</div>
 					</div>
@@ -127,13 +129,18 @@ A FREE 6 MONTH LOGO LINK ON OUR WEBSITE</h3>
 			</div>
 		 </div>
 	  </section>
+	  @php 
+	  $advertisers 		= Helper::advertiser();
+	  @endphp
+	  
 	 <section class="our-partner text-center padding-top-zero">
 	  		<div class="container">
+	  			@if(count($advertisers)>0)
 		  		<h2>they are already advertise on our pages</h2>
 				<hr>
 				<div class="partner-list">
 					<ul>
-						@foreach(Helper::advertiser() as $advertiser)
+						@foreach($advertisers as $advertiser)
 						<li><a href="#"><img src='{{asset("uploads/advertiser/$advertiser->advertiser")}}' alt="Crossrail"></a></li>
 
 <!-- 						<li><a href="#"><img src="{{url('/images/crossrail.png')}}" alt="Crossrail"></a></li>
@@ -144,7 +151,9 @@ A FREE 6 MONTH LOGO LINK ON OUR WEBSITE</h3>
 						@endforeach
 					</ul>
 				</div>
+				@endif
 				<a href="{{url('/advertise/firststep')}}" class="btn-icon shadow-none"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="{{url('/images/award-iocn.png')}}" alt="download-btn"></span></a>
 		  </div>
 	  </section>
+	  
 @endsection

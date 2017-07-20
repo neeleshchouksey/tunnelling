@@ -85,6 +85,8 @@ class ContactMessageController extends Controller
     public function destroy($id)
     {
         //
+        $contact    = Contact::find($id);
+        $contact->delete();
     }
     public function ajax()
     {
@@ -97,7 +99,7 @@ class ContactMessageController extends Controller
           //print_r(expression)
           # code...
             $actionBtn          =   "<a href='".url("admin/contact/$value->id")."' class='btn btn-info'><i class='fa fa-eye'></i></a> ";
-            // $actionBtn          =   " <a href='".route("advertiser.destroy",['id'=>$value->id])."' data-method='delete' class='btn btn-danger delete_advertiser' value='".$value->id."'><i class='fa  fa-trash'></i></a>";
+            $actionBtn         .=   " <a href='".route("contact.destroy",['id'=>$value->id])."' data-method='delete' class='btn btn-danger delete_contact' value='".$value->id."'><i class='fa  fa-trash'></i></a>";
 
             $records[$i]['name']              =     $value->name;
             $records[$i]['email']             =     $value->email;

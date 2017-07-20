@@ -1,5 +1,5 @@
-subscribe();
-  function subscribe () {
+advertise();
+  function advertise () {
     // body...
     $("#subscribe_list_table").DataTable({
     destroy:true,
@@ -26,17 +26,18 @@ subscribe();
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
 });
-$(document).on('click', 'a.delete_subscribe', function(e) {
+$(document).on('click', 'a.delete_advertise', function(e) {
     e.preventDefault(); // does not go through with the link.
 
     var $this = $(this);
-
-    $.post({
-        type: $this.data('method'),
-        url: $this.attr('href')
-    }).done(function (data) {
-        alert('Record Deleted Successfully');
-        subscribe();
-        console.log(data);
-    });
+    if(confirm('Are you sure want to delete this ??')){
+      $.post({
+          type: $this.data('method'),
+          url: $this.attr('href')
+      }).done(function (data) {
+          alert('Record Deleted Successfully');
+          advertise();
+          console.log(data);
+      });
+    }
 });

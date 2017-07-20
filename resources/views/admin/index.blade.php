@@ -1,6 +1,11 @@
 @extends('layout.admin.master')
 @section('content')
+@php
+  $newOrders      = Helper::advertise();
+  $contatMessages = Helper::contact();
+  $subscriptions  = Helper::subscriptions();
 
+@endphp
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -23,7 +28,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3>{{ $newOrders->count()}}</h3>
 
               <p>New Orders</p>
             </div>
@@ -38,9 +43,9 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3>{{$contatMessages->count()}}</h3>
 
-              <p>Bounce Rate</p>
+              <p>Contact Messages</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -53,9 +58,9 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3>{{$subscriptions->count()}}</h3>
 
-              <p>User Registrations</p>
+              <p>User Subscriptions</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
