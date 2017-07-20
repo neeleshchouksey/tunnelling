@@ -46,7 +46,7 @@
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td><strong>Seclect Image</strong></td>
+                                  <td><strong>Select Image</strong></td>
                                   <td>:</td>
                                   <td>
                                     <input type="file" class="form-control" name="photo" >
