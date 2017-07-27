@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Subscribe;
 use App\companyinfo;
+use App\Page;
 use Illuminate\Http\Request;
-
+use View;
 use Carbon\Carbon;
 use App\Page;
 use Illuminate\Support\Facades\Mail;
@@ -14,13 +15,28 @@ use Illuminate\Support\Facades\Validator;
 
 class SubscribeController extends Controller
 {
+    public function __construct()
+    {
+        $page                =   Page::where('slug','subscribe')->first();
+
+        $subscribe            =   (object) array();
+       
+        $subscribe->title     =   $page->section()->where('meta_key','title')->value('meta_value');
+        $subscribe->text      =   $page->section()->where('meta_key','text')->value('meta_value');
+        View::share('subscribe', $subscribe);
+
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
+        
+       
+        
         return view('frontend.subscribe.index');
     }
 
@@ -124,21 +140,21 @@ class SubscribeController extends Controller
         $headers    =   "From: subscribe@tunnellingint.com" . "\r\n";
         $headers    .= "MIME-Version: 1.0" . "\r\n";
         $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        mail($to , $subject, $message, $headers);
+        if(mail($to , $subject, $message, $headers)):
 
             $todayData=subscribe::where('created_at', '>=', Carbon::today()->toDateString())->get();            
             if($todayData){
                 $owner_to         =   "subscribe@tunnellingint.com"; 
-                //$owner_to         =    "gaurav@whitebrains.in";
+                //$owner_to         =    "jainpiyush68@gmail.com";
                 $owner_subject    =   "New Subscription from Website - ".$updateData->uni_subs_no;
                 $owner_message    =   view('partials.emails.suscribeemail')->with('todayData',$todayData);
                 $owner_headers    =   "From:$updateData->email" . "\r\n";
                 $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";
                 $owner_headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
-                mail($owner_to , $owner_subject, $owner_message, $owner_headers);
+                if(mail($owner_to , $owner_subject, $owner_message, $owner_headers))
                 return view('frontend.subscribe.suscriptionlast');
             }
-         
+         endif;
        }
 
     }

@@ -6,11 +6,23 @@ use App\Advertise;
 use Illuminate\Http\Request;
 use App\Customerinfo;
 use App\Products;
+use View;
 use Session;
 use Cart;
 use App\Page;
 class AdvertiseController extends Controller
 {
+    public function __construct()
+    {
+        $page                      =   Page::where('slug','advertiseoffer')->first();
+
+        $advertiseoffer            =   (object) array();
+       
+        $advertiseoffer->title     =   $page->section()->where('meta_key','title')->value('meta_value');
+        $advertiseoffer->text      =   $page->section()->where('meta_key','text')->value('meta_value');
+        View::share('advertiseoffer', $advertiseoffer);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +33,7 @@ class AdvertiseController extends Controller
         $page                   =   Page::where('slug','advertise')->first();
       
         $advertise              =   (object) array();
+        $advertise->image       =   $page->section()->where('meta_key','image')->value('meta_value');
         $advertise->title       =   $page->section()->where('meta_key','title')->value('meta_value');
         $advertise->text        =   $page->section()->where('meta_key','text')->value('meta_value');
         $advertise->subtitle    =   $page->section()->where('meta_key','subtitle')->value('meta_value');

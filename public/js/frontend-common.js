@@ -14,10 +14,11 @@ $(document).ready(function(){
 	else if($(".danger_alert").length >0){
 	
 		
-        $('html,body').animate({ scrollTop: $(".danger_alert").closest('section').children().children('.contact-addresses').offset().top-100},
+        $('html,body').animate({ scrollTop: $(".danger_alert").offset().top},
         'slow');
         
 	}
+	
 
 	function init() {
   		//document.getElementsByTagName(form).reset();
@@ -29,21 +30,37 @@ $(document).ready(function(){
 		$('body').toggleClass('menu-open');
 		$('.header-right').slideToggle('slow');
 	});
+	$('.text-filed').each(function(){
+
+  		if($(this).val().length > 0){
+
+    		$(this).parent().addClass('done');
+    
+  		}
+  
+  		else{
+    		$(this).parent().removeClass('done');
+
+  		}
+  
+	});
 	
+
 	$('.text-filed').blur(function(){
 
-  if($(this).val().length > 0){
+		//alert('test');
+  		if($(this).val().length > 0){
 
-    $(this).parent().addClass('done');
+    		$(this).parent().addClass('done');
     
-  }
+  		}
   
-  else{
-    $(this).parent().removeClass('done');
+  		else{
+    		$(this).parent().removeClass('done');
 
-  }
+  		}
   
-});
+	});
 	
 });
 	

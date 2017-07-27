@@ -3,9 +3,9 @@
 @section('content')
 <section class="subpage-banner padding-bottom text-center">
 	<div class="container">
-		<h1>Subscribe to our newsletter</h1>
+		<h1>{!! nl2br($subscribe->title)!!}</h1>
 		<hr>
-		<p>Stay up to date with tunnelling industry latest news and products.</p>
+		<p>{!! nl2br($subscribe->text)!!}</p>
 	</div>
 </section>
 <section class="subscription-included">

@@ -4,6 +4,7 @@
   $newOrders      = Helper::advertise();
   $contatMessages = Helper::contact();
   $subscriptions  = Helper::subscriptions();
+  $uniqueVisitors   = Helper::uniqueVisitors();
 
 @endphp
   <!-- Content Wrapper. Contains page content -->
@@ -73,8 +74,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>{{Helper::uniqueVisitors()}}</h3>
-
+              <h3>{{$uniqueVisitors}}</h3>
               <p>Unique Visitors</p>
             </div>
             <div class="icon">
