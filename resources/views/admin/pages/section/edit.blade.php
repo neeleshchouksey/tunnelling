@@ -35,7 +35,7 @@
                                   <td>:</td>
                                   <td>
                                     @if($section->type=='textarea')
-                                      <textarea  class="form-control" name="section[{{$section->meta_key}}]"  required> {{$section->meta_value}}</textarea>
+                                      <textarea  class="form-control" name="section[{{$section->meta_key}}]"  rows="10" required> {{$section->meta_value}}</textarea>
                                     @else
                                       <input type="{{$section->type}}" class="form-control" name="section[{{$section->meta_key}}]"  required>
                                     @endif

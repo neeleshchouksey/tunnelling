@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', 'HomeController@index');
-Route::get('/about', function () { return view('frontend.about.index');});
+Route::get('/about', 'AboutusController@index');
 // ~gk suscribe
 Route::get('subscribe', 'SubscribeController@index');
 Route::post('subscribe/store', 'SubscribeController@store');

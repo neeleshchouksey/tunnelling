@@ -78,12 +78,13 @@
 					@endif
 					<form action="{{url('/subscribe/store')}}" method="post">
 					{{ csrf_field() }}
+						<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="subscribe">
 						<div class="form-row">
 							<div class="sub-text">
 								
 								<div class="text-outer">
 								<input type="email" class="text-filed" placeholder="" name="email">
-								<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="subscribe">
+
 									<span>Email</span>
 								</div>
 								</div>
@@ -143,11 +144,12 @@
 			@include('layout.frontend.error')
 			@endif
 			
+				<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="contact">
 				<ul>
 					<li>
 						<div class="text-outer">
 						<input type="text" class="text-filed" placeholder="" name="name" value="{{Input::old('name')}}">
-						<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="contact">
+
 						<span>Name</span>
 						</div>
 							</li>

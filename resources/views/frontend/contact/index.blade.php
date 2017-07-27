@@ -54,7 +54,7 @@
 							</li>
 							<li class="width-100">
 								<div class="text-outer">
-								<textarea class="text-filed" name="message" value="{{Input::old('message')}}"></textarea>
+								<textarea class="text-filed" name="message" >{{Input::old('message')}}</textarea>
 								<span>Message</span>
 								</div>
 							</li>

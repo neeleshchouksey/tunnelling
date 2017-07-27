@@ -179,6 +179,7 @@ return [
         Darryldecode\Cart\CartServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Watson\Active\ActiveServiceProvider::class,
+        PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
     ],
 
     /*
@@ -233,6 +234,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Active' => Watson\Active\Facades\Active::class,
         'Helper' => App\Helpers\Helpers::class,
+        'Tracker' => PragmaRX\Tracker\Vendor\Laravel\Facade::class,
 
     ],
 

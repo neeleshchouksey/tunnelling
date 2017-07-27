@@ -3,12 +3,12 @@
 @section('content')
 
 <section class="subpage-banner padding-bottom text-center">
-	  	<div class="container">
-			<h1>Subscribe to our newsletter</h1>
-			<hr>
-			<p class="text-center">Stay up to date with tunnelling industry latest news and products.</p>
-		</div>
-	  </section>
+	<div class="container">
+		<h1>{!! nl2br($subscribe->title)!!}</h1>
+		<hr>
+		<p>{!! nl2br($subscribe->text)!!}</p>
+	</div>
+</section>
 	  <section class="subscription-included">
 	  	<div class="container">
 	  	<form action='{{url("/subscribe/personaldetail")}}' method="post">

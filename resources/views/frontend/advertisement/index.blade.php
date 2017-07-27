@@ -79,7 +79,7 @@
 					<div class="col-5">
 						<div class="fetures-content">
 							<div class="icon"><img src='{{asset("uploads/keyreader/$keyreader->image")}}' alt="profile"></div>
-							<h5>{{$keyreader->name}}</h5>
+							<h5>{!! nl2br($keyreader->name)!!}</h5>
 						</div>
 					</div>
 				@endforeach
@@ -115,8 +115,7 @@
 	  </section>
 	  <section class="subscribe text-center">
 	  		<div class="container">
-		  		<h3>Reserve ad now and get<br>
-A FREE 6 MONTH LOGO LINK ON OUR WEBSITE</h3>
+		  		<h3>{!! nl2br($advertiseoffer->title)!!}</h3>
 				<a href="{{url('/advertise/firststep')}}" class="btn-icon"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="{{url('/images/award-iocn.png')}}" alt="download-btn"></span></a>
 		    </div>
 	  </section>
@@ -125,7 +124,7 @@ A FREE 6 MONTH LOGO LINK ON OUR WEBSITE</h3>
 		 	<h2>our circulation</h2>
 			<hr>
 			<div class="our-circle-map">
-				<img src="{{url('/images/our-circle.png')}}" alt="our circle">
+				<img src='{{asset("uploads/pages/$advertise->image")}}' alt="our circle">
 			</div>
 		 </div>
 	  </section>

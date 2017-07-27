@@ -33,7 +33,8 @@
                                   <td><strong>Title</strong></td>
                                   <td>:</td>
                                   <td>
-                                    <input type="text" class="form-control" name="name" value="{{$keyreader->name}}" required>
+                                    
+                                     <textarea type="text" class="form-control" name="name" required>{{$keyreader->name}}</textarea>
                                     <span class="show_error_msg"></span>
                                   </td>
                                 </tr>

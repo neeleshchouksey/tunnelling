@@ -514,6 +514,7 @@ button {
 textarea.text-filed {
   height: 150px;
   resize:none;
+  padding-top:15px;
 }
 
 
@@ -572,6 +573,7 @@ textarea.text-filed {
 	float: left;
 	margin-right: 25px;
 	width: 340px;
+	position:relative;
 }
 
 .right-form p {
@@ -647,7 +649,7 @@ textarea.text-filed {
   margin-right: 15px;
 }
 .contact-addresses p.middle-margin {
-  margin: 0 80px;
+  margin: 0 65px;
 }
 .footer {
   background: #181d1f none repeat scroll 0 0;
@@ -1214,10 +1216,10 @@ textarea.text-filed {
   border: medium none;
   color: #454141;
   font-size: 14px;
-  height: 26px;
+  height: 20px;
   padding: 0;
   text-align: center;
-  width: 26px;
+  width: 20px;
 }
 .btnclic {
   color: #c9d1d4;
@@ -1348,9 +1350,20 @@ textarea.text-filed {
 	display: none;
 }
 .danger_alert {
-	color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+  padding: 10px;
+  text-align: left;
+}
+.danger_alert br {
+  display: none;
+}
+.danger_alert strong {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight:400
 }
 .text-filed:focus + input + span {
   font-size: 10px;
@@ -1450,6 +1463,18 @@ textarea.text-filed {
 }
 .help-block + .text-outer .text-filed {
   border-color: #ca0026;
+}
+.form-content li:last-child {
+  margin-bottom: 0;
+}
+.banner-content .bordered-btn {
+  min-width: 223px;
+}
+.banner-content .btn-icon{
+	min-width:223px;
+}
+.banner-content .btn-icon .btn-download{
+	width:175px;
 }
 @media(max-width:1100px){
 	
@@ -1576,7 +1601,12 @@ textarea.text-filed {
   width: 50%;
 }
 .partner-list li{margin:7.5px 7.5px}
-.subscription-form{padding:30px;width:100%;}
+.subscription-form{padding:15px;width:100%;}
+.new-message p {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 21px 0;
+}
 .sub-text{width:100%;}
 .subscription-row .col-4{padding:0px;}
 .contact-page{padding:20px;width:100%}
@@ -1609,5 +1639,11 @@ textarea.text-filed {
 .product-deail{margin-left:0px;margin-top:10px;}
 .advertise-box{padding:20px 15px;}
 .table-cell{min-width:20px;}
-
+.table{width:600px;}
+/* style for banner */
+.banner-image{display:none;}
+.popup-content {
+  max-width: 94%;
+  padding: 15px;
+}
 }
