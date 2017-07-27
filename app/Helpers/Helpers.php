@@ -10,6 +10,7 @@ use App\Slidertype;
 use App\Advertise;
 use App\Contact;
 use App\Subscribe;
+use Tracker;
 class Helpers
 {
     public static function pages()
@@ -49,6 +50,14 @@ class Helpers
     public static function subscriptions()
     {
         return $subscribe = Subscribe::all();
+    }
+    public static function uniqueVisitors(){
+        return Tracker::logByRouteName('//')
+        
+        ->select('tracker_log.session_id')
+        ->groupBy('tracker_log.session_id')
+        ->distinct()
+        ->count('tracker_log.session_id');
     }
   
   

@@ -7,7 +7,7 @@ use App\companyinfo;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
-
+use App\Page;
 use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Support\Facades\Validator;
@@ -132,7 +132,7 @@ class SubscribeController extends Controller
                 //$owner_to         =    "gaurav@whitebrains.in";
                 $owner_subject    =   "New Subscription from Website - ".$updateData->uni_subs_no;
                 $owner_message    =   view('partials.emails.suscribeemail')->with('todayData',$todayData);
-                $owner_headers    =   "From:$request->email" . "\r\n";
+                $owner_headers    =   "From:$updateData->email" . "\r\n";
                 $owner_headers   .=   "MIME-Version: 1.0" . "\r\n";
                 $owner_headers   .=   "Content-type:text/html;charset=UTF-8" . "\r\n";
                 mail($owner_to , $owner_subject, $owner_message, $owner_headers);
