@@ -53,14 +53,14 @@ $nextyear =date('Y',strtotime('+1 year'));
 					</label>
 					<div class="year-publication">
 						<p>{{$data->tag}}<span class="s-right">Quantity</span></p>
-						@for($i=$nextyear;$i<=$nextyear+2;$i++)
+						@foreach($data->years as $year)
 						<label>
-							<input type="checkbox" name="issue_{{$data->name}}[]" class="custom-checkbox" year="{{$i}}" pr_id="{{$data->id}}">
+							<input type="checkbox" name="issue_{{$data->name}}[]" class="custom-checkbox" year="{{$year->year->name}}" pr_id="{{$data->id}}">
 							<div class="box-radio">
-								<span></span>{{$i}}
+								<span></span>{{$year->year->name}}
 								@if($data->quantity == '1')
 								<div class="choice">
-									<input type="text" value="0" class="qty"  year="{{$i}}">
+									<input type="text" value="0" class="qty"  year="{{$year->year->name}}">
 									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
 									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
 									
@@ -68,7 +68,7 @@ $nextyear =date('Y',strtotime('+1 year'));
 								@endif
 							</div>
 						</label>
-						@endfor
+						@endforeach
 						
 					
 					</div>

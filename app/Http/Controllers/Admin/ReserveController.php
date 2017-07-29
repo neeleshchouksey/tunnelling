@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Customerinfo;
+use App\ProductYearRelation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AdvertiseController extends Controller
+class ReserveController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class AdvertiseController extends Controller
     public function index()
     {
         //
-         return view('admin.advertise.index');
+        $products    = ProductYearRelation::whereHas('product',function($q){$q->where('quantity',0);})->get();
+        return view('admin.reserve.index',compact('products'));
     }
 
     /**
@@ -48,11 +49,6 @@ class AdvertiseController extends Controller
     public function show($id)
     {
         //
-        $customerinfo        =      Customerinfo::find($id);
-        // echo "<pre>";
-        // print_r($customerinfo->advertise);
-        // die;
-        return view('admin.advertise.show',compact('customerinfo'));
     }
 
     /**
@@ -76,6 +72,9 @@ class AdvertiseController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $productYearRelation            =   ProductYearRelation::find($id);
+        $productYearRelation->status    =   $request->status;
+        $productYearRelation->save();
     }
 
     /**
@@ -87,31 +86,5 @@ class AdvertiseController extends Controller
     public function destroy($id)
     {
         //
-        $customerinfo   = Customerinfo::find($id);
-        $customerinfo->advertise->delete();
-        $customerinfo->delete();
-    }
-    public function ajax()
-    {
-        //
-        $advertisers        =   Customerinfo::all();
-        $records            =   array();
-        $i                  =   0;
-        
-        foreach ($advertisers as $key => $value) {
-          //print_r(expression)
-          # code...
-            $actionBtn          =   "<a href='".url("admin/advertise/$value->id")."' class='btn btn-info'><i class='fa fa-eye'></i></a> ";
-            $actionBtn          .=   " <a href='".route("advertise.destroy",['id'=>$value->id])."' data-method='delete' class='btn btn-danger delete_advertise' value='".$value->id."'><i class='fa  fa-trash'></i></a>";
-
-            $records[$i]['name']              =     $value->customer_name;
-            $records[$i]['email']             =     $value->customer_email;
-            $records[$i]['company']           =     $value->company_name;
-          
-            $records[$i]['action']            =     $actionBtn;
-            $i++;
-        }
-
-        echo json_encode($records);
     }
 }

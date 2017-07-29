@@ -60,7 +60,7 @@
                                 <tr>
                                   <td><strong>Message</strong></td>
                                   <td>:</td>
-                                  <td>
+                                  <td style="word-break:break-all">
                                       {{$contact->message}}
                                   </td>
                                 </tr>

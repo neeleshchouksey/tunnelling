@@ -75,6 +75,7 @@
           <div class="small-box bg-red">
             <div class="inner">
               <h3>{{$uniqueVisitors}}</h3>
+
               <p>Unique Visitors</p>
             </div>
             <div class="icon">

@@ -214,7 +214,7 @@ return [
 
     /*
      * A cookie may be created on your visitor device, so you can have information
-     * on everything made using that device on your site.    *
+     * on everything made using that device on your site.	 *
      */
     'store_cookie_tracker' => false,
 

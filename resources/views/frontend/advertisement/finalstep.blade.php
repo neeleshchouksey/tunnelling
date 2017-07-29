@@ -15,7 +15,7 @@
 				<div class="text-center top-text">
 						<img src="{{asset('images/message-send.png')}}" alt="message send">
 						<h3>You are almost there!</h3>
-						<p>We have sent instructions of how to finish advertising reservation to your email.<br>
+						<p>WE HAVE SENT INSTRUCTIONS OF HOW TO COMPLETE YOUR ADVERTISING RESERVATION TO YOUR EMAIL.<br>
 Complete process now.</p>
 				</div>
 				<div class="step-btn text-center">

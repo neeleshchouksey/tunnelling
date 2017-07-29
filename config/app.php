@@ -235,6 +235,7 @@ return [
         'Active' => Watson\Active\Facades\Active::class,
         'Helper' => App\Helpers\Helpers::class,
         'Tracker' => PragmaRX\Tracker\Vendor\Laravel\Facade::class,
+
     ],
 
 ];

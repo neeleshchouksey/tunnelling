@@ -11,4 +11,8 @@ class Products extends Model
     {
         return $this->hasOne('App\Advertise','product_id');
     }
+    public function years()
+    {
+        return $this->hasMany('App\ProductYearRelation','product_id');
+    }
 }

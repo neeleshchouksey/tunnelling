@@ -8,7 +8,7 @@ use App\Page;
 use Illuminate\Http\Request;
 use View;
 use Carbon\Carbon;
-use App\Page;
+
 use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Support\Facades\Validator;

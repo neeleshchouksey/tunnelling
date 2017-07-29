@@ -256,6 +256,10 @@
 
 <script src="{{asset('js/admin/slider/slider.js')}}"></script>
 @endif
+@if(request()->is('admin/reserve')==1)
+
+<script src="{{asset('js/admin/reserve/reserve.js')}}"></script>
+@endif
 @if(request()->is('admin/contact')==1)
   <script>
   var url = "{{url('admin/contact/ajax')}}";
