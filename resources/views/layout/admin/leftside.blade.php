@@ -74,6 +74,11 @@
             <i class="fa fa-share"></i> <span>Advertises</span>
           </a>
         </li>
+        <li >
+          <a href="{{url('admin/reserve')}}">
+            <i class="fa fa-share"></i> <span>Front & Back Cover AD</span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

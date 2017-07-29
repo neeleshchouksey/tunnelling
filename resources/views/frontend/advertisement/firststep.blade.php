@@ -53,21 +53,21 @@ $nextyear =date('Y',strtotime('+1 year'));
 					</label>
 					<div class="year-publication">
 						<p>{{$data->tag}}<span class="s-right">Quantity</span></p>
-						@foreach($data->years as $year)
-						<label>
-							<input type="checkbox" name="issue_{{$data->name}}[]" class="custom-checkbox" year="{{$year->year->name}}" pr_id="{{$data->id}}">
-							<div class="box-radio">
-								<span></span>{{$year->year->name}}
-								@if($data->quantity == '1')
-								<div class="choice">
-									<input type="text" value="0" class="qty"  year="{{$year->year->name}}">
-									<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
-									<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
-									
+						@foreach($data->years()->where('status',0)->get(); as $year)
+							<label>
+								<input type="checkbox" name="issue_{{$data->name}}[]" @if($year->status==1) disabled @endif class="custom-checkbox" year="{{$year->year->name}}" pr_id="{{$data->id}}">
+								<div class="box-radio">
+									<span></span>
+									{{$year->year->name}}
+									@if($data->quantity == '1')
+										<div class="choice">
+											<input type="text" value="0" class="qty"  year="{{$year->year->name}}">
+											<a href="javascript:void(0)" class="btnclic" quantity="plus" id="plusBTn">+</a>
+											<a href="javascript:void(0)" class="btnclic" quantity="minus" id="minusBTn">-</a>
+										</div>
+									@endif
 								</div>
-								@endif
-							</div>
-						</label>
+							</label>
 						@endforeach
 						
 					

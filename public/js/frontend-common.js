@@ -70,7 +70,9 @@ $(document).on('change','.product-list > label > input[type="checkbox"]',functio
     if(this.checked) {		
 		parent.addClass('show');
 		$('#step-1').addClass('current');
-		parent.find('.custom-checkbox').first().prop('checked',true);		
+		if(parent.find('.custom-checkbox').first().prop('disabled')==false){
+			parent.find('.custom-checkbox').first().prop('checked',true);	
+		}	
     }
 	else{
 		parent.removeClass('show');
