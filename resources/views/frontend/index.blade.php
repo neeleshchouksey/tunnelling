@@ -1,6 +1,6 @@
 @extends('layout.frontend.master')
 @section('content')
-	<section class="banner">
+	<section class="banner home-banner">
 		<div class="container">
 			@foreach($page->slider->slider as $slider)
 			<div class="banner-content mySlides">
@@ -16,7 +16,7 @@
 					<img src='{{asset("uploads/slider/$slider->slide")}}' alt="magazines">
 				</div>
 				<div class="down-arrow">
-					<a href="#">
+					<a href="#aboutSection">
 					<span>learn<br>more</span>
 					<img src="{{url('/images/down-arrow.png')}}">
 					</a>
@@ -26,7 +26,7 @@
 		</div>	
 	</section>
 	  <!-- <section class="banner-example">BANNER</section> -->
-	<section class="about-section">
+	<section class="about-section" id="aboutSection">
 	  	<div class="container">
 			<div class="left-image"><img src='{{asset("uploads/pages/$home->image")}}' alt=""></div>
 			<div class="about-text">
@@ -58,7 +58,7 @@
 				</div>
 				<div class="col-4">
 					<div class="block-content">
-						<div class="icon"><img src="{{url('/images/anouncement.png')}}" alt="announcement"></div>
+						<div class="icon"><img src="{{url('/images/free-pdf-version.png')}}" alt="announcement"></div>
 						<h4>FREE PDF VERSION</h4>
 						<p>Just subscribe to receive<br>your yearly issue<br>and newsletters.</p>
 					</div>
@@ -162,7 +162,7 @@
 					<li>
 						<div class="text-outer">
 						<input type="text" class="text-filed" placeholder="" name="phone" value="{{Input::old('phone')}}">
-						<span>Phone(optional)</span>
+						<span>Phone (optional)</span>
 						</div>
 					</li>
 					<li>

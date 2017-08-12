@@ -8,12 +8,29 @@
     <body>
     <center>
         <h2>
-            Thank you for your message,             
+            Tunnelling International has received your message.           
         </h2>
+        <br>
+        <br>
+      
         <p>
-            one of our team will contact you shortly.
-            If you have an urgent query please call us on {{$companyInfo->contact_no}}.
-            We will contact you to process this shortly.
+            One of our team will process your message and contact you.<br>
+            If you have an urgent enquiry please contact using the details below.
+          
+        </p>
+        <br>
+        <br>
+      
+        <p>
+            With regards <br>
+           {{$companyInfo->company_name}}
+        </p>
+        <br>
+        <br>
+      
+        <p>
+            {{$companyInfo->contact_no}} <br>
+            {{$companyInfo->company_email}}.
         </p>
     </center>
 

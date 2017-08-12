@@ -31,7 +31,10 @@ section,
 summary {
 	display: block;
 }
-
+.box-radio >span +.s-right{
+	width: auto;
+	background: none;
+}
 .container {
 	width: 100%;
 	padding: 0 15px;
@@ -443,8 +446,8 @@ hr {
 }
 
 .left-image img {
-	margin-left: -190px;
-	max-width: none;
+	margin-left: 0px;
+	max-width: 100%;
 }
 
 .about-section {
@@ -1475,6 +1478,22 @@ textarea.text-filed {
 }
 .banner-content .btn-icon .btn-download{
 	width:175px;
+	padding-left:0px;
+	padding-right:0px;
+}
+.home-banner .banner-image {
+  padding-top: 0;
+}
+.home-banner .banner-image img {
+  margin-top: -15px;
+  margin-right:-40px;
+}
+.download-latest .btn-icon .btn-download {
+  float: left;
+  line-height: 51px;
+}
+.download-latest .download-icon{
+	line-height:51px;
 }
 @media(max-width:1100px){
 	

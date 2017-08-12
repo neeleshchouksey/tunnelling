@@ -24,7 +24,7 @@
 				</ul>
 			</div>
 			<div class="btn-right">
-				<a href="#" class="btn-download">download PDF</a>
+				<a href="{{url('/pdf/TUNNELLINGINTMEDIAPACK.pdf')}}" target="_blank" class="btn-download">VIEW MEDIA PACK</a>
 			</div>
 		</div>
   	</div>

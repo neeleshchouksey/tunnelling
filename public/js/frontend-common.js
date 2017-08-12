@@ -62,6 +62,17 @@ $(document).ready(function(){
   
 	});
 	
+	 jQuery('.down-arrow a').on('click', function (e) {
+	
+			var href = jQuery(this).attr('href');
+			jQuery('html, body').animate({
+				scrollTop: jQuery(href).offset().top
+			}, 'slow');
+			e.preventDefault(); 
+		});
+	
+	
+	
 });
 	
 

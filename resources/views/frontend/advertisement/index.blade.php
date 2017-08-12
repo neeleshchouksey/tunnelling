@@ -8,7 +8,7 @@
 					<p>{{$slider->caption}}</p>
 					<h1>{{$slider->heading}}</h1>
 					<a href="{{url('advertise/firststep')}}" class="btn-icon">
-						<span class="btn-download">Reserve Ad </span><span class="download-icon"><img src="{{url('/images/download-pdf.png')}}" alt="download-btn"></span>
+						<span class="btn-download">Reserve Ad </span><span class="download-icon"><img src="{{url('/images/award-iocn.png')}}" alt="download-btn"></span>
 					</a>
 					<a href="{{asset('pdf/TUNNELLINGINTMEDIAPACK.pdf')}}" target="_blank" class="bordered-btn">View Media Pack</a>
 				</div>
@@ -16,7 +16,7 @@
 					<img src='{{asset("uploads/slider/$slider->slide")}}' alt="magazines">
 				</div>
 				<div class="down-arrow">
-					<a href="#">
+					<a href="#aboutSection">
 					<span>learn<br>more</span>
 					<img src="{{url('/images/down-arrow.png')}}">
 					</a>
@@ -27,7 +27,7 @@
 	  </section>
 	  <!-- <section class="banner-example">BANNER</section> -->
 
-	  <section class="about-publication">
+	  <section class="about-publication" id="aboutSection">
 	  	<div class="container">
 
 			<div class="width-50 pull-left padding-right">

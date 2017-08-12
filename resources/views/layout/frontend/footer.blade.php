@@ -25,22 +25,22 @@
 					<img src="{{url('/images/map-pin.png')}}" alt="Address"><p>{{$companyInfo->company_address}}</p>
 					</div>
 					<div class="footer-addrees">
-					<img src="{{url('/images/message-icon.png')}}" alt="message"><a href="mailto:journalsint.@icloud">{{$companyInfo->company_email}}</a>
+					<img src="{{url('/images/message-icon.png')}}" alt="message"><a href="mailto:{{$companyInfo->company_email}}">{{$companyInfo->company_email}}</a>
 					</div>
 					<div class="footer-addrees">
 					<img src="{{url('/images/phone-address.png')}}" alt="message"><a href="tel:+44 207 272 8444">{{$companyInfo->contact_no}}</a>
 					</div>
 				</div>
 				<div class="footer-block footer-subscribe">
-					<h4>Latest news</h4>
+					<h4>subscribe for free</h4>
 					<div class="text-outer">
 								<input class="text-filed" placeholder="" type="text">
 									<span>Email</span>
 					<button type="submit"><img src="{{url('/images/subscribe-arrow.png')}}" alt="subscribe"></button>
 					</div>
 					<div class="download-latest">
-						<h4>download latest issue</h4>
-						<a href="#" class="btn-download">download PDF</a>
+						<a href="{{url('/advertise/firststep')}}" class="btn-icon"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="{{url('/images/award-iocn.png')}}" alt="download-btn"></span></a>
+						<a href="{{url('/pdf/TUNNELLINGINTMEDIAPACK.pdf')}}" target="_blank" class="btn-download">VIEW MEDIA PACK</a>
 					</div>
 					
 				</div>
