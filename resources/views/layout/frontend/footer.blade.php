@@ -33,8 +33,14 @@
 				</div>
 				<div class="footer-block footer-subscribe">
 					<h4>subscribe for free</h4>
+					@if(Input::old('footersubscribe')=="subscribe")
+					@include('layout.frontend.error')
+					@endif
+					<form action="{{url('/subscribe/store')}}" method="post">
+					{{ csrf_field() }}
+						<input type="hidden" class="text-filed" placeholder="" name="footersubscribe" value="subscribe">
 					<div class="text-outer">
-								<input class="text-filed" placeholder="" type="text">
+								<input class="text-filed" placeholder="" name="email" type="text">
 									<span>Email</span>
 					<button type="submit"><img src="{{url('/images/subscribe-arrow.png')}}" alt="subscribe"></button>
 					</div>

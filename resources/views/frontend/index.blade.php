@@ -137,50 +137,52 @@
 				<p><a href="tel:442072728444"><img src="{{url('/images/phone-address.png')}}"> {{$companyInfo->contact_no}}</a></p>
 			</div>
 			<form action="{{url('contact/store')}}" method="post">
-			{{ csrf_field() }}
-			<div class="form-content">
-			
-			@if(Input::old('test_controller')=="contact")
-			@include('layout.frontend.error')
-			@endif
-			
-				<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="contact">
-				<ul>
-					<li>
-						<div class="text-outer">
-						<input type="text" class="text-filed" placeholder="" name="name" value="{{Input::old('name')}}">
+				{{ csrf_field() }}
+				<div class="form-content">
+				
+					@if(Input::old('test_controller')=="contact")
+					@include('layout.frontend.error')
+					@endif
+					
+						<input type="hidden" class="text-filed" placeholder="" name="test_controller" value="contact">
+						<ul>
+							<li>
+								<div class="text-outer">
+								<input type="text" class="text-filed" placeholder="" name="name" value="{{Input::old('name')}}">
 
-						<span>Name</span>
-						</div>
+								<span>Name</span>
+								</div>
+									</li>
+							<li>
+								<div class="text-outer">
+								<input type="text" class="text-filed" placeholder="" name="email" value="{{Input::old('email')}}">
+								<span>Email</span>
+								</div>
 							</li>
-					<li>
-						<div class="text-outer">
-						<input type="text" class="text-filed" placeholder="" name="email" value="{{Input::old('email')}}">
-						<span>Email</span>
-						</div>
-					</li>
-					<li>
-						<div class="text-outer">
-						<input type="text" class="text-filed" placeholder="" name="phone" value="{{Input::old('phone')}}">
-						<span>Phone (optional)</span>
-						</div>
-					</li>
-					<li>
-						<div class="text-outer">
-						<input type="text" class="text-filed" placeholder="" name="company" value="{{Input::old('company')}}">
-						<span>Company (optional)</span>
-						</div>
-					</li>
-					<li class="width-100">
-						<div class="text-outer">
-						<textarea class="text-filed" name="message" value="{{Input::old('message')}}"></textarea>
-						<span>Message</span>
-						</div>
-					</li>
-					<li class="width-100">
-						<button type="submit" class="btn-icon"><span class="btn-download">send message</span><span class="download-icon"><img src="{{url('/images/send-message.png')}}" alt="subscribe"></span></button>
-					</li>
-				</ul>
+							<li>
+								<div class="text-outer">
+								<input type="text" class="text-filed" placeholder="" name="phone" value="{{Input::old('phone')}}">
+								<span>Phone (optional)</span>
+								</div>
+							</li>
+							<li>
+								<div class="text-outer">
+								<input type="text" class="text-filed" placeholder="" name="company" value="{{Input::old('company')}}">
+								<span>Company (optional)</span>
+								</div>
+							</li>
+							<li class="width-100">
+								<div class="text-outer">
+								<textarea class="text-filed" name="message" value="{{Input::old('message')}}"></textarea>
+								<span>Message</span>
+								</div>
+							</li>
+							<li class="width-100">
+								<button type="submit" class="btn-icon"><span class="btn-download">send message</span><span class="download-icon"><img src="{{url('/images/send-message.png')}}" alt="subscribe"></span></button>
+							</li>
+						</ul>
+				</div>
+			</form>
 			</div>
 		</div>
 	</section>
