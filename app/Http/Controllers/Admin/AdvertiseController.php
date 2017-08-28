@@ -103,7 +103,7 @@ class AdvertiseController extends Controller
           # code...
             $actionBtn          =   "<a href='".url("admin/advertise/$value->id")."' class='btn btn-info'><i class='fa fa-eye'></i></a> ";
             $actionBtn          .=   " <a href='".route("advertise.destroy",['id'=>$value->id])."' data-method='delete' class='btn btn-danger delete_advertise' value='".$value->id."'><i class='fa  fa-trash'></i></a>";
-
+            $records[$i]['order_no']              =     $value->order_uni_no;
             $records[$i]['name']              =     $value->customer_name;
             $records[$i]['email']             =     $value->customer_email;
             $records[$i]['company']           =     $value->company_name;

@@ -429,6 +429,7 @@ class ComposerStaticInite6f1efcae9e66a279024661b6e72b013
         'AddTrackerRefererColumnToLog' => __DIR__ . '/../..' . '/database/migrations/2015_11_23_311096_add_tracker_referer_column_to_log.php',
         'AddTrackerRefererColumns' => __DIR__ . '/../..' . '/database/migrations/2015_03_13_311095_add_tracker_referer_columns.php',
         'AlterAdvertiseTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_10_081913_alter_advertise_table.php',
+        'AlterAdvertisesTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_14_075842_alter_advertises_table.php',
         'AlterCustomerinfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_10_213605_alter_customerinfos_table.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Advertiser' => __DIR__ . '/../..' . '/app/Advertiser.php',

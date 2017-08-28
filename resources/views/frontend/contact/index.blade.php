@@ -43,7 +43,7 @@
 							<li>
 								<div class="text-outer">
 								<input class="text-filed" placeholder="" type="text" name="phone" value="{{Input::old('phone')}}">
-								<span>Phone(optional)</span>
+								<span>Phone (optional)</span>
 								</div>
 							</li>
 							<li>

@@ -26,7 +26,13 @@
                           <div class="box-body">
                             <table class="table">
                               <tbody>
-                              
+                                 <tr>
+                                  <td><strong>Order Number</strong></td>
+                                  <td>:</td>
+                                  <td>
+                                    {{$customerinfo->order_uni_no}}
+                                  </td>
+                                </tr>
                                 <tr>
                                   <td><strong>Name</strong></td>
                                   <td>:</td>

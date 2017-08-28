@@ -1,6 +1,6 @@
 @extends('layout.frontend.master')
 		@section('content')
-	<section class="banner">
+	<section class="banner advertise">
 	  		<div class="container">
 		  		@foreach($page->slider->slider as $slider)
 			<div class="banner-content mySlides">
@@ -12,12 +12,21 @@
 					</a>
 					<a href="{{asset('pdf/TUNNELLINGINTMEDIAPACK.pdf')}}" target="_blank" class="bordered-btn">View Media Pack</a>
 				</div>
+				<div class="banner-bottom-text">
+				
+					<p>Reserve your ad online or contact us:</p>
+					@php 
+						$companyInfo=Helper::companyinfo()
+					@endphp
+					<span><a href="tel:442072728444"><img src="{{url('/images/phone-address.png')}}"> {{$companyInfo->contact_no}}</a></span>
+					<span><a href="mailto:journalsint.@icloud"><img src="{{url('/images/message-address.png')}}">{{$companyInfo->company_email}}</a></span>
+				</div>
 				<div class="banner-image ">
 					<img src='{{asset("uploads/slider/$slider->slide")}}' alt="magazines">
 				</div>
 				<div class="down-arrow">
 					<a href="#aboutSection">
-					<span>learn<br>more</span>
+					<span>learn<br> more</span>
 					<img src="{{url('/images/down-arrow.png')}}">
 					</a>
 				</div>

@@ -32,6 +32,7 @@
               <table id="subscribe_list_table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Order Number</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Company</th>

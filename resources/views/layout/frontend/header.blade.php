@@ -24,7 +24,9 @@
 				</ul>
 			</div>
 			<div class="btn-right">
-				<a href="{{url('/pdf/TUNNELLINGINTMEDIAPACK.pdf')}}" target="_blank" class="btn-download">VIEW MEDIA PACK</a>
+				<a href="{{url('advertise/firststep')}}" class="btn-icon">
+						<span class="btn-download">Reserve Ad </span><span class="download-icon"><img src="{{url('/images/award-iocn.png')}}" alt="download-btn"></span>
+				</a>
 			</div>
 		</div>
   	</div>

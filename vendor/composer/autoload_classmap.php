@@ -13,6 +13,7 @@ return array(
     'AddTrackerRefererColumnToLog' => $baseDir . '/database/migrations/2015_11_23_311096_add_tracker_referer_column_to_log.php',
     'AddTrackerRefererColumns' => $baseDir . '/database/migrations/2015_03_13_311095_add_tracker_referer_columns.php',
     'AlterAdvertiseTable' => $baseDir . '/database/migrations/2017_07_10_081913_alter_advertise_table.php',
+    'AlterAdvertisesTable' => $baseDir . '/database/migrations/2017_08_14_075842_alter_advertises_table.php',
     'AlterCustomerinfosTable' => $baseDir . '/database/migrations/2017_07_10_213605_alter_customerinfos_table.php',
     'App\\Admin' => $baseDir . '/app/Admin.php',
     'App\\Advertiser' => $baseDir . '/app/Advertiser.php',

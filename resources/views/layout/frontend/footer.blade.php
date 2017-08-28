@@ -1,11 +1,11 @@
 <footer class="footer">
 			<div class="container">
 				<div class="footer-block footer-logo">
-					<div class="logo-footer"><a href="#"><img src="{{url('/images/footer-logo.png')}}" alt="logo"></a></div>
+					<div class="logo-footer"><a href="{{url('/')}}"><img src="{{url('/images/footer-logo.png')}}" alt="logo"></a></div>
 					<div class="footer-link">
 						<ul>
-							<li><a href="#">Terms & Conditions</a></li>
-							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="{{url('terms')}}">Terms & Conditions</a></li>
+							<li><a href="{{url('privacy')}}">Privacy Policy</a></li>
 						</ul>
 					</div>
 				</div>
@@ -37,12 +37,13 @@
 					@include('layout.frontend.error')
 					@endif
 					<form action="{{url('/subscribe/store')}}" method="post">
-					{{ csrf_field() }}
-						<input type="hidden" class="text-filed" placeholder="" name="footersubscribe" value="subscribe">
-					<div class="text-outer">
-								<input class="text-filed" placeholder="" name="email" type="text">
-									<span>Email</span>
-					<button type="submit"><img src="{{url('/images/subscribe-arrow.png')}}" alt="subscribe"></button>
+						{{ csrf_field() }}
+							<input type="hidden" class="text-filed" placeholder="" name="footersubscribe" value="subscribe">
+						<div class="text-outer">
+									<input class="text-filed" placeholder="" name="email" type="text">
+										<span>Email</span>
+						<button type="submit"><img src="{{url('/images/subscribe-arrow.png')}}" alt="subscribe"></button>
+					</form>
 					</div>
 					<div class="download-latest">
 						<a href="{{url('/advertise/firststep')}}" class="btn-icon"><span class="btn-download">reserve ad </span><span class="download-icon"><img src="{{url('/images/award-iocn.png')}}" alt="download-btn"></span></a>

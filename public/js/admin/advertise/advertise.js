@@ -11,6 +11,7 @@ advertise();
       
       "order": [[ 0, "desc" ]],
       columns: [
+          { data: 'order_no' },
           { data: 'name' },
           { data: 'email' },
           { data: 'company' },

@@ -224,7 +224,7 @@ p+p {
 	font-weight: 700;
 }
 
-.navigation li:hover a::before,
+.navigation li a:hover::before,
 .navigation li.current-page a::before {
 	width: 100%;
 }
@@ -273,6 +273,9 @@ p+p {
   position: absolute;
   top: 0;
   width: 100%;
+}
+.banner.advertise::before {
+  background: rgba(0, 0, 0, 0) url("../images/charts.png") no-repeat scroll center center;
 }
 .banner-content p {
 	color: #ffffff;
@@ -1495,7 +1498,32 @@ textarea.text-filed {
 .download-latest .download-icon{
 	line-height:51px;
 }
+.banner-bottom-text {
+  bottom: 60px;
+  position: absolute;
+  z-index:123;
+}
+.banner-bottom-text a {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.banner-bottom-text span + span {
+  margin-left: 20px;
+}
+.banner-bottom-text span img {
+  margin-right: 15px;
+}
+.header .btn-icon {
+  box-shadow: none;
+}
+.advertise .left-text{top:150px;transform:none;-webkit-transform:none}
+.banner-image > img {
+  margin-right: -64px;
+}
 @media(max-width:1100px){
+	.btn-download{min-width:120px;}
 	
 	.download-latest h4{margin:0 0 15px;width:100%;}
 	.download-latest .btn-download{float:left;}
@@ -1524,9 +1552,14 @@ textarea.text-filed {
 .width-50{width:100%;}
 }
 @media(min-width:961px){
+	.download-latest .btn-icon{margin-bottom:10px;}
 	.header-right{display:block !important}
 }
 @media(max-width:960px){
+	.banner-image{display:none;}
+	.download-latest .btn-icon {
+  margin-bottom: 10px;
+}
 	.header .container {
   padding: 0;
 }
@@ -1665,4 +1698,36 @@ textarea.text-filed {
   max-width: 94%;
   padding: 15px;
 }
+.contact-addresses p{
+	padding-left:50px;
+	position:relative;
+	
+}
+.contact-addresses p img {
+  left: 0;
+  margin-right: 15px;
+  position: absolute;
+  top: 5px;
+}
+.banner-bottom-text span + span {
+  display: block;
+  margin-left: 0;
+  margin-top: 10px;
+}
+.advertise .left-text{top:40px;transform:none;-webkit-transform:none}
+.advertise .banner-content .btn-icon .btn-download{width:120px}
+.advertise .banner-content .btn-icon{min-width:165px;}
+.advertise .banner-content .bordered-btn {
+  min-width: 143px;
+  width: auto;
+}
+.advertise .left-text .bordered-btn{margin-left:10px;}
+.advertise .down-arrow span br{
+	display:none;
+}
+.banner-bottom-text{bottom:80px}
+.advertise .down-arrow{
+	bottom:10px;
+}
+
 }

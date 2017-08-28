@@ -65,7 +65,7 @@ $nextyear =date('Y',strtotime('+1 year'));
 									<span></span>
 									{{$year->year->name}}
 									@if($year->status==1)
-												<span class="s-right">Reservered</span>
+												<span class="s-right">Reserved</span>
 									@endif
 									@if($data->quantity == '1')
 										<div class="choice">
