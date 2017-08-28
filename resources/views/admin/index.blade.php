@@ -7,6 +7,58 @@
   $uniqueVisitors   = Helper::uniqueVisitors();
 
 @endphp
+
+<!-- Modal -->
+  <div class="modal fade" id="successModel" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Email Success</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-success">
+          {{ session('success') }}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+    
+
+
+<!-- Modal -->
+  <div class="modal fade" id="errorModel" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Email Error</h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger">
+          {{ session('error') }}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+    
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -81,7 +133,7 @@
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('admin/visitor')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -321,24 +373,42 @@
               </div>
               <!-- /. tools -->
             </div>
-            <div class="box-body">
-              <form action="#" method="post">
-                <div class="form-group">
-                  <input type="email" class="form-control" name="emailto" placeholder="Email to:">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject">
-                </div>
-                <div>
-                  <textarea class="textarea" placeholder="Message"
-                            style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                </div>
-              </form>
-            </div>
-            <div class="box-footer clearfix">
-              <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
-                <i class="fa fa-arrow-circle-right"></i></button>
-            </div>
+
+            {!! Form::open(array('url' => "admin/dashboard","method"=>'post','id'=>'quickemail')) !!}
+              <div class="box-body">
+                
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="email" required value="{{old('email')}}" placeholder="Email to:">
+                    @if ($errors->has('email'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('email') }}</strong>
+                      </span>
+                    @endif
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="subject" value="{{old('subject')}}" required placeholder="Subject">
+                    @if ($errors->has('subject'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('subject') }}</strong>
+                      </span>
+                    @endif
+                  </div>
+                  <div>
+                    <textarea class="textarea" name="message"  required placeholder="Message"
+                              style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('message')}}</textarea>
+                  </div>
+                  @if ($errors->has('message'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('message') }}</strong>
+                      </span>
+                  @endif
+                
+              </div>
+              <div class="box-footer clearfix">
+                <button type="submit" class="pull-right btn btn-default"  id="sendEmail">Send
+                  <i class="fa fa-arrow-circle-right"></i></button>
+              </div>
+            </form>
           </div>
 
         </section>
@@ -527,4 +597,5 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  
 @endsection

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\AdminDashboard;
+use App\Mail\QuickMail;
+use Mail;
 class DashboardController extends Controller
 {
     
@@ -37,9 +39,17 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminDashboard $request)
     {
         //
+        $sent   =Mail::to($request->email)->send(new QuickMail($request));
+        if(Mail::failures()){
+            return redirect('admin/dashboard')->with('error','There is problem in sending mail .Please try again later.');
+            
+        }
+        else{
+           return redirect('admin/dashboard')->with('success','Email Sent Successfully'); 
+        }
     }
 
     /**

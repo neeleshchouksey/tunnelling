@@ -284,6 +284,30 @@
   <script src="{{asset('js/admin/advertise/advertise.js')}}"></script>
 
 @endif
+@if(request()->is('admin/visitor')==1)
+  <script>
+  var url = "{{url('admin/visitor/ajax')}}";
+  
+  </script>
+  <script src="{{asset('js/admin/visitor/visitor.js')}}"></script>
+
+@endif
+<script type="text/javascript">
+$(window).on('load',function(){
+  
+  if($(".help-block").length >0){
+        console.log('test');
+    
+        $('html,body').animate({ scrollTop: $(".help-block").offset().top},'slow');
+        
+  }
+});
+@if(session('success'))
+$('#successModel').modal('show');
+@elseif(session('error'))
+$('#errorModel').modal('show');
+@endif
+  </script>
 
 <script src="{{asset('adminasset/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
