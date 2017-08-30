@@ -34,6 +34,7 @@
                   <th>Visitor IP</th>
                   <th>Visitor Country</th>
                   <th>Visitor City</th>
+                  <th>Visited At</th>
                  
                 </tr>
                 </thead>

@@ -9,11 +9,12 @@ visitor();
           "type": 'GET',
       },
       
-      "order": [[ 0, "desc" ]],
+      "ordering": false,
       columns: [
           { data: 'client_ip' },
           { data: 'country'},
-          { data: 'city'}
+          { data: 'city'},
+          { data: 'date'},
          
       ]
       

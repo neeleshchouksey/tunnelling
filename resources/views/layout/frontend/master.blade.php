@@ -4,8 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    
-    <title>TUNNELLING INTERNATIONAL</title>
+    @php 
+      $Seotags=Helper::SeoCommontags()
+    @endphp
+    <title>{{$Seotags->title}}</title>
+    <meta name="description" content="{{$Seotags->description}}">
+    <meta name="keywords" content="{{$Seotags->keywords}}">
 	<!-- google fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900" rel="stylesheet"> 
     <!-- css -->

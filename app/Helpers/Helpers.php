@@ -11,6 +11,7 @@ use App\Advertise;
 use App\Contact;
 use App\Subscribe;
 use DB;
+use App\SeoTags;
 use Tracker;
 class Helpers
 {
@@ -55,6 +56,9 @@ class Helpers
     public static function uniqueVisitors(){
 
         return DB::table('tracker_sessions')->distinct('client_ip')->count('client_ip'); 
+    }
+    public static function SeoCommontags(){
+        return SeoTags::where('slug','home')->first();
     }
 
   
