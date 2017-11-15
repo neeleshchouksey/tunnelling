@@ -135,4 +135,19 @@ function carousel() {
     x[slideIndex-1].style.display = "block"; 
     setTimeout(carousel, 2000); // Change image every 2 seconds
 }
+var slideIndexAdds = 0;
+carouselAdds();
+
+function carouselAdds() {
+    var i;
+    var x = document.getElementsByClassName("add-slides");
+    
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndexAdds++;
+    if (slideIndexAdds > x.length) {slideIndexAdds = 1} 
+    x[slideIndexAdds-1].style.display = "block"; 
+    setTimeout(carouselAdds, 2000); // Change image every 2 seconds
+}
 </script>

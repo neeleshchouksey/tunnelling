@@ -28,7 +28,13 @@
 	  <!-- <section class="banner-example">BANNER</section> -->
 	<section class="about-section" id="aboutSection">
 	  	<div class="container">
-			<div class="left-image"><img src='{{asset("uploads/pages/$home->image")}}' alt=""></div>
+	  		@foreach($page->addslider as $slider)
+			<div class="left-image add-slides">
+				<a href="{{$slider->link}}" target="_blank">
+					<img src='{{asset("uploads/addslide/$slider->slide")}}' alt="">
+				</a>
+			</div>
+			@endforeach
 			<div class="about-text">
 				<h2>{!! nl2br($home->title)!!}</h2>
 				<hr>

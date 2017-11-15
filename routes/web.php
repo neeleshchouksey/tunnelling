@@ -67,8 +67,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
        Route::resource('reserve', 'ReserveController');
        Route::get('visitor', 'VisitorInfoController@index');
        Route::get('visitor/ajax', 'VisitorInfoController@ajax');
-
-    });
+       Route::get('uniquevisitorpagelist/{id}', 'VisitorInfoController@getVisitedPageList');
+       Route::get('visitorpagelist/{id}', 'VisitorInfoController@getVisitedPageList');
+       Route::get('allvisitors', 'VisitorInfoController@index');
+       Route::get('allvisitors/allVisitorAjax', 'VisitorInfoController@allVisitorAjax');
+       Route::get('addslide/ajax', 'AddsController@ajax');
+       Route::resource('addslide', 'AddsController');
+    }); 
 });
 
 

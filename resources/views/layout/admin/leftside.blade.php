@@ -75,8 +75,23 @@
           </a>
         </li>
         <li >
+          <a href="{{url('admin/allvisitors')}}">
+            <i class="fa fa-share"></i> <span>Total Visitors</span>
+          </a>
+        </li>
+        <li >
+          <a href="{{url('admin/visitor')}}">
+            <i class="fa fa-share"></i> <span>Unique Visitors</span>
+          </a>
+        </li>
+        <li >
           <a href="{{url('admin/reserve')}}">
             <i class="fa fa-share"></i> <span>Front & Back Cover AD</span>
+          </a>
+        </li>
+        <li >
+          <a href="{{url('admin/reserve')}}">
+            <i class="fa fa-share"></i> <span>Home Left Slider</span>
           </a>
         </li>
       </ul>

@@ -57,6 +57,10 @@ class Helpers
 
         return DB::table('tracker_sessions')->distinct('client_ip')->count('client_ip'); 
     }
+    public static function allVisitors(){
+
+        return DB::table('tracker_sessions')->count('client_ip'); 
+    }
     public static function SeoCommontags(){
         return SeoTags::where('slug','home')->first();
     }

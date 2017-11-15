@@ -1,3 +1,11 @@
+@php
+  if(request()->is('admin/uniquevisitorpagelist/*')):
+  $url    = url('admin/visitor');
+  else:
+    $url    = url('admin/allvisitors');
+  endif;
+@endphp
+
 @extends('layout.admin.master')
 @section('content')
   <!-- Content Wrapper. Contains page content -->
@@ -5,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Visitors Info
+        Visitor Pages Info <a href="{{$url}}" class="btn btn-primary pull-right" >Back</a>
         <!-- <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
@@ -24,11 +32,15 @@
           
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Visitors Info Section List</h3>
+              <h3 class="box-title">
+              	Visitors Page Section List 
+
+              </h3>
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="visitor_list_table" class="table table-bordered table-striped">
+              <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Visitor IP</th>
@@ -39,7 +51,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                 
+                 @forelse($sessionPages as $page)
+                 	@php
+                 		 if(empty($sessionDetails->geolocation)){
+				            $country     = '';
+				            $city        = '';
+				          }
+				          else{
+				         	  $country 	  =	   $sessionDetails->geolocation->country_name;
+				         	  $city 		    =	   $sessionDetails->geolocation->city;
+				          }
+                 	@endphp
+                 	<tr>
+                 		<td>{{ $sessionDetails->client_ip}}</td>
+                 		<td>{{ $country }}</td>
+                 		<td>{{ $city }}</td>
+                 		<td>{{$sessionDetails->created_at->format('d-m-Y')}}</td>
+                 		<td>{{$page->paths->path}}</td>
+                 		
+                 	</tr>
+                 @empty
+
+                 @endforelse
                 </tbody>
                 
               </table>
@@ -55,4 +88,5 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  @endsection
+
+@endsection

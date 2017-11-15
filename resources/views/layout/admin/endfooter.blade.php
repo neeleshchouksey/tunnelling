@@ -284,11 +284,29 @@
   <script src="{{asset('js/admin/advertise/advertise.js')}}"></script>
 
 @endif
-@if(request()->is('admin/visitor')==1)
+@if(request()->is('admin/addslide')==1)
   <script>
+  var url = "{{url('admin/addslide/ajax')}}";
+  
+  </script>
+  <script src="{{asset('js/admin/addslide/addslide.js')}}"></script>
+
+@endif
+@if(request()->is('admin/visitor')==1 || request()->is('admin/allvisitors')==1)
+ @if(request()->is('admin/visitor')==1)
+  <script>
+
   var url = "{{url('admin/visitor/ajax')}}";
   
   </script>
+  @endif
+  @if(request()->is('admin/allvisitors')==1)
+  <script>
+
+  var url = "{{url('admin/allvisitors/allVisitorAjax')}}";
+  
+  </script>
+  @endif
   <script src="{{asset('js/admin/visitor/visitor.js')}}"></script>
 
 @endif

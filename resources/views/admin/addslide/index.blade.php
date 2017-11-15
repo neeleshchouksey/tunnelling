@@ -5,12 +5,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Visitors Info
+        Advertises Slides
         <!-- <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
-        <!-- <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li> -->
-        <li><a href="#"></a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Advertises Slides</a></li>
         <!-- <li class="active">Data tables</li> -->
       </ol>
     </section>
@@ -24,22 +24,22 @@
           
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Visitors Info Section List</h3>
+              <h3 class="box-title">Advertises Slides</h3>
+              <a href="{{url('admin/addslide/create')}}" class="btn btn-success pull-right"> Add New </a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="visitor_list_table" class="table table-bordered table-striped">
+              <table id="subscribe_list_table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Visitor IP</th>
-                  <th>Visitor Country</th>
-                  <th>Visitor City</th>
-                  <th>Visited At</th>
-                  <th>Visited Paths</th> 
+                  <th>Image</th>
+                  <th>Link</th>
+                  
+                  <th>Action</th>
+                 
                 </tr>
                 </thead>
                 <tbody>
-                 
                 </tbody>
                 
               </table>

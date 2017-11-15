@@ -15,8 +15,8 @@ visitor();
           { data: 'country'},
           { data: 'city'},
           { data: 'date'},
-         
-      ]
+          { data: 'action'},
+      ] 
       
   });
   }

@@ -5,7 +5,7 @@
   $contatMessages = Helper::contact();
   $subscriptions  = Helper::subscriptions();
   $uniqueVisitors   = Helper::uniqueVisitors();
-
+$allVisitors   = Helper::allVisitors();
 @endphp
 
 <!-- Modal -->
@@ -134,6 +134,20 @@
               <i class="ion ion-pie-graph"></i>
             </div>
             <a href="{{url('admin/visitor')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+         <div class="col-lg-3 col-xs-6 pull-right">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>{{$allVisitors}}</h3>
+
+              <p>Total Visitors</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-android-contacts"></i>
+            </div>
+            <a href="{{url('admin/allvisitors')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

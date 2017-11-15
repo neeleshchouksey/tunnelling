@@ -15,4 +15,9 @@ class Page extends Model
     {
         return $this->hasOne('App\Slidertype','page_id');
     }
+    public function addslider()
+    {
+        return $this->hasMany('App\AddSlide','page_id');
+    }
+
 }
