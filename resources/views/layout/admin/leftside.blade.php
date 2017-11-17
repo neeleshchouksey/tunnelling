@@ -52,6 +52,7 @@
             <li><a href="{{url('admin/partner')}}"><i class="fa fa-circle-o"></i>Partners</a></li>
             <li><a href="{{url('admin/advertiser')}}"><i class="fa fa-circle-o"></i>Existing Advertisers</a></li>
             <li><a href="{{url('admin/keyreader')}}"><i class="fa fa-circle-o"></i>Key Reader Icons</a></li>
+            <li><a href="{{url('admin/media-partner')}}"><i class="fa fa-circle-o"></i>Media Partners</a></li>
           </ul>          
         </li>
         <li >
@@ -90,7 +91,7 @@
           </a>
         </li>
         <li >
-          <a href="{{url('admin/reserve')}}">
+          <a href="{{url('admin/addslide')}}">
             <i class="fa fa-share"></i> <span>Home Left Slider</span>
           </a>
         </li>

@@ -18,6 +18,8 @@
 				<ul>
 					<li class="{{ active(['/'],'current-page') }}"><a href="{{url('/')}}" >Home</a></li>
 					<li class="{{ active(['about'],'current-page') }}"><a href="{{url('about')}}" >About</a></li>
+					<li class="{{ active(['media-partner'],'current-page') }}"><a href="{{url('media-partner')}}" >Media Partners</a></li>
+
 					<li class="{{ active(['advertise','advertise/*'],'current-page') }}"><a href="{{url('advertise')}}" >Advertise</a></li>
 					<li class="{{ active(['subscribe','subscribe/*'],'current-page') }}"><a href="{{url('subscribe')}}" >subscribe</a></li>
 					<li class="{{ active(['contact'],'current-page') }}"><a href="{{url('contact')}}" >Contacts</a></li>

@@ -119,6 +119,7 @@
 	  </SCRIPT>
 	  <script src="{!! asset('js/jquery.min.js') !!}"></script>
 	  <script src="{!! asset('js/frontend-common.js') !!}"></script>
+	  	  
 	  <script>
 var slideIndex = 0;
 carousel();
@@ -133,7 +134,7 @@ function carousel() {
     slideIndex++;
     if (slideIndex > x.length) {slideIndex = 1} 
     x[slideIndex-1].style.display = "block"; 
-    setTimeout(carousel, 2000); // Change image every 2 seconds
+    setTimeout(carousel, 5000); // Change image every 2 seconds
 }
 var slideIndexAdds = 0;
 carouselAdds();
@@ -148,6 +149,6 @@ function carouselAdds() {
     slideIndexAdds++;
     if (slideIndexAdds > x.length) {slideIndexAdds = 1} 
     x[slideIndexAdds-1].style.display = "block"; 
-    setTimeout(carouselAdds, 2000); // Change image every 2 seconds
+    setTimeout(carouselAdds, 5000); // Change image every 2 seconds
 }
 </script>

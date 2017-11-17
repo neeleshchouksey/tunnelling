@@ -12,6 +12,7 @@
 */
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'AboutusController@index');
+Route::get('/media-partner', 'MediaPartnerController@index');
 // ~gk suscribe
 Route::get('subscribe', 'SubscribeController@index');
 Route::post('subscribe/store', 'SubscribeController@store');
@@ -46,31 +47,51 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::group(['middleware' => 'admin.auth'], function() {
 
    		 Route::resource('dashboard', 'DashboardController');
+
    		 Route::resource('advertiser', 'AdvertiserController');
    		 Route::get('advertisers/ajax', 'AdvertiserController@ajax');
+
    		 Route::resource('keyreader', 'KeyReadersController');
    		 Route::get('keyreaders/ajax', 'KeyReadersController@ajax');
-   		 Route::resource('partner', 'ParternersController');
+
+       Route::resource('media-partner', 'MediaPartnerController');
+       Route::get('media-partners/ajax', 'MediaPartnerController@ajax');
+
+   		 Route::resource('media-partner-slide', 'MediaPartnerSlideController');
+       Route::get('media-partners-slide/ajax','MediaPartnerSlideController@ajax');
+
+       Route::resource('partner', 'ParternersController');
    		 Route::get('partners/ajax', 'ParternersController@ajax');
+
    		 Route::resource('companyinfo', 'CompanyInfoController');
+
        Route::resource('pages', 'PagesController');
        Route::resource('pages/section', 'PagesSectionController');
+
        Route::resource('slider', 'SliderController');
        Route::get('slider/addnew/{id}', 'SliderController@addnew');
+
        Route::get('contact/ajax', 'ContactMessageController@ajax');
        Route::resource('contact', 'ContactMessageController');
+      
        Route::get('subscribe/ajax', 'SubscriptionController@ajax');
        Route::resource('subscribe', 'SubscriptionController');
+      
        Route::get('advertise/ajax', 'AdvertiseController@ajax');
        Route::resource('advertise', 'AdvertiseController');
+      
        Route::resource('profile', 'ProfileController');
        Route::resource('reserve', 'ReserveController');
+      
        Route::get('visitor', 'VisitorInfoController@index');
        Route::get('visitor/ajax', 'VisitorInfoController@ajax');
+      
        Route::get('uniquevisitorpagelist/{id}', 'VisitorInfoController@getVisitedPageList');
        Route::get('visitorpagelist/{id}', 'VisitorInfoController@getVisitedPageList');
+      
        Route::get('allvisitors', 'VisitorInfoController@index');
        Route::get('allvisitors/allVisitorAjax', 'VisitorInfoController@allVisitorAjax');
+      
        Route::get('addslide/ajax', 'AddsController@ajax');
        Route::resource('addslide', 'AddsController');
     }); 

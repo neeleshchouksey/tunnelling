@@ -49,6 +49,6 @@
 @include('layout.admin.footer')
 @include('layout.admin.endfooter')
 
-
+  @yield('jsscript')
 </body>
 </html>
