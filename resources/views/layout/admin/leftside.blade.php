@@ -53,6 +53,7 @@
             <li><a href="{{url('admin/advertiser')}}"><i class="fa fa-circle-o"></i>Existing Advertisers</a></li>
             <li><a href="{{url('admin/keyreader')}}"><i class="fa fa-circle-o"></i>Key Reader Icons</a></li>
             <li><a href="{{url('admin/media-partner')}}"><i class="fa fa-circle-o"></i>Media Partners</a></li>
+            <li><a href="{{url('admin/media-partner-slide')}}"><i class="fa fa-circle-o"></i>Media Partner Slides</a></li>
           </ul>          
         </li>
         <li >
