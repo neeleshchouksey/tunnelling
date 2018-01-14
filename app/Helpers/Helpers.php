@@ -107,7 +107,7 @@ class Helpers
                     *
                     * @var        string
                     */
-                    $urlWithLink        =    "<a href='".$value."'>$value</a>";
+                    $urlWithLink        =    "<a target='_blank' href='".$value."'>$value</a>";
 
                     /**
                      * Replace Url with link in text
