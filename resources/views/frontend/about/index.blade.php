@@ -16,7 +16,7 @@
 				<h2>{!! nl2br($about->title)!!}</h2>
 				<hr>
 <!-- 				<p>Publication release date: <span>April 2018</span></p> -->
-				<p>{!! nl2br($about->text) !!}</p>
+				<p>{!! nl2br(Helper::getSitesUrls($about->text)) !!}</p>
 			</div>
 			<div class="clear"></div>
 			

@@ -39,7 +39,7 @@
 				<h2>{!! nl2br($home->title)!!}</h2>
 				<hr>
 				<p>Publication release date: <span>April 2018</span></p>
-				<p>{!! nl2br($home->text) !!}</p> 
+				<p>{!! nl2br(Helper::getSitesUrls($home->text)) !!}</p> 
 
 				<!-- <p>This useful edition along side our newsletters and announcements will enable our readers to have access to the latest tunnelling industry innovations and the companies that are able to put these advances into practice.</p>  -->
 

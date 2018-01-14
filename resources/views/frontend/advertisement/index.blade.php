@@ -72,7 +72,7 @@
 			<div class="width-50 pull-left padding-left">
 				<h2>{!! nl2br($advertise->title)!!}</h2>
 				<hr>
-				<p>{!! nl2br($advertise->text)!!}</p>
+				<p>{!! nl2br(Helper::getSitesUrls($advertise->text))!!}</p>
 				<!-- <p>TUNNELLING INTERNATIONAL 2018 will contain an array of technical articles authored by tunnelling industry innovators and will focus on efficiencies, needs and trends.</p>
 				<p>Circulated FREE of charge with a minimum of 7000 printed copies, targeted to key individuals. A FREE PDF version available to subscribe and download.</p>
 			
@@ -82,7 +82,7 @@
 			<div class="key-features text-center">
 				<h2>{!! nl2br($advertise->subtitle)!!}</h2>
 				<hr>
-				<p>{!! nl2br($advertise->subtext)!!}</p>
+				<p>{!! nl2br(Helper::getSitesUrls($advertise->subtext))!!}</p>
 			<div class="features-row">
 				@foreach(Helper::keyreader() as $keyreader)
 					<div class="col-5">

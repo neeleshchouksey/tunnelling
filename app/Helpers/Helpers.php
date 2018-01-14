@@ -64,6 +64,111 @@ class Helpers
     public static function SeoCommontags(){
         return SeoTags::where('slug','home')->first();
     }
+    /**
+     * Gets the sites urls.
+     *
+     * @param      string  $text   The text
+     *
+     * @return     string  The sites urls.
+     */
+    public static function getSitesUrls($text=''){
+
+        /**
+         * Assign  Regualar expression to reg_exUrl
+         * varriable  for url's pattern check 
+         *
+         * @var        string
+         */
+        $reg_exUrl  = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+
+        /**
+         * Assign Regular expression to reg_exMail  
+         * variable  for email pattern check
+         *
+         * @var        string
+         */
+        $reg_exMail = "/[a-z0-9_\-\+]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i";
+
+  
+        /**
+         * Check if there is a url in the text
+         * and get all urls from text
+         */
+        if(preg_match_all($reg_exUrl, $text, $url)) {
+
+                /**
+                 * use foreach loop to get all
+                 * url one by one
+                 */
+                foreach ($url[0] as $key => $value) {
+
+                   /**
+                    * Make Links of current url
+                    *
+                    * @var        string
+                    */
+                    $urlWithLink        =    "<a href='".$value."'>$value</a>";
+
+                    /**
+                     * Replace Url with link in text
+                     *
+                     * @var        <type>
+                     */
+                    $text               =    Self::str_replace_first($value, $urlWithLink, $text);
+                
+                }
+
+        } 
+         /**
+         * Check if there is a emails in the text
+         * and get all emails from text
+         */
+        if(preg_match_all($reg_exMail, $text, $emails)) {
+
+            /**
+             * use foreach loop to get all
+             * email one by ond
+             */
+            foreach ($emails[0] as $key => $value) {
+                
+                /**
+                * Make Links of current email
+                *
+                * @var        string
+                */
+                $urlWithLink        =    "<a href='mailto:".$value."'>$value</a>";
+
+                /**
+                 * Replace Email with link in text
+                 *
+                 * @var        <type>
+                 */
+                $text               =    Self::str_replace_first($value, $urlWithLink, $text);
+            
+            }
+
+        } 
+        return $text;
+    }
+    /**
+     * get $from,$to,$subject varible
+     * $from = word to be searched
+     * $to   = word to be replaced
+     * $subject = string which have $from word
+     *  
+     *
+     * @param      string  $from     The from
+     * @param      <type>  $to       { parameter_description }
+     * @param      <type>  $subject  The subject
+     *
+     * @return     <type>  return string after repalce word in string
+     */
+    public static function str_replace_first($from, $to, $subject)
+    {
+        $from = '/'.preg_quote($from, '/').'/';
+
+        return preg_replace($from, $to, $subject, 1);
+    }
 
   
 }

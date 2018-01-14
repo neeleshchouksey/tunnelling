@@ -5,7 +5,7 @@
 	  	<div class="container">
 			<h1>Media Partners</h1>
 			<hr>
-			<p>A technical annual for the tunnelling industry</p>
+			<p>A technical annual for the tunnelling industry {{Helper::getSitesUrls()}}</p>
 		</div>
 	  </section>
 	 
@@ -29,7 +29,7 @@
 					<h2>{!! nl2br($mediaPartner->title)!!}</h2>
 					<hr>
 
-					<p>{!! nl2br($mediaPartner->description) !!}</p>
+					<p>{!! nl2br(Helper::getSitesUrls($mediaPartner->description)) !!}</p>
 				</div>
 				<div class="clear"></div>
 			</div>
