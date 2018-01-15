@@ -71,8 +71,8 @@ class Helpers
      *
      * @return     string  The sites urls.
      */
-    public static function getSitesUrls($text=''){
-
+    public static function getSitesUrls($text='',$pageName=''){
+        $subject    =   array('FPRS 2018 enquiry – MK','FPST 2018 enquiry – MK');
         /**
          * Assign  Regualar expression to reg_exUrl
          * varriable  for url's pattern check 
@@ -129,14 +129,24 @@ class Helpers
              * use foreach loop to get all
              * email one by ond
              */
+            $i =0;
             foreach ($emails[0] as $key => $value) {
-                
+                               
                 /**
                 * Make Links of current email
                 *
                 * @var        string
                 */
-                $urlWithLink        =    "<a href='mailto:".$value."'>$value</a>";
+                if($pageName=='media-partner' && $i<2):
+
+                    
+                    $urlWithLink        =    "<a href='mailto:".$value."?subject=".$subject[$i]."'>$value</a>";
+                
+
+                else:
+                     $urlWithLink        =    "<a href='mailto:".$value."'>$value</a>";
+                 endif;
+                
 
                 /**
                  * Replace Email with link in text
@@ -144,7 +154,7 @@ class Helpers
                  * @var        <type>
                  */
                 $text               =    Self::str_replace_first($value, $urlWithLink, $text);
-            
+                $i++;
             }
 
         } 
